@@ -783,7 +783,7 @@ function tick(){
     if(!cd) return;
     const tl = timeLeft(drop.deadline);
     const urgent = tl && tl.total < 3600000*6;
-    if(!tl){ renderDrops(); return; }
+    if(!tl){ return; }
     cd.innerHTML = cdHTML(tl, urgent, drop.id);
   });
 }
