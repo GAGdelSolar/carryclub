@@ -186,7 +186,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 }
 .story.active .story-label{color:var(--cyan)}
 .story.expired .story-ring{opacity:.3}
-.story.expired{opacity:.4;cursor:default}
+.story.expired{opacity:.4}
 
 /* ── MAIN CONTENT ── */
 .content{min-height:calc(100vh - var(--nav-h))}
@@ -686,7 +686,7 @@ function renderDropStory(drop){
   const el = document.createElement('div');
   el.className = `story${expired?' expired':''}`;
   el.dataset.id = drop.id;
-  el.onclick = expired ? null : () => showStory(drop.id);
+  el.onclick = () => showStory(drop.id);
   el.innerHTML = `
     <div class="story-ring${expired?'':' active'}">
       <div class="story-inner"><span class="story-icon">${drop.numero}</span></div>
@@ -807,7 +807,7 @@ setInterval(tick, 1000);
 
 // Auto-mostrar primer drop en desktop
 if(window.innerWidth >= 900){
-  const first = DROPS.find(d => d.activo && timeLeft(d.deadline));
+  const first = DROPS.find(d => d.activo);
   if(first) showStory(first.id);
 }
 
