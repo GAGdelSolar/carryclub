@@ -6,11 +6,10 @@
 <title>Carry Club — Mucho antes.</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300&family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet">
 <style>
-/* ── RESET ── */
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
   --black:#080808;--white:#EDE9E3;--gray:#666;--lgray:#2a2a2a;--mgray:#3a3a3a;
-  --cyan:#88C8D8;--rose:#C86890;--border:#161616;--nav-h:56px;
+  --cyan:#88C8D8;--rose:#C86890;--border:#161616;--nav-h:52px;
 }
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif;font-weight:300;overflow-x:hidden;padding-top:var(--nav-h)}
@@ -18,75 +17,62 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 /* ── NAVBAR ── */
 .navbar{
   position:fixed;top:0;left:0;right:0;height:var(--nav-h);
-  background:rgba(8,8,8,0.96);backdrop-filter:blur(12px);
+  background:rgba(8,8,8,0.97);backdrop-filter:blur(12px);
   border-bottom:0.5px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 20px;z-index:1000;
+  padding:0 16px;z-index:1000;
 }
 .nav-logo{
-  font-family:'Cormorant',serif;font-size:22px;font-weight:300;
+  font-family:'Cormorant',serif;font-size:20px;font-weight:300;
   letter-spacing:6px;color:var(--white);text-decoration:none;
-  display:flex;align-items:baseline;gap:8px;
+  display:flex;align-items:baseline;gap:6px;
 }
-.nav-logo-club{
-  font-size:8px;font-weight:200;letter-spacing:5px;
+.nav-club{
+  font-size:7px;font-weight:200;letter-spacing:5px;
   background:linear-gradient(90deg,var(--cyan),var(--rose));
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
 }
-.nav-actions{display:flex;align-items:center;gap:4px}
+.nav-right{display:flex;align-items:center;gap:2px}
 .nav-btn{
   background:none;border:none;color:var(--gray);cursor:pointer;
-  padding:8px;font-size:16px;display:flex;align-items:center;justify-content:center;
-  transition:color .2s;position:relative;border-radius:2px;
+  padding:8px;display:flex;align-items:center;justify-content:center;
+  transition:color .2s;position:relative;
 }
 .nav-btn:hover{color:var(--white)}
 .nav-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .cart-badge{
-  position:absolute;top:4px;right:4px;
-  background:var(--rose);color:#fff;
-  font-size:8px;font-weight:400;letter-spacing:0;
-  width:14px;height:14px;border-radius:50%;
+  position:absolute;top:3px;right:3px;
+  background:var(--rose);color:#fff;font-size:7px;
+  width:13px;height:13px;border-radius:50%;
   display:none;align-items:center;justify-content:center;
 }
-.cart-badge.visible{display:flex}
+.cart-badge.on{display:flex}
 
-/* ── MENÚ SANDWICH ── */
-.menu-overlay{
-  position:fixed;inset:0;background:rgba(8,8,8,0.6);z-index:1100;
-  opacity:0;pointer-events:none;transition:opacity .25s;
-}
-.menu-overlay.open{opacity:1;pointer-events:all}
-.menu-drawer{
-  position:fixed;top:0;right:0;bottom:0;width:280px;max-width:85vw;
+/* ── MENU DRAWER ── */
+.overlay{position:fixed;inset:0;background:rgba(8,8,8,0.65);z-index:1100;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:all}
+.drawer{
+  position:fixed;top:0;right:0;bottom:0;width:280px;max-width:88vw;
   background:#0d0d0d;border-left:0.5px solid var(--border);
   z-index:1200;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
   display:flex;flex-direction:column;
 }
-.menu-drawer.open{transform:translateX(0)}
-.menu-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 20px;border-bottom:0.5px solid var(--border);
-}
-.menu-head-title{font-size:8px;letter-spacing:4px;color:var(--lgray)}
-.menu-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:20px;padding:4px}
-.menu-nav{flex:1;padding:16px 0;overflow-y:auto}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid var(--border)}
+.drawer-title{font-size:7px;letter-spacing:4px;color:var(--lgray)}
+.drawer-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:22px;line-height:1;padding:2px}
+.menu-nav{flex:1;overflow-y:auto}
 .menu-item{
-  display:block;padding:14px 24px;font-size:11px;letter-spacing:3px;
-  color:var(--gray);text-decoration:none;border-bottom:0.5px solid var(--border);
-  transition:color .2s;cursor:pointer;background:none;border-left:none;border-right:none;border-top:none;
-  width:100%;text-align:left;font-family:'Raleway',sans-serif;font-weight:300;
+  display:block;width:100%;text-align:left;padding:14px 24px;
+  font-size:10px;letter-spacing:3px;color:var(--gray);
+  background:none;border:none;border-bottom:0.5px solid var(--border);
+  font-family:'Raleway',sans-serif;font-weight:300;cursor:pointer;
+  transition:color .2s;text-decoration:none;
 }
 .menu-item:hover{color:var(--white)}
-.menu-item.active{color:var(--cyan)}
-.menu-footer{padding:20px 24px;border-top:0.5px solid var(--border)}
-.menu-footer-text{font-size:7px;letter-spacing:1px;color:var(--lgray)}
+.menu-footer{padding:20px 24px;border-top:0.5px solid var(--border);font-size:7px;letter-spacing:1px;color:var(--lgray)}
 
-/* ── CARRITO DRAWER ── */
-.cart-overlay{
-  position:fixed;inset:0;background:rgba(8,8,8,0.7);z-index:1100;
-  opacity:0;pointer-events:none;transition:opacity .25s;
-}
-.cart-overlay.open{opacity:1;pointer-events:all}
+/* ── CART DRAWER ── */
 .cart-drawer{
   position:fixed;top:0;right:0;bottom:0;width:340px;max-width:92vw;
   background:#0d0d0d;border-left:0.5px solid var(--border);
@@ -94,725 +80,670 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   display:flex;flex-direction:column;
 }
 .cart-drawer.open{transform:translateX(0)}
-.cart-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:18px 20px;border-bottom:0.5px solid var(--border);
-}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid var(--border)}
 .cart-head-title{font-size:8px;letter-spacing:4px;color:var(--white)}
 .cart-body{flex:1;overflow-y:auto;padding:16px 20px}
-.cart-empty{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  height:200px;color:var(--lgray);text-align:center;
-}
-.cart-empty-icon{font-family:'Cormorant',serif;font-size:40px;opacity:.2;margin-bottom:12px}
-.cart-empty-text{font-size:9px;letter-spacing:3px}
-.cart-item{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  padding:12px 0;border-bottom:0.5px solid var(--border);gap:12px;
-}
-.cart-item-info{flex:1}
-.cart-item-drop{font-size:7px;letter-spacing:2px;color:var(--lgray);margin-bottom:3px}
-.cart-item-name{font-family:'Cormorant',serif;font-size:15px;font-weight:300;color:var(--white);line-height:1.2;margin-bottom:4px}
-.cart-item-price{font-size:12px;color:var(--cyan)}
-.cart-item-remove{background:none;border:none;color:var(--lgray);cursor:pointer;font-size:16px;padding:2px;transition:color .2s;flex-shrink:0}
-.cart-item-remove:hover{color:var(--rose)}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:180px;color:var(--lgray);text-align:center}
+.cart-empty-icon{font-family:'Cormorant',serif;font-size:40px;opacity:.15;margin-bottom:10px}
+.cart-empty-text{font-size:8px;letter-spacing:3px}
+.cart-item{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:0.5px solid var(--border);gap:10px}
+.ci-info{flex:1}
+.ci-drop{font-size:7px;letter-spacing:2px;color:var(--lgray);margin-bottom:3px}
+.ci-name{font-family:'Cormorant',serif;font-size:15px;color:var(--white);line-height:1.2;margin-bottom:3px}
+.ci-detail{font-size:9px;color:var(--cyan);margin-bottom:3px}
+.ci-price{font-size:12px;color:var(--white)}
+.ci-remove{background:none;border:none;color:var(--lgray);cursor:pointer;font-size:18px;padding:2px;transition:color .2s;flex-shrink:0}
+.ci-remove:hover{color:var(--rose)}
 .cart-foot{padding:16px 20px;border-top:0.5px solid var(--border)}
-.cart-total{display:flex;justify-content:space-between;margin-bottom:16px}
-.cart-total-label{font-size:9px;letter-spacing:2px;color:var(--gray)}
-.cart-total-val{font-size:18px;font-weight:400;color:var(--white)}
-.cart-checkout-btn{
-  display:block;width:100%;padding:14px;
-  background:transparent;border:0.5px solid var(--cyan);
-  color:var(--cyan);font-size:9px;letter-spacing:4px;
-  font-family:'Raleway',sans-serif;font-weight:300;cursor:pointer;
-  transition:background .2s;
-}
-.cart-checkout-btn:hover{background:rgba(136,200,216,0.06)}
-
-/* Formulario de checkout */
-.checkout-form{display:none;flex-direction:column;gap:12px;margin-top:16px}
+.cart-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.ct-label{font-size:7px;letter-spacing:2px;color:var(--gray)}
+.ct-val{font-size:22px;font-weight:400;color:var(--white)}
+.ct-note{font-size:8px;color:var(--lgray);line-height:1.6;margin-bottom:14px}
+.ct-note em{color:var(--rose);font-style:normal}
+.btn-checkout{display:block;width:100%;padding:13px;border:0.5px solid var(--cyan);color:var(--cyan);background:transparent;font-size:8px;letter-spacing:4px;font-family:'Raleway',sans-serif;font-weight:300;cursor:pointer;transition:background .2s;margin-bottom:10px}
+.btn-checkout:hover{background:rgba(136,200,216,0.05)}
+.checkout-form{display:none;flex-direction:column;gap:10px}
 .checkout-form.visible{display:flex}
-.form-field{display:flex;flex-direction:column;gap:4px}
-.form-label{font-size:7px;letter-spacing:2px;color:var(--lgray)}
-.form-input{
-  background:transparent;border:0.5px solid var(--lgray);color:var(--white);
-  padding:10px 12px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:300;
-  outline:none;transition:border-color .2s;
-}
-.form-input:focus{border-color:var(--cyan)}
-.form-submit{
-  padding:14px;background:var(--cyan);border:none;
-  color:var(--black);font-size:9px;letter-spacing:4px;
-  font-family:'Raleway',sans-serif;font-weight:400;cursor:pointer;
-  transition:opacity .2s;
-}
-.form-submit:hover{opacity:.9}
+.policy-box{background:#0a0a0a;border-left:2px solid var(--rose);padding:10px 12px;font-size:8px;color:var(--gray);line-height:1.6}
+.policy-box strong{color:var(--white);font-weight:400}
+.f-field{display:flex;flex-direction:column;gap:4px}
+.f-label{font-size:7px;letter-spacing:2px;color:var(--lgray)}
+.f-input{background:transparent;border:0.5px solid var(--lgray);color:var(--white);padding:10px 12px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:300;outline:none;transition:border-color .2s}
+.f-input:focus{border-color:var(--cyan)}
+.btn-send{width:100%;padding:13px;background:var(--cyan);border:none;color:var(--black);font-size:8px;letter-spacing:4px;font-family:'Raleway',sans-serif;font-weight:400;cursor:pointer}
 
-/* ── STORIES / CIRCLES ── */
-.stories-wrap{
-  padding:24px 0 0;
-  border-bottom:0.5px solid var(--border);
+/* ── LAYOUT ── */
+.app{display:block}
+@media(min-width:900px){
+  .app{display:flex;height:calc(100vh - var(--nav-h));overflow:hidden}
+  .sidebar{width:280px;flex-shrink:0;height:100%;overflow-y:auto;border-right:0.5px solid var(--border);display:flex;flex-direction:column}
+  .main{flex:1;overflow-y:auto}
 }
-.stories-label{
-  font-size:7px;letter-spacing:4px;color:var(--lgray);
-  padding:0 20px 14px;
-}
-.stories-scroll{
-  display:flex;gap:0;overflow-x:auto;padding:0 16px 20px;scrollbar-width:none;
-}
-.stories-scroll::-webkit-scrollbar{display:none}
 
-.story{
+/* ── SIDEBAR ── */
+.sidebar{border-bottom:0.5px solid var(--border)}
+
+.sb-brand{padding:28px 20px 20px;border-bottom:0.5px solid var(--border)}
+.sb-logo{font-family:'Cormorant',serif;font-size:28px;font-weight:300;letter-spacing:10px;color:var(--white);line-height:1}
+.sb-club{font-size:8px;font-weight:200;letter-spacing:8px;background:linear-gradient(90deg,var(--cyan),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin:4px 0 3px}
+.sb-tagline{font-size:7px;letter-spacing:4px;color:var(--lgray);display:block}
+
+/* Sección institucional */
+.sb-section{padding:16px 0 12px}
+.sb-section-label{font-size:6px;letter-spacing:3px;color:var(--lgray);padding:0 20px 10px}
+
+/* Mobile: scroll horizontal para ambas secciones */
+.sb-circles-wrap{display:flex;overflow-x:auto;padding:0 14px 12px;gap:0;scrollbar-width:none}
+.sb-circles-wrap::-webkit-scrollbar{display:none}
+
+/* Desktop: columna */
+@media(min-width:900px){
+  .sb-circles-wrap{flex-direction:column;overflow-x:visible;padding:0 0 8px;gap:0}
+}
+
+/* Círculo individual */
+.circle-item{
   display:flex;flex-direction:column;align-items:center;
-  flex-shrink:0;padding:0 12px;cursor:pointer;
+  flex-shrink:0;padding:0 10px;cursor:pointer;
+  opacity:.55;transition:opacity .2s;
 }
-.story-ring{
-  width:64px;height:64px;border-radius:50%;padding:2px;
-  background:var(--lgray);
+.circle-item:hover{opacity:.85}
+.circle-item.active{opacity:1}
+
+@media(min-width:900px){
+  .circle-item{
+    flex-direction:row;gap:12px;padding:10px 14px;
+    opacity:.5;border-left:1.5px solid transparent;
+  }
+  .circle-item.active{
+    opacity:1;background:rgba(255,255,255,0.025);
+    border-left-color:var(--cyan);
+  }
+  /* Drops activos más protagonismo */
+  .circle-item.drop-item{opacity:.65}
+  .circle-item.drop-item.active{opacity:1}
+}
+
+.circle-ring{
+  border-radius:50%;padding:2px;
+  background:var(--lgray);flex-shrink:0;
   transition:background .2s;
 }
-.story-ring.gradient{background:linear-gradient(135deg,var(--cyan),var(--rose))}
-.story-ring.active{background:linear-gradient(135deg,var(--cyan),var(--rose))}
-.story-inner{
+.circle-ring.sm{width:52px;height:52px}
+.circle-ring.lg{width:64px;height:64px}
+.circle-ring.grad{background:linear-gradient(135deg,var(--cyan),var(--rose))}
+.circle-ring.drop-grad{background:linear-gradient(135deg,var(--rose),var(--cyan))}
+.circle-inner{
   width:100%;height:100%;border-radius:50%;
   background:var(--black);border:2px solid var(--black);
   display:flex;align-items:center;justify-content:center;
 }
-.story-icon{font-family:'Cormorant',serif;font-size:20px;font-weight:300;color:var(--white)}
-.story-label{
-  font-size:7px;letter-spacing:1px;color:var(--mgray);
-  margin-top:8px;text-align:center;max-width:72px;
+.circle-icon{font-family:'Cormorant',serif;font-size:18px;font-weight:300;color:var(--white)}
+.circle-icon.lg-icon{font-size:22px}
+
+/* Label mobile */
+.circle-mobile-label{
+  font-size:6px;letter-spacing:1px;color:var(--mgray);
+  margin-top:6px;text-align:center;max-width:64px;
   overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
-.story.active .story-label{color:var(--cyan)}
-.story.expired .story-ring{opacity:.3}
-.story.expired{opacity:.4}
+.circle-item.active .circle-mobile-label{color:var(--cyan)}
 
-/* ── MAIN CONTENT ── */
-.content{min-height:calc(100vh - var(--nav-h))}
+/* Info desktop */
+.circle-desktop-info{display:none}
+@media(min-width:900px){
+  .circle-desktop-info{display:block;flex:1;overflow:hidden;min-width:0}
+  .cdi-main{font-family:'Cormorant',serif;font-size:15px;font-weight:300;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+  .cdi-sub{font-size:6px;letter-spacing:2px;color:var(--lgray)}
+  .circle-item.active .cdi-sub{color:var(--cyan)}
+  .circle-mobile-label{display:none}
+}
 
-/* Panel de contenido */
-.panel{display:none;animation:fadeUp .25s ease}
+/* Separador drops */
+.sb-drops-sep{
+  margin:4px 16px 0;border:none;border-top:0.5px solid var(--border);
+}
+@media(min-width:900px){.sb-drops-sep{margin:4px 0 0}}
+
+.sb-footer{margin-top:auto;padding:14px 20px;border-top:0.5px solid var(--border);font-size:7px;letter-spacing:1px;color:var(--lgray);display:none}
+@media(min-width:900px){.sb-footer{display:block}}
+
+/* ── MAIN ── */
+.main{background:var(--black);min-height:60vh}
+
+.panel{display:none;animation:fadeUp .2s ease}
 .panel.visible{display:block}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* Welcome */
-.welcome{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:60px 32px;text-align:center;min-height:40vh;
-}
-.welcome-sym{
-  font-family:'Cormorant',serif;font-size:72px;font-weight:300;
-  font-style:italic;opacity:.08;margin-bottom:20px;
-}
-.welcome-text{font-size:10px;letter-spacing:3px;color:var(--lgray)}
+.welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;padding:40px;text-align:center}
+.welcome-sym{font-family:'Cormorant',serif;font-size:80px;font-weight:300;font-style:italic;opacity:.06;margin-bottom:16px}
+.welcome-txt{font-size:9px;letter-spacing:4px;color:var(--lgray)}
 
-/* Drop detail */
-.detail-hero{padding:32px 24px 24px;border-bottom:0.5px solid var(--border)}
-.detail-num{font-size:7px;letter-spacing:4px;color:var(--lgray);margin-bottom:10px}
-.detail-brand{
-  font-family:'Cormorant',serif;font-size:clamp(32px,8vw,52px);
-  font-weight:300;letter-spacing:3px;line-height:1;margin-bottom:6px;
-}
-.detail-desc{font-size:9px;letter-spacing:3px;color:var(--cyan);margin-bottom:24px}
+/* Drop panel */
+.drop-hero{padding:32px 24px 20px;border-bottom:0.5px solid var(--border)}
+.drop-num{font-size:7px;letter-spacing:4px;color:var(--lgray);margin-bottom:10px}
+.drop-brand{font-family:'Cormorant',serif;font-size:clamp(30px,6vw,48px);font-weight:300;letter-spacing:3px;line-height:1;margin-bottom:5px}
+.drop-desc{font-size:8px;letter-spacing:3px;color:var(--cyan);margin-bottom:22px}
 
 /* Countdown */
-.cd-wrap{margin-bottom:0}
-.cd-label{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:10px}
-.cd{display:flex;gap:0;max-width:360px}
-.cd-unit{flex:1;text-align:center;position:relative}
-.cd-unit:not(:last-child)::after{
-  content:':';position:absolute;right:-3px;top:6px;
-  font-family:'Cormorant',serif;font-size:24px;color:var(--lgray);
-}
-.cd-num{
-  font-family:'Cormorant',serif;font-size:clamp(36px,9vw,56px);
-  font-weight:300;color:var(--white);display:block;line-height:1;
-}
+.cd{display:flex;gap:0;max-width:320px}
+.cd-unit{flex:0;text-align:center;min-width:56px;position:relative}
+.cd-unit:not(:last-child)::after{content:':';position:absolute;right:-4px;top:4px;font-family:'Cormorant',serif;font-size:22px;color:var(--lgray)}
+.cd-num{font-family:'Cormorant',serif;font-size:clamp(34px,7vw,52px);font-weight:300;color:var(--white);display:block;line-height:1}
+.cd-lbl{font-size:6px;letter-spacing:2px;color:var(--lgray);display:block;margin-top:3px}
 .cd-unit.urgent .cd-num{color:var(--rose)}
-.cd-lbl{font-size:6px;letter-spacing:2px;color:var(--lgray);display:block;margin-top:4px}
+.cd-closed{font-family:'Cormorant',serif;font-size:20px;font-style:italic;color:var(--lgray)}
 
-.detail-meta{
-  display:flex;gap:0;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);
-  margin:24px 0 0;
-}
-.meta-item{flex:1;padding:16px 20px;border-right:0.5px solid var(--border);text-align:center}
-.meta-item:last-child{border-right:none}
-.meta-label{font-size:6px;letter-spacing:2px;color:var(--lgray);margin-bottom:4px}
-.meta-val{font-size:14px;color:var(--white)}
+/* Meta strip */
+.drop-meta{display:flex;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);margin-top:20px}
+.dm-item{flex:1;padding:14px 16px;border-right:0.5px solid var(--border);text-align:center}
+.dm-item:last-child{border-right:none}
+.dm-label{font-size:6px;letter-spacing:2px;color:var(--lgray);margin-bottom:4px}
+.dm-val{font-size:14px;color:var(--white)}
 
-.detail-ctas{padding:20px 24px;display:flex;flex-direction:column;gap:10px;border-bottom:0.5px solid var(--border)}
-.btn-primary{
-  display:block;text-align:center;padding:14px;
-  border:0.5px solid var(--cyan);color:var(--cyan);
-  font-size:9px;letter-spacing:4px;text-decoration:none;
-  font-family:'Raleway',sans-serif;font-weight:300;
-  transition:background .2s;
+/* Subdrops */
+.subdrops-section{padding:24px}
+.subdrops-label{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:16px}
+.subdrops-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+@media(min-width:700px){.subdrops-grid{grid-template-columns:repeat(4,1fr)}}
+.subdrop-card{
+  background:var(--black);padding:20px 16px;
+  cursor:pointer;transition:background .2s;text-decoration:none;
+  display:block;
 }
-.btn-primary:hover{background:rgba(136,200,216,0.06)}
-.btn-wa{
-  display:block;text-align:center;padding:14px;
-  border:0.5px solid var(--rose);color:var(--rose);
-  font-size:9px;letter-spacing:4px;text-decoration:none;
-  font-family:'Raleway',sans-serif;font-weight:300;
-  transition:background .2s;
-}
-.btn-wa:hover{background:rgba(200,104,144,0.06)}
+.subdrop-card:hover{background:#0d0d0d}
+.subdrop-num{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:8px}
+.subdrop-label{font-family:'Cormorant',serif;font-size:22px;font-weight:300;letter-spacing:2px;color:var(--white);margin-bottom:4px}
+.subdrop-count{font-size:8px;color:var(--lgray)}
+.subdrop-arrow{font-size:9px;letter-spacing:2px;color:var(--cyan);margin-top:12px;display:block}
+
+/* CTAs */
+.drop-ctas{padding:20px 24px;display:flex;flex-direction:column;gap:8px;border-bottom:0.5px solid var(--border)}
+.btn-primary{display:block;text-align:center;padding:13px;border:0.5px solid var(--cyan);color:var(--cyan);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
+.btn-primary:hover{background:rgba(136,200,216,0.05)}
+.btn-wa{display:block;text-align:center;padding:13px;border:0.5px solid var(--rose);color:var(--rose);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
+.btn-wa:hover{background:rgba(200,104,144,0.05)}
 
 /* Trust */
-.detail-trust{padding:24px}
-.trust-title{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:14px}
-.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.drop-trust{padding:20px 24px}
+.trust-title{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:12px}
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .trust-item{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--gray)}
 .trust-check{color:var(--cyan);font-size:9px;flex-shrink:0}
 
-/* Página institucional */
-.inst-page{padding:32px 24px 48px;max-width:600px;margin:0 auto}
-.inst-title{
-  font-family:'Cormorant',serif;font-size:clamp(28px,6vw,40px);
-  font-weight:300;letter-spacing:3px;margin-bottom:8px;
-}
-.inst-sub{font-size:9px;letter-spacing:3px;color:var(--cyan);margin-bottom:32px}
-.inst-block{margin-bottom:32px}
-.inst-block-title{
-  font-size:8px;letter-spacing:3px;color:var(--lgray);
-  margin-bottom:12px;padding-bottom:8px;border-bottom:0.5px solid var(--border);
-}
-.inst-body{font-size:13px;color:var(--gray);line-height:1.9;letter-spacing:0.3px}
-.inst-body strong{color:var(--white);font-weight:400}
-.inst-steps{display:flex;flex-direction:column;gap:16px;margin-top:12px}
-.inst-step{display:flex;align-items:flex-start;gap:16px}
-.inst-step-num{
-  font-family:'Cormorant',serif;font-size:32px;font-weight:300;
-  color:var(--lgray);flex-shrink:0;line-height:1;width:36px;
-}
-.inst-step-text{font-size:12px;color:var(--gray);line-height:1.7;padding-top:6px}
-.inst-step-text strong{color:var(--white);font-weight:400}
+/* Institucional */
+.inst{padding:32px 24px 60px;max-width:600px;margin:0 auto}
+.inst-title{font-family:'Cormorant',serif;font-size:clamp(26px,5vw,38px);font-weight:300;letter-spacing:3px;margin-bottom:6px}
+.inst-sub{font-size:8px;letter-spacing:3px;color:var(--cyan);margin-bottom:32px}
+.inst-block{margin-bottom:28px}
+.inst-block-label{font-size:7px;letter-spacing:3px;color:var(--lgray);padding-bottom:8px;border-bottom:0.5px solid var(--border);margin-bottom:12px}
+.inst-text{font-size:13px;color:var(--gray);line-height:1.9;letter-spacing:.3px}
+.inst-text strong{color:var(--white);font-weight:400}
+.inst-steps{display:flex;flex-direction:column;gap:14px;margin-top:10px}
+.inst-step{display:flex;align-items:flex-start;gap:14px}
+.inst-step-num{font-family:'Cormorant',serif;font-size:30px;color:var(--lgray);flex-shrink:0;width:32px;line-height:1}
+.inst-step-txt{font-size:12px;color:var(--gray);line-height:1.7;padding-top:4px}
+.inst-step-txt strong{color:var(--white);font-weight:400}
 
-/* ── WA FLOTANTE ── */
+/* WA FAB */
 .wa-fab{
-  position:fixed;bottom:24px;right:20px;z-index:900;
-  width:48px;height:48px;border-radius:50%;
-  background:var(--rose);border:none;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 20px rgba(200,104,144,0.3);
-  transition:transform .2s,box-shadow .2s;
-  text-decoration:none;
+  position:fixed;bottom:22px;right:18px;z-index:900;
+  width:46px;height:46px;border-radius:50%;
+  background:var(--rose);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(200,104,144,.3);text-decoration:none;
+  transition:transform .2s;
 }
-.wa-fab:hover{transform:scale(1.08);box-shadow:0 6px 24px rgba(200,104,144,0.4)}
-.wa-fab svg{width:22px;height:22px;fill:white}
-
-/* ── DESKTOP ── */
-@media(min-width:900px){
-  body{padding-top:var(--nav-h)}
-  .app-layout{display:flex;height:calc(100vh - var(--nav-h));overflow:hidden}
-  .sidebar-col{
-    width:300px;flex-shrink:0;
-    border-right:0.5px solid var(--border);
-    overflow-y:auto;
-    display:flex;flex-direction:column;
-  }
-  .main-col{flex:1;overflow-y:auto}
-  .stories-wrap{border-bottom:none;border-right:none;padding:20px 0 0}
-  .stories-scroll{flex-direction:column;overflow-x:visible;padding:0 0 20px}
-  .story{
-    flex-direction:row;gap:14px;padding:10px 16px;
-    border-radius:2px;transition:background .15s;
-  }
-  .story:hover{background:rgba(255,255,255,0.02)}
-  .story.active{background:rgba(136,200,216,0.04);border-left:1.5px solid var(--cyan)}
-  .story-ring{width:48px;height:48px;flex-shrink:0}
-  .story-label{
-    max-width:none;white-space:normal;text-align:left;
-    margin-top:0;font-size:11px;letter-spacing:1px;
-    display:flex;flex-direction:column;gap:2px;
-  }
-  .story-label-main{color:var(--white);font-family:'Cormorant',serif;font-size:15px;font-weight:300}
-  .story-label-sub{font-size:7px;letter-spacing:2px;color:var(--lgray)}
-  .story.active .story-label-sub{color:var(--cyan)}
-  .sidebar-col-footer{
-    margin-top:auto;padding:16px 20px;
-    border-top:0.5px solid var(--border);
-    font-size:7px;letter-spacing:1px;color:var(--lgray);
-  }
-}
-@media(max-width:899px){
-  .app-layout{display:block}
-  .sidebar-col{display:block}
-  .main-col{display:block}
-  .story-label-main,.story-label-sub{display:none}
-  .sidebar-col-footer{display:none}
-}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:21px;height:21px;fill:white}
 </style>
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a class="nav-logo" href="#">
-    CARRY <span class="nav-logo-club">CLUB</span>
-  </a>
-  <div class="nav-actions">
-    <!-- Carrito -->
-    <button class="nav-btn" onclick="toggleCart()" title="Carrito">
+  <a class="nav-logo" href="#">CARRY <span class="nav-club">CLUB</span></a>
+  <div class="nav-right">
+    <button class="nav-btn" onclick="toggleCart()">
       <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       <span class="cart-badge" id="cart-badge">0</span>
     </button>
-    <!-- WhatsApp nav -->
-    <a class="nav-btn" href="https://wa.me/5491131052437?text=Hola!%20Quiero%20info%20sobre%20Carry%20Club" target="_blank" title="WhatsApp">
+    <a class="nav-btn" href="https://wa.me/5491131052437" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
     </a>
-    <!-- Menú -->
-    <button class="nav-btn" onclick="toggleMenu()" title="Menú">
+    <button class="nav-btn" onclick="toggleMenu()">
       <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </div>
 </nav>
 
-<!-- MENÚ DRAWER -->
-<div class="menu-overlay" id="menu-overlay" onclick="toggleMenu()"></div>
-<div class="menu-drawer" id="menu-drawer">
-  <div class="menu-head">
-    <span class="menu-head-title">MENÚ</span>
-    <button class="menu-close" onclick="toggleMenu()">×</button>
+<!-- MENU -->
+<div class="overlay" id="menu-ov" onclick="toggleMenu()"></div>
+<div class="drawer" id="menu-dr">
+  <div class="drawer-head">
+    <span class="drawer-title">MENÚ</span>
+    <button class="drawer-close" onclick="toggleMenu()">×</button>
   </div>
   <div class="menu-nav">
-    <button class="menu-item" onclick="showStory('welcome');toggleMenu()">DROPS ACTIVOS</button>
-    <button class="menu-item" onclick="showStory('como-funciona');toggleMenu()">CÓMO FUNCIONA</button>
-    <button class="menu-item" onclick="showStory('encargos');toggleMenu()">SERVICIO DE ENCARGOS</button>
-    <button class="menu-item" onclick="showStory('quienes-somos');toggleMenu()">QUIÉNES SOMOS</button>
-    <a class="menu-item" href="https://wa.me/5491131052437?text=Hola!%20Quiero%20consultar%20sobre%20Carry%20Club" target="_blank">CONTACTO VÍA WHATSAPP</a>
+    <button class="menu-item" onclick="showPanel('como-funciona');toggleMenu()">CÓMO FUNCIONA</button>
+    <button class="menu-item" onclick="showPanel('encargos');toggleMenu()">ENCARGOS</button>
+    <button class="menu-item" onclick="showPanel('quienes-somos');toggleMenu()">QUIÉNES SOMOS</button>
+    <a class="menu-item" href="https://wa.me/5491131052437" target="_blank">CONTACTO</a>
   </div>
-  <div class="menu-footer">
-    <div class="menu-footer-text">@carryclub · USA → ARGENTINA<br>Importado · Curado · Tuyo · Mucho antes.</div>
-  </div>
+  <div class="menu-footer">@carryclub · USA → ARGENTINA<br>Importado · Curado · Tuyo · Mucho antes.</div>
 </div>
 
-<!-- CARRITO DRAWER -->
-<div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
-<div class="cart-drawer" id="cart-drawer">
+<!-- CARRITO -->
+<div class="overlay" id="cart-ov" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-dr">
   <div class="cart-head">
-    <span class="cart-head-title">CARRITO</span>
+    <span class="cart-head-title">MI PEDIDO</span>
     <button class="nav-btn" onclick="toggleCart()">
       <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
   <div class="cart-body" id="cart-body"></div>
   <div class="cart-foot" id="cart-foot" style="display:none">
-    <div class="cart-total">
-      <span class="cart-total-label">TOTAL SEÑA (50%)</span>
-      <span class="cart-total-val" id="cart-total-val">$0</span>
+    <div class="cart-total-row">
+      <span class="ct-label">SEÑA (50%)</span>
+      <span class="ct-val" id="cart-total">$0</span>
     </div>
-    <button class="cart-checkout-btn" id="checkout-btn" onclick="showCheckoutForm()">CONFIRMAR RESERVA</button>
+    <div class="ct-note">Saldo contra entrega. <em>Si el producto no está disponible al comprar en USA, la seña se devuelve en 48hs.</em></div>
+    <button class="btn-checkout" id="btn-checkout" onclick="mostrarForm()">CONFIRMAR Y SEÑAR</button>
     <div class="checkout-form" id="checkout-form">
-      <div class="form-field">
-        <label class="form-label">NOMBRE COMPLETO</label>
-        <input class="form-input" id="f-nombre" type="text" placeholder="Tu nombre">
-      </div>
-      <div class="form-field">
-        <label class="form-label">TELÉFONO / WHATSAPP</label>
-        <input class="form-input" id="f-tel" type="tel" placeholder="+54 9 11...">
-      </div>
-      <div class="form-field">
-        <label class="form-label">EMAIL</label>
-        <input class="form-input" id="f-email" type="email" placeholder="tu@email.com">
-      </div>
-      <button class="form-submit" onclick="submitPedido()">ENVIAR PEDIDO</button>
+      <div class="policy-box"><strong>Política de devolución:</strong> Si al comprar en USA el producto no está disponible, la seña se devuelve al 100% en 48hs. Sin preguntas.</div>
+      <div class="f-field"><label class="f-label">NOMBRE</label><input class="f-input" id="f-nombre" placeholder="Tu nombre completo"></div>
+      <div class="f-field"><label class="f-label">WHATSAPP</label><input class="f-input" id="f-tel" placeholder="+54 9 11..."></div>
+      <div class="f-field"><label class="f-label">EMAIL</label><input class="f-input" id="f-email" type="email" placeholder="tu@email.com"></div>
+      <button class="btn-send" onclick="confirmar()">ENVIAR PEDIDO</button>
     </div>
   </div>
 </div>
 
-<!-- APP LAYOUT -->
-<div class="app-layout">
+<!-- APP -->
+<div class="app">
 
-  <!-- SIDEBAR / STORIES -->
-  <div class="sidebar-col">
-    <div class="stories-wrap">
-      <div class="stories-label">CARRY CLUB</div>
-      <div class="stories-scroll" id="stories-scroll">
-        <!-- Stories fijas -->
-        <div class="story" data-id="como-funciona" onclick="showStory('como-funciona')">
-          <div class="story-ring gradient">
-            <div class="story-inner"><span class="story-icon">?</span></div>
-          </div>
-          <div class="story-label">
-            <span class="story-label-main">Cómo funciona</span>
-            <span class="story-label-sub">SIEMPRE DISPONIBLE</span>
-          </div>
-          <span style="display:block;text-align:center;font-size:7px;letter-spacing:1px;color:var(--mgray);margin-top:6px" class="story-mobile-label">Cómo funciona</span>
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sb-brand">
+      <div class="sb-logo">CARRY</div>
+      <span class="sb-club">C &nbsp; L &nbsp; U &nbsp; B</span>
+      <span class="sb-tagline">M U C H O &nbsp; A N T E S .</span>
+    </div>
+
+    <!-- INSTITUCIONALES -->
+    <div class="sb-section">
+      <div class="sb-section-label">INFO</div>
+      <div class="sb-circles-wrap" id="inst-circles">
+        <div class="circle-item" data-id="como-funciona" onclick="showPanel('como-funciona')">
+          <div class="circle-ring sm grad"><div class="circle-inner"><span class="circle-icon">?</span></div></div>
+          <div class="circle-desktop-info"><div class="cdi-main">Cómo funciona</div><div class="cdi-sub">SIEMPRE DISPONIBLE</div></div>
+          <span class="circle-mobile-label">Cómo funciona</span>
         </div>
-        <div class="story" data-id="encargos" onclick="showStory('encargos')">
-          <div class="story-ring gradient">
-            <div class="story-inner"><span class="story-icon">✦</span></div>
-          </div>
-          <div class="story-label">
-            <span class="story-label-main">Encargos</span>
-            <span class="story-label-sub">TRAEMOS LO QUE PEDÍS</span>
-          </div>
-          <span style="display:block;text-align:center;font-size:7px;letter-spacing:1px;color:var(--mgray);margin-top:6px" class="story-mobile-label">Encargos</span>
+        <div class="circle-item" data-id="encargos" onclick="showPanel('encargos')">
+          <div class="circle-ring sm grad"><div class="circle-inner"><span class="circle-icon">✦</span></div></div>
+          <div class="circle-desktop-info"><div class="cdi-main">Encargos</div><div class="cdi-sub">TRAEMOS LO QUE PEDÍS</div></div>
+          <span class="circle-mobile-label">Encargos</span>
         </div>
-        <div class="story" data-id="quienes-somos" onclick="showStory('quienes-somos')">
-          <div class="story-ring gradient">
-            <div class="story-inner"><span class="story-icon">C</span></div>
-          </div>
-          <div class="story-label">
-            <span class="story-label-main">Quiénes somos</span>
-            <span class="story-label-sub">CARRY CLUB</span>
-          </div>
-          <span style="display:block;text-align:center;font-size:7px;letter-spacing:1px;color:var(--mgray);margin-top:6px" class="story-mobile-label">Nosotros</span>
+        <div class="circle-item" data-id="quienes-somos" onclick="showPanel('quienes-somos')">
+          <div class="circle-ring sm grad"><div class="circle-inner"><span class="circle-icon">C</span></div></div>
+          <div class="circle-desktop-info"><div class="cdi-main">Quiénes somos</div><div class="cdi-sub">CARRY CLUB</div></div>
+          <span class="circle-mobile-label">Nosotros</span>
         </div>
-        <!-- Stories dinámicas de drops — se renderizan por JS -->
-        <div id="drop-stories"></div>
       </div>
     </div>
-    <div class="sidebar-col-footer">@carryclub · USA → ARGENTINA<br>Importado · Curado · Tuyo</div>
+
+    <hr class="sb-drops-sep">
+
+    <!-- DROPS -->
+    <div class="sb-section">
+      <div class="sb-section-label">DROPS ACTIVOS</div>
+      <div class="sb-circles-wrap" id="drop-circles"></div>
+    </div>
+
+    <div class="sb-footer">@carryclub · USA → ARGENTINA<br>Importado · Curado · Tuyo</div>
   </div>
 
-  <!-- MAIN CONTENT -->
-  <div class="main-col" id="main-col">
+  <!-- MAIN -->
+  <div class="main" id="main">
 
     <!-- Welcome -->
     <div class="panel visible" id="panel-welcome">
       <div class="welcome">
         <div class="welcome-sym">C</div>
-        <div class="welcome-text">SELECCIONÁ UN DROP O SECCIÓN</div>
+        <div class="welcome-txt">SELECCIONÁ UN DROP O SECCIÓN</div>
       </div>
     </div>
 
-    <!-- Panel: Cómo funciona -->
+    <!-- Cómo funciona -->
     <div class="panel" id="panel-como-funciona">
-      <div class="inst-page">
+      <div class="inst">
         <div class="inst-title">CÓMO FUNCIONA</div>
         <div class="inst-sub">SIMPLE · TRANSPARENTE · SIN COMPLICACIONES</div>
         <div class="inst-steps">
-          <div class="inst-step"><div class="inst-step-num">01</div><div class="inst-step-text">Abrimos un <strong>drop por tiempo limitado</strong> con una selección de productos de una marca internacional.</div></div>
-          <div class="inst-step"><div class="inst-step-num">02</div><div class="inst-step-text">Elegís el producto que querés y <strong>reservás con el 50%</strong> del precio de venta.</div></div>
-          <div class="inst-step"><div class="inst-step-num">03</div><div class="inst-step-text"><strong>Compramos directamente</strong> en la tienda oficial en Estados Unidos.</div></div>
-          <div class="inst-step"><div class="inst-step-num">04</div><div class="inst-step-text">Nos ocupamos de <strong>toda la logística</strong>: compra, envío, aduana y gestión.</div></div>
-          <div class="inst-step"><div class="inst-step-num">05</div><div class="inst-step-text"><strong>Retirás en CABA</strong> o te lo enviamos a cualquier punto del país.</div></div>
+          <div class="inst-step"><div class="inst-step-num">01</div><div class="inst-step-txt">Abrimos un <strong>drop por tiempo limitado</strong> con productos seleccionados de una marca internacional.</div></div>
+          <div class="inst-step"><div class="inst-step-num">02</div><div class="inst-step-txt">Elegís el producto, el talle y el color. <strong>Señás el 50%</strong> para reservarlo.</div></div>
+          <div class="inst-step"><div class="inst-step-num">03</div><div class="inst-step-txt"><strong>Compramos directamente</strong> en la tienda oficial en Estados Unidos.</div></div>
+          <div class="inst-step"><div class="inst-step-num">04</div><div class="inst-step-txt">Nos ocupamos de <strong>toda la logística</strong>: envío, aduana y gestión.</div></div>
+          <div class="inst-step"><div class="inst-step-num">05</div><div class="inst-step-txt"><strong>Retirás en CABA</strong> o te enviamos a cualquier punto del país.</div></div>
         </div>
-        <div class="inst-block" style="margin-top:40px">
-          <div class="inst-block-title">PRECIOS</div>
-          <div class="inst-body">Todos los precios incluyen el producto, el tax de USA, el envío en USA, el flete internacional y la gestión de compra. <strong>Sin costos ocultos.</strong><br><br>Precio transferencia. También disponible en 3 cuotas con recargo.</div>
+        <div class="inst-block" style="margin-top:32px">
+          <div class="inst-block-label">POLÍTICA DE DEVOLUCIÓN</div>
+          <div class="inst-text">Si al momento de comprar en USA el producto no estuviera disponible en el talle o color reservado, <strong>la seña se devuelve al 100% dentro de las 48hs</strong>. Sin preguntas.</div>
         </div>
         <div class="inst-block">
-          <div class="inst-block-title">ENTREGA</div>
-          <div class="inst-body"><strong>10 a 15 días</strong> desde el cierre del drop. Fecha estimada sujeta a confirmación.</div>
+          <div class="inst-block-label">ENTREGA</div>
+          <div class="inst-text"><strong>10 a 15 días</strong> desde el cierre del drop. Fecha estimada sujeta a confirmación.</div>
         </div>
         <a class="btn-wa" href="https://wa.me/5491131052437?text=Hola!%20Tengo%20una%20consulta%20sobre%20c%C3%B3mo%20funciona%20Carry%20Club" target="_blank" style="margin-top:8px">CONSULTAR POR WHATSAPP</a>
       </div>
     </div>
 
-    <!-- Panel: Encargos -->
+    <!-- Encargos -->
     <div class="panel" id="panel-encargos">
-      <div class="inst-page">
+      <div class="inst">
         <div class="inst-title">ENCARGOS</div>
         <div class="inst-sub">TRAEMOS LO QUE PEDÍS</div>
         <div class="inst-block">
-          <div class="inst-block-title">¿QUÉ ES?</div>
-          <div class="inst-body">Si hay un producto específico que querés de Estados Unidos y no está en nuestros drops, lo podemos traer por encargo.<br><br>Vos nos pasás el link del producto, nosotros te cotizamos el precio final con todos los costos incluidos, y si te cierra lo compramos y te lo traemos.</div>
+          <div class="inst-block-label">¿QUÉ ES?</div>
+          <div class="inst-text">Si hay un producto que querés de Estados Unidos y no está en nuestros drops, lo traemos por encargo. Nos pasás el link, te cotizamos el precio final con todos los costos incluidos, y si te cierra lo compramos y te lo traemos.</div>
         </div>
         <div class="inst-block">
-          <div class="inst-block-title">¿CÓMO FUNCIONA?</div>
+          <div class="inst-block-label">¿CÓMO FUNCIONA?</div>
           <div class="inst-steps">
-            <div class="inst-step"><div class="inst-step-num">01</div><div class="inst-step-text">Nos pasás el <strong>link del producto</strong> que querés comprar.</div></div>
-            <div class="inst-step"><div class="inst-step-num">02</div><div class="inst-step-text">Te cotizamos el <strong>precio final</strong> en pesos con todos los costos.</div></div>
-            <div class="inst-step"><div class="inst-step-num">03</div><div class="inst-step-text">Confirmás y <strong>reservás con el 50%.</strong></div></div>
-            <div class="inst-step"><div class="inst-step-num">04</div><div class="inst-step-text">Lo compramos, lo traemos y te lo entregamos. <strong>Saldo contra entrega.</strong></div></div>
+            <div class="inst-step"><div class="inst-step-num">01</div><div class="inst-step-txt">Nos pasás el <strong>link del producto</strong> que querés.</div></div>
+            <div class="inst-step"><div class="inst-step-num">02</div><div class="inst-step-txt">Te cotizamos el <strong>precio final en pesos</strong> con todo incluido.</div></div>
+            <div class="inst-step"><div class="inst-step-num">03</div><div class="inst-step-txt">Confirmás y <strong>señás el 50%</strong>.</div></div>
+            <div class="inst-step"><div class="inst-step-num">04</div><div class="inst-step-txt">Lo traemos y te lo entregamos. <strong>Saldo contra entrega.</strong></div></div>
           </div>
-        </div>
-        <div class="inst-block">
-          <div class="inst-block-title">TIENDAS DISPONIBLES</div>
-          <div class="inst-body">Amazon · Sephora · Ulta · Bath &amp; Body Works · Nike · Gap · Tommy Hilfiger · Ralph Lauren · Carter's · y más.<br><br>Si tenés dudas sobre si podemos traer algo, <strong>preguntanos sin compromiso.</strong></div>
         </div>
         <a class="btn-wa" href="https://wa.me/5491131052437?text=Hola!%20Quiero%20hacer%20un%20encargo%20de%20un%20producto%20de%20USA" target="_blank">HACER UN ENCARGO</a>
       </div>
     </div>
 
-    <!-- Panel: Quiénes somos -->
+    <!-- Quiénes somos -->
     <div class="panel" id="panel-quienes-somos">
-      <div class="inst-page">
+      <div class="inst">
         <div class="inst-title">CARRY CLUB</div>
         <div class="inst-sub">MUCHO ANTES.</div>
         <div class="inst-block">
-          <div class="inst-body" style="font-size:15px;line-height:2;color:var(--gray)">
+          <div class="inst-text" style="font-size:14px;line-height:2">
             Acceso a oportunidades de compra internacionales.<br><br>
             Seleccionamos productos de marcas globales y abrimos ventanas de compra limitadas para que puedas acceder a precios competitivos sin ocuparte de la compra, la logística o la gestión.<br><br>
             <strong>No somos una tienda.</strong><br>
             <strong>No somos una importadora tradicional.</strong><br><br>
             Somos una forma más simple de acceder a oportunidades que normalmente no llegan hasta acá.<br><br>
-            <em style="color:var(--cyan);font-family:'Cormorant',serif;font-size:18px">Mucho antes.</em>
+            <em style="font-family:'Cormorant',serif;font-size:20px;color:var(--cyan)">Mucho antes.</em>
           </div>
         </div>
         <a class="btn-primary" href="https://wa.me/5491131052437" target="_blank">CONTACTANOS</a>
       </div>
     </div>
 
-    <!-- Panels de drops — se renderizan por JS -->
+    <!-- Drop panels — JS -->
     <div id="drop-panels"></div>
 
   </div>
 </div>
 
-<!-- WA FLOTANTE -->
-<a class="wa-fab" href="https://wa.me/5491131052437?text=Hola!%20Quiero%20info%20sobre%20Carry%20Club" target="_blank" title="WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+<!-- WA FAB -->
+<a class="wa-fab" href="https://wa.me/5491131052437?text=Hola!%20Quiero%20info%20sobre%20Carry%20Club" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// DROPS — EDITÁ SOLO ESTE ARRAY
+// DROPS — EDITÁ SOLO ESTE ARRAY PARA AGREGAR/MODIFICAR DROPS
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 const DROPS = [
   {
     id: "drop002",
     numero: "002",
     marca: "TOMMY HILFIGER",
-    descripcion: "WOMEN'S FINAL SALE · USA",
-    url: "drops/drop002.html",
+    descripcion: "FINAL SALE · USA",
     deadline: "2025-12-31T23:59:00-03:00",
     activo: true,
+    wa: "5491131052437",
+    // Si tiene subdrops, completá este array. Si es un solo catálogo, dejá subdrops vacío y completá url.
+    url: "drops/drop002.html",
+    subdrops: [
+      // Ejemplo con subdrops — descomentá y completá cuando tengas los HTMLs
+      // { label: "WOMEN", url: "drops/drop002-women.html", productos: 9 },
+      // { label: "MEN",   url: "drops/drop002-men.html",   productos: 0 },
+      // { label: "KIDS",  url: "drops/drop002-kids.html",  productos: 0 },
+    ],
     productos: 9,
     precio_desde: 75900,
-    wa: "5491131052437",
   },
-  // ── NUEVO DROP — copiá y completá ──────────────────────
+  // ── NUEVO DROP — copiá este bloque ──────────────────────
   // {
   //   id: "drop003",
   //   numero: "003",
   //   marca: "NOMBRE MARCA",
   //   descripcion: "CATEGORÍA · USA",
-  //   url: "drops/drop003.html",
-  //   deadline: "2025-07-01T23:59:00-03:00",
+  //   deadline: "2025-07-15T23:59:00-03:00",
   //   activo: true,
+  //   wa: "5491131052437",
+  //   url: "drops/drop003.html",
+  //   subdrops: [],
   //   productos: 0,
   //   precio_desde: 0,
-  //   wa: "5491131052437",
   // },
 ];
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-// ── CARRITO ──────────────────────────────────────────────
-let cart = [];
+// ── UTILS ─────────────────────────────────────────────────
+const pad = n => String(Math.floor(n)).padStart(2,'0');
+const fmt = n => '$' + Math.round(n).toLocaleString('es-AR');
 
-function addToCart(item){
-  cart.push(item);
-  updateCartUI();
-  toggleCart();
-}
-
-function removeFromCart(idx){
-  cart.splice(idx,1);
-  updateCartUI();
-}
-
-function fmt(n){ return '$'+Math.round(n).toLocaleString('es-AR') }
-const pad = n => String(n).padStart(2,'0');
-
-function updateCartUI(){
-  const badge = document.getElementById('cart-badge');
-  const body = document.getElementById('cart-body');
-  const foot = document.getElementById('cart-foot');
-  const totalEl = document.getElementById('cart-total-val');
-
-  badge.textContent = cart.length;
-  badge.classList.toggle('visible', cart.length > 0);
-
-  if(cart.length === 0){
-    body.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">○</div><div class="cart-empty-text">CARRITO VACÍO</div></div>`;
-    foot.style.display = 'none';
-    return;
-  }
-
-  foot.style.display = 'block';
-  body.innerHTML = cart.map((item,i) => `
-    <div class="cart-item">
-      <div class="cart-item-info">
-        <div class="cart-item-drop">DROP #${item.drop_num} · ${item.drop_marca}</div>
-        <div class="cart-item-name">${item.nombre}</div>
-        <div class="cart-item-price">${fmt(item.precio)}</div>
-      </div>
-      <button class="cart-item-remove" onclick="removeFromCart(${i})">×</button>
-    </div>`).join('');
-
-  const total = cart.reduce((s,i) => s + i.precio, 0);
-  totalEl.textContent = fmt(total * 0.5);
-}
-
-function showCheckoutForm(){
-  document.getElementById('checkout-btn').style.display = 'none';
-  document.getElementById('checkout-form').classList.add('visible');
-}
-
-function submitPedido(){
-  const nombre = document.getElementById('f-nombre').value.trim();
-  const tel = document.getElementById('f-tel').value.trim();
-  const email = document.getElementById('f-email').value.trim();
-  if(!nombre||!tel||!email){ alert('Por favor completá todos los campos.'); return; }
-
-  const items = cart.map(i => `• ${i.nombre} (Drop #${i.drop_num}) — ${fmt(i.precio)}`).join('\n');
-  const total = cart.reduce((s,i) => s+i.precio,0);
-  const msg = encodeURIComponent(
-    `Hola! Quiero confirmar mi pedido en Carry Club.\n\nNombre: ${nombre}\nTeléfono: ${tel}\nEmail: ${email}\n\nProductos:\n${items}\n\nTotal: ${fmt(total)}\nSeña (50%): ${fmt(total*0.5)}`
-  );
-  window.open(`https://wa.me/5491131052437?text=${msg}`, '_blank');
-}
-
-// ── DROPS ─────────────────────────────────────────────────
 function timeLeft(deadline){
   const diff = new Date(deadline) - new Date();
   if(diff <= 0) return null;
   return {
-    days:    Math.floor(diff/86400000),
-    hours:   Math.floor((diff%86400000)/3600000),
-    minutes: Math.floor((diff%3600000)/60000),
-    seconds: Math.floor((diff%60000)/1000),
-    total:   diff,
+    days:  Math.floor(diff/86400000),
+    hours: Math.floor((diff%86400000)/3600000),
+    mins:  Math.floor((diff%3600000)/60000),
+    secs:  Math.floor((diff%60000)/1000),
+    total: diff,
   };
 }
 
-function cdHTML(tl, urgent, id){
-  const u = (urgent && tl) ? ' urgent' : '';
-  const vals = tl ? [pad(tl.days),pad(tl.hours),pad(tl.minutes),pad(tl.seconds)] : ['00','00','00','00'];
-  const labels = ['DÍAS','HS','MIN','SEG'];
-  return vals.map((v,i) => `<div class="cd-unit${u}"><span class="cd-num">${v}</span><span class="cd-lbl">${labels[i]}</span></div>`).join('');
-}
-
-function renderDropStory(drop){
-  const tl = timeLeft(drop.deadline);
-  const expired = !tl;
-  const el = document.createElement('div');
-  el.className = `story${expired?' expired':''}`;
-  el.dataset.id = drop.id;
-  el.onclick = () => showStory(drop.id);
-  el.innerHTML = `
-    <div class="story-ring${expired?'':' active'}">
-      <div class="story-inner"><span class="story-icon">${drop.numero}</span></div>
-    </div>
-    <div class="story-label">
-      <span class="story-label-main">${drop.marca}</span>
-      <span class="story-label-sub">${expired?'CERRADO':'ABIERTO'}</span>
-    </div>
-    <span style="display:block;text-align:center;font-size:7px;letter-spacing:1px;color:var(--mgray);margin-top:6px" class="story-mobile-label">${drop.marca.split(' ')[0]}</span>`;
-  return el;
-}
-
-function renderDropPanel(drop){
-  const tl = timeLeft(drop.deadline);
-  const expired = !tl;
-  const urgent = tl && tl.total < 3600000*6;
-
-  const div = document.createElement('div');
-  div.className = 'panel';
-  div.id = `panel-${drop.id}`;
-  div.innerHTML = `
-    <div class="detail-hero">
-      <div class="detail-num">DROP #${drop.numero}</div>
-      <div class="detail-brand">${drop.marca}</div>
-      <div class="detail-desc">${drop.descripcion}</div>
-      <div class="cd-wrap">
-        <div class="cd-label">${expired?'DROP CERRADO':'CIERRE EN'}</div>
-        <div class="cd" id="cd-${drop.id}">${cdHTML(tl, urgent, drop.id)}</div>
-      </div>
-      <div class="detail-meta">
-        <div class="meta-item"><div class="meta-label">PRENDAS</div><div class="meta-val">${drop.productos}</div></div>
-        <div class="meta-item"><div class="meta-label">DESDE</div><div class="meta-val">${fmt(drop.precio_desde)}</div></div>
-        <div class="meta-item"><div class="meta-label">RESERVA</div><div class="meta-val">50%</div></div>
-        <div class="meta-item"><div class="meta-label">ENTREGA</div><div class="meta-val">10–15d</div></div>
-      </div>
-    </div>
-    <div class="detail-ctas">
-      ${!expired
-        ? `<a class="btn-primary" href="${drop.url}">VER CATÁLOGO COMPLETO →</a>
-           <a class="btn-wa" href="https://wa.me/${drop.wa}?text=Hola!%20Quiero%20info%20del%20Drop%20%23${drop.numero}%20${encodeURIComponent(drop.marca)}" target="_blank">RESERVAR POR WHATSAPP</a>`
-        : `<span style="font-size:9px;letter-spacing:2px;color:var(--lgray)">Este drop está cerrado.</span>`
-      }
-    </div>
-    <div class="detail-trust">
-      <div class="trust-title">POR QUÉ CARRY CLUB</div>
-      <div class="trust-grid">
-        <div class="trust-item"><span class="trust-check">✔</span>Compra directa en USA</div>
-        <div class="trust-item"><span class="trust-check">✔</span>Producto 100% original</div>
-        <div class="trust-item"><span class="trust-check">✔</span>Pago en pesos</div>
-        <div class="trust-item"><span class="trust-check">✔</span>Retiro en CABA</div>
-        <div class="trust-item"><span class="trust-check">✔</span>Envíos a todo el país</div>
-        <div class="trust-item"><span class="trust-check">✔</span>Gestión incluida</div>
-      </div>
-    </div>`;
-  return div;
+function cdHTML(tl){
+  if(!tl) return '<span class="cd-closed">Drop cerrado</span>';
+  const urgent = tl.total < 3600000*6;
+  const u = urgent ? ' urgent' : '';
+  const units = [
+    [pad(tl.days),'DÍAS'],[pad(tl.hours),'HS'],
+    [pad(tl.mins),'MIN'],[pad(tl.secs),'SEG'],
+  ];
+  return units.map(([v,l]) => `<div class="cd-unit${u}"><span class="cd-num">${v}</span><span class="cd-lbl">${l}</span></div>`).join('');
 }
 
 // ── NAVEGACIÓN ────────────────────────────────────────────
-let activePanel = 'welcome';
+let active = null;
 
-function showStory(id){
+function showPanel(id){
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('visible'));
-  document.querySelectorAll('.story').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.circle-item').forEach(c => c.classList.remove('active'));
 
   const panel = document.getElementById(`panel-${id}`);
   if(panel) panel.classList.add('visible');
 
-  const story = document.querySelector(`.story[data-id="${id}"]`);
-  if(story) story.classList.add('active');
+  const circle = document.querySelector(`.circle-item[data-id="${id}"]`);
+  if(circle) circle.classList.add('active');
 
-  activePanel = id;
+  active = id;
 
-  // Mobile: scroll al content
   if(window.innerWidth < 900){
-    document.getElementById('main-col').scrollIntoView({behavior:'smooth'});
+    document.getElementById('main').scrollIntoView({behavior:'smooth'});
   }
 }
 
-// ── MENU / CART TOGGLES ───────────────────────────────────
-function toggleMenu(){
-  document.getElementById('menu-drawer').classList.toggle('open');
-  document.getElementById('menu-overlay').classList.toggle('open');
-}
-function toggleCart(){
-  document.getElementById('cart-drawer').classList.toggle('open');
-  document.getElementById('cart-overlay').classList.toggle('open');
-  updateCartUI();
+// ── RENDER DROPS ──────────────────────────────────────────
+function renderDrops(){
+  const circles = document.getElementById('drop-circles');
+  const panels  = document.getElementById('drop-panels');
+  circles.innerHTML = '';
+  panels.innerHTML  = '';
+
+  DROPS.filter(d => d.activo).forEach(drop => {
+    const tl = timeLeft(drop.deadline);
+    const expired = !tl;
+
+    // Circle
+    const circ = document.createElement('div');
+    circ.className = `circle-item drop-item${expired?' expired':''}`;
+    circ.dataset.id = drop.id;
+    circ.onclick = () => showPanel(drop.id);
+    circ.innerHTML = `
+      <div class="circle-ring lg drop-grad"><div class="circle-inner"><span class="circle-icon lg-icon">${drop.numero}</span></div></div>
+      <div class="circle-desktop-info">
+        <div class="cdi-main">${drop.marca}</div>
+        <div class="cdi-sub">${expired?'CERRADO':'ABIERTO'}</div>
+      </div>
+      <span class="circle-mobile-label">${drop.marca.split(' ')[0]}</span>`;
+    circles.appendChild(circ);
+
+    // Panel
+    const hasSubdrops = drop.subdrops && drop.subdrops.length > 0;
+    const panel = document.createElement('div');
+    panel.className = 'panel';
+    panel.id = `panel-${drop.id}`;
+
+    const subdropsHTML = hasSubdrops
+      ? `<div class="subdrops-section">
+           <div class="subdrops-label">CATEGORÍAS</div>
+           <div class="subdrops-grid">
+             ${drop.subdrops.map((s,i) => `
+               <a class="subdrop-card" href="${s.url}">
+                 <div class="subdrop-num">0${i+1}</div>
+                 <div class="subdrop-label">${s.label}</div>
+                 <div class="subdrop-count">${s.productos || '—'} productos</div>
+                 <span class="subdrop-arrow">VER →</span>
+               </a>`).join('')}
+           </div>
+         </div>`
+      : `<div class="drop-ctas">
+           <a class="btn-primary" href="${drop.url}">VER CATÁLOGO COMPLETO →</a>
+           <a class="btn-wa" href="https://wa.me/${drop.wa}?text=Hola!%20Quiero%20info%20del%20Drop%20%23${drop.numero}%20${encodeURIComponent(drop.marca)}" target="_blank">CONSULTAR POR WHATSAPP</a>
+         </div>`;
+
+    panel.innerHTML = `
+      <div class="drop-hero">
+        <div class="drop-num">DROP #${drop.numero}</div>
+        <div class="drop-brand">${drop.marca}</div>
+        <div class="drop-desc">${drop.descripcion}</div>
+        <div class="cd" id="cd-${drop.id}">${cdHTML(tl)}</div>
+        <div class="drop-meta">
+          <div class="dm-item"><div class="dm-label">PRENDAS</div><div class="dm-val">${drop.productos}</div></div>
+          <div class="dm-item"><div class="dm-label">DESDE</div><div class="dm-val">${fmt(drop.precio_desde)}</div></div>
+          <div class="dm-item"><div class="dm-label">RESERVA</div><div class="dm-val">50%</div></div>
+          <div class="dm-item"><div class="dm-label">ENTREGA</div><div class="dm-val">10–15d</div></div>
+        </div>
+      </div>
+      ${subdropsHTML}
+      <div class="drop-trust">
+        <div class="trust-title">POR QUÉ CARRY CLUB</div>
+        <div class="trust-grid">
+          <div class="trust-item"><span class="trust-check">✔</span>Compra directa en USA</div>
+          <div class="trust-item"><span class="trust-check">✔</span>Producto 100% original</div>
+          <div class="trust-item"><span class="trust-check">✔</span>Pago en pesos</div>
+          <div class="trust-item"><span class="trust-check">✔</span>Retiro en CABA</div>
+          <div class="trust-item"><span class="trust-check">✔</span>Envíos a todo el país</div>
+          <div class="trust-item"><span class="trust-check">✔</span>Gestión incluida</div>
+        </div>
+      </div>`;
+    panels.appendChild(panel);
+  });
 }
 
 // ── COUNTDOWN TICK ────────────────────────────────────────
 function tick(){
-  DROPS.filter(d=>d.activo).forEach(drop => {
+  DROPS.filter(d => d.activo).forEach(drop => {
     const cd = document.getElementById(`cd-${drop.id}`);
     if(!cd) return;
     const tl = timeLeft(drop.deadline);
-    const urgent = tl && tl.total < 3600000*6;
-    if(!tl){ return; }
-    cd.innerHTML = cdHTML(tl, urgent, drop.id);
+    cd.innerHTML = cdHTML(tl);
   });
+}
+
+// ── CARRITO ───────────────────────────────────────────────
+let cart = [];
+
+function updateCartUI(){
+  const badge = document.getElementById('cart-badge');
+  const body  = document.getElementById('cart-body');
+  const foot  = document.getElementById('cart-foot');
+  const total = document.getElementById('cart-total');
+
+  badge.textContent = cart.length;
+  badge.classList.toggle('on', cart.length > 0);
+
+  if(!cart.length){
+    body.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">○</div><div class="cart-empty-text">SIN PRODUCTOS</div></div>';
+    foot.style.display = 'none';
+    return;
+  }
+  foot.style.display = 'block';
+  body.innerHTML = cart.map((item,i) => `
+    <div class="cart-item">
+      <div class="ci-info">
+        <div class="ci-drop">DROP #${item.drop} · ${item.marca}</div>
+        <div class="ci-name">${item.nombre}</div>
+        <div class="ci-detail">${item.talle}${item.color?' · '+item.color:''}</div>
+        <div class="ci-price">${fmt(item.precio)}</div>
+      </div>
+      <button class="ci-remove" onclick="removeItem(${i})">×</button>
+    </div>`).join('');
+
+  const sum = cart.reduce((s,i) => s+i.precio, 0);
+  total.textContent = fmt(sum * 0.5);
+}
+
+function removeItem(i){ cart.splice(i,1); updateCartUI(); }
+
+function mostrarForm(){
+  document.getElementById('btn-checkout').style.display = 'none';
+  document.getElementById('checkout-form').classList.add('visible');
+}
+
+function confirmar(){
+  const nombre = document.getElementById('f-nombre').value.trim();
+  const tel    = document.getElementById('f-tel').value.trim();
+  const email  = document.getElementById('f-email').value.trim();
+  if(!nombre||!tel||!email){ alert('Completá todos los campos.'); return; }
+  const items = cart.map(i => `• ${i.nombre} | Talle: ${i.talle}${i.color?' | Color: '+i.color:''} — ${fmt(i.precio)}`).join('%0A');
+  const sum = cart.reduce((s,i) => s+i.precio,0);
+  const msg = `Hola! Quiero confirmar mi pedido en Carry Club.%0A%0ANombre: ${nombre}%0ATel: ${tel}%0AEmail: ${email}%0A%0AProductos:%0A${items}%0A%0ATotal: ${fmt(sum)}%0ASeña (50%25): ${fmt(sum*0.5)}`;
+  window.open(`https://wa.me/5491131052437?text=${msg}`,'_blank');
+}
+
+// ── TOGGLES ───────────────────────────────────────────────
+function toggleMenu(){
+  document.getElementById('menu-dr').classList.toggle('open');
+  document.getElementById('menu-ov').classList.toggle('open');
+}
+function toggleCart(){
+  document.getElementById('cart-dr').classList.toggle('open');
+  document.getElementById('cart-ov').classList.toggle('open');
+  updateCartUI();
 }
 
 // ── INIT ──────────────────────────────────────────────────
-function renderDrops(){
-  const storiesContainer = document.getElementById('drop-stories');
-  const panelsContainer = document.getElementById('drop-panels');
-  storiesContainer.innerHTML = '';
-  panelsContainer.innerHTML = '';
-
-  DROPS.filter(d=>d.activo).forEach(drop => {
-    storiesContainer.appendChild(renderDropStory(drop));
-    panelsContainer.appendChild(renderDropPanel(drop));
-  });
-}
-
 renderDrops();
 updateCartUI();
 setInterval(tick, 1000);
 
-// Auto-mostrar primer drop en desktop
+// Desktop: auto-select primer drop
 if(window.innerWidth >= 900){
   const first = DROPS.find(d => d.activo);
-  if(first) showStory(first.id);
+  if(first) setTimeout(() => showPanel(first.id), 50);
 }
 
-// Exponer addToCart globalmente para los drops individuales
-window.CC = { addToCart };
+// Exponer addToCart para los drops individuales
+window.CC = {
+  addToCart(item){ cart.push(item); updateCartUI(); toggleCart(); }
+};
 </script>
 </body>
 </html>
