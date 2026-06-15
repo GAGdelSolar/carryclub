@@ -2,15 +2,15 @@
   {
     "id": "drop005",
     "num": 5,
-    "marca": "TOMMY HILFIGER",
-    "descripcion": "kid'S SALE · USA",
+    "marca": "cholu",
+    "descripcion": "WOMEN'S SALE · USA",
     "deadline": "2026-06-15T21:00:00.000-03:00",
     "activo": true,
-    "wa": "5491131052437",
+    "wa": "5491130211626",
     "url": "drops/drop005.html",
     "productos": 3,
-    "precio_desde": 49140,
+    "precio_desde": 234563,
     "subdrops": [],
-    "creado": "2026-06-14T20:42:34.090Z"
+    "creado": "2026-06-15T11:56:37.341Z"
   }
 ]
