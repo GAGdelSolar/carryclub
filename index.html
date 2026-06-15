@@ -128,20 +128,16 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .sb-club{font-size:8px;font-weight:200;letter-spacing:8px;background:linear-gradient(90deg,var(--cyan),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin:4px 0 3px}
 .sb-tagline{font-size:7px;letter-spacing:4px;color:var(--lgray);display:block}
 
-/* Sección institucional */
 .sb-section{padding:16px 0 12px}
 .sb-section-label{font-size:6px;letter-spacing:3px;color:var(--lgray);padding:0 20px 10px}
 
-/* Mobile: scroll horizontal para ambas secciones */
 .sb-circles-wrap{display:flex;overflow-x:auto;padding:0 14px 12px;gap:0;scrollbar-width:none}
 .sb-circles-wrap::-webkit-scrollbar{display:none}
 
-/* Desktop: columna */
 @media(min-width:900px){
   .sb-circles-wrap{flex-direction:column;overflow-x:visible;padding:0 0 8px;gap:0}
 }
 
-/* Círculo individual */
 .circle-item{
   display:flex;flex-direction:column;align-items:center;
   flex-shrink:0;padding:0 10px;cursor:pointer;
@@ -159,7 +155,6 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
     opacity:1;background:rgba(255,255,255,0.025);
     border-left-color:var(--cyan);
   }
-  /* Drops activos más protagonismo */
   .circle-item.drop-item{opacity:.65}
   .circle-item.drop-item.active{opacity:1}
 }
@@ -181,7 +176,6 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .circle-icon{font-family:'Cormorant',serif;font-size:18px;font-weight:300;color:var(--white)}
 .circle-icon.lg-icon{font-size:22px}
 
-/* Label mobile */
 .circle-mobile-label{
   font-size:6px;letter-spacing:1px;color:var(--mgray);
   margin-top:6px;text-align:center;max-width:64px;
@@ -189,7 +183,6 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 }
 .circle-item.active .circle-mobile-label{color:var(--cyan)}
 
-/* Info desktop */
 .circle-desktop-info{display:none}
 @media(min-width:900px){
   .circle-desktop-info{display:block;flex:1;overflow:hidden;min-width:0}
@@ -199,7 +192,6 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   .circle-mobile-label{display:none}
 }
 
-/* Separador drops */
 .sb-drops-sep{
   margin:4px 16px 0;border:none;border-top:0.5px solid var(--border);
 }
@@ -214,6 +206,12 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .panel{display:none;animation:fadeUp .2s ease}
 .panel.visible{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Loading state */
+.loading-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;padding:40px;text-align:center}
+.loading-sym{font-family:'Cormorant',serif;font-size:60px;font-weight:300;font-style:italic;opacity:.06;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:.04}50%{opacity:.1}}
+.loading-txt{font-size:7px;letter-spacing:4px;color:var(--lgray);margin-top:12px}
 
 /* Welcome */
 .welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;padding:40px;text-align:center}
@@ -308,7 +306,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
       <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       <span class="cart-badge" id="cart-badge">0</span>
     </button>
-    <a class="nav-btn" href="https://wa.me/5491131052437" target="_blank">
+    <a class="nav-btn" href="https://wa.me/5491130211626" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
     </a>
     <button class="nav-btn" onclick="toggleMenu()">
@@ -328,9 +326,10 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
     <button class="menu-item" onclick="showPanel('como-funciona');toggleMenu()">CÓMO FUNCIONA</button>
     <button class="menu-item" onclick="showPanel('encargos');toggleMenu()">ENCARGOS</button>
     <button class="menu-item" onclick="showPanel('quienes-somos');toggleMenu()">QUIÉNES SOMOS</button>
-    <a class="menu-item" href="https://wa.me/5491131052437" target="_blank">CONTACTO</a>
+    <a class="menu-item" href="https://wa.me/5491130211626" target="_blank">CONTACTO VÍA WHATSAPP</a>
+    <a class="menu-item" href="https://instagram.com/carryclub.ar" target="_blank">@carryclub.ar EN INSTAGRAM</a>
   </div>
-  <div class="menu-footer">@carryclub · USA → ARGENTINA<br>Importado · Curado · Tuyo · Mucho antes.</div>
+  <div class="menu-footer">@carryclub.ar · USA → ARGENTINA<br>Importado · Curado · Tuyo · Mucho antes.</div>
 </div>
 
 <!-- CARRITO -->
@@ -395,21 +394,30 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 
     <hr class="sb-drops-sep">
 
-    <!-- DROPS -->
+    <!-- DROPS — renderizados dinámicamente desde catalog.json -->
     <div class="sb-section">
       <div class="sb-section-label">DROPS ACTIVOS</div>
-      <div class="sb-circles-wrap" id="drop-circles"></div>
+      <div class="sb-circles-wrap" id="drop-circles">
+        <!-- Loading placeholder -->
+        <div class="circle-item" style="opacity:.2;pointer-events:none">
+          <div class="circle-ring lg" style="animation:none"><div class="circle-inner"><span class="circle-icon lg-icon" style="opacity:.3">…</span></div></div>
+        </div>
+      </div>
     </div>
 
-    <div class="sb-footer">@carryclub · USA → ARGENTINA<br>Importado · Curado · Tuyo</div>
+    <div class="sb-footer">@carryclub.ar · USA → ARGENTINA<br>Importado · Curado · Tuyo</div>
   </div>
 
   <!-- MAIN -->
   <div class="main" id="main">
 
-    <!-- Welcome -->
+    <!-- Welcome / Loading -->
     <div class="panel visible" id="panel-welcome">
-      <div class="welcome">
+      <div class="loading-state" id="loading-state">
+        <div class="loading-sym">C</div>
+        <div class="loading-txt">CARGANDO DROPS…</div>
+      </div>
+      <div class="welcome" id="welcome-msg" style="display:none">
         <div class="welcome-sym">C</div>
         <div class="welcome-txt">SELECCIONÁ UN DROP O SECCIÓN</div>
       </div>
@@ -435,7 +443,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
           <div class="inst-block-label">ENTREGA</div>
           <div class="inst-text"><strong>10 a 15 días</strong> desde el cierre del drop. Fecha estimada sujeta a confirmación.</div>
         </div>
-        <a class="btn-wa" href="https://wa.me/5491131052437?text=Hola!%20Tengo%20una%20consulta%20sobre%20c%C3%B3mo%20funciona%20Carry%20Club" target="_blank" style="margin-top:8px">CONSULTAR POR WHATSAPP</a>
+        <a class="btn-wa" href="https://wa.me/5491130211626?text=Hola!%20Tengo%20una%20consulta%20sobre%20c%C3%B3mo%20funciona%20Carry%20Club" target="_blank" style="margin-top:8px">CONSULTAR POR WHATSAPP</a>
       </div>
     </div>
 
@@ -457,7 +465,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
             <div class="inst-step"><div class="inst-step-num">04</div><div class="inst-step-txt">Lo traemos y te lo entregamos. <strong>Saldo contra entrega.</strong></div></div>
           </div>
         </div>
-        <a class="btn-wa" href="https://wa.me/5491131052437?text=Hola!%20Quiero%20hacer%20un%20encargo%20de%20un%20producto%20de%20USA" target="_blank">HACER UN ENCARGO</a>
+        <a class="btn-wa" href="https://wa.me/5491130211626?text=Hola!%20Quiero%20hacer%20un%20encargo%20de%20un%20producto%20de%20USA" target="_blank">HACER UN ENCARGO</a>
       </div>
     </div>
 
@@ -476,61 +484,32 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
             <em style="font-family:'Cormorant',serif;font-size:20px;color:var(--cyan)">Mucho antes.</em>
           </div>
         </div>
-        <a class="btn-primary" href="https://wa.me/5491131052437" target="_blank">CONTACTANOS</a>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+          <a class="btn-primary" href="https://wa.me/5491130211626" target="_blank">CONTACTANOS POR WHATSAPP</a>
+          <a class="btn-wa" href="https://instagram.com/carryclub.ar" target="_blank">@CARRYCLUB.AR EN INSTAGRAM</a>
+        </div>
       </div>
     </div>
 
-    <!-- Drop panels — JS -->
+    <!-- Drop panels — JS dinámico -->
     <div id="drop-panels"></div>
 
   </div>
 </div>
 
 <!-- WA FAB -->
-<a class="wa-fab" href="https://wa.me/5491131052437?text=Hola!%20Quiero%20info%20sobre%20Carry%20Club" target="_blank">
+<a class="wa-fab" href="https://wa.me/5491130211626?text=Hola!%20Quiero%20info%20sobre%20Carry%20Club" target="_blank">
   <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <script>
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-// DROPS — EDITÁ SOLO ESTE ARRAY PARA AGREGAR/MODIFICAR DROPS
+// CONFIGURACIÓN
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const DROPS = [
-  {
-    id: "drop002",
-    numero: "002",
-    marca: "TOMMY HILFIGER",
-    descripcion: "FINAL SALE · USA",
-    deadline: "2025-12-31T23:59:00-03:00",
-    activo: true,
-    wa: "5491131052437",
-    // Si tiene subdrops, completá este array. Si es un solo catálogo, dejá subdrops vacío y completá url.
-    url: "drops/drop002.html",
-    subdrops: [
-      // Ejemplo con subdrops — descomentá y completá cuando tengas los HTMLs
-      // { label: "WOMEN", url: "drops/drop002-women.html", productos: 9 },
-      // { label: "MEN",   url: "drops/drop002-men.html",   productos: 0 },
-      // { label: "KIDS",  url: "drops/drop002-kids.html",  productos: 0 },
-    ],
-    productos: 9,
-    precio_desde: 75900,
-  },
-  // ── NUEVO DROP — copiá este bloque ──────────────────────
-  // {
-  //   id: "drop003",
-  //   numero: "003",
-  //   marca: "NOMBRE MARCA",
-  //   descripcion: "CATEGORÍA · USA",
-  //   deadline: "2025-07-15T23:59:00-03:00",
-  //   activo: true,
-  //   wa: "5491131052437",
-  //   url: "drops/drop003.html",
-  //   subdrops: [],
-  //   productos: 0,
-  //   precio_desde: 0,
-  // },
-];
-// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+const WA_NUMBER = '5491130211626';
+const IG_HANDLE = 'carryclub.ar';
+// URL del catalog.json — GitHub raw para bypass cache con timestamp
+const CATALOG_URL = 'https://raw.githubusercontent.com/GAGdelSolar/carryclub/main/drops/catalog.json';
 
 // ── UTILS ─────────────────────────────────────────────────
 const pad = n => String(Math.floor(n)).padStart(2,'0');
@@ -579,15 +558,35 @@ function showPanel(id){
   }
 }
 
+// ── CARGAR CATALOG.JSON DINÁMICAMENTE ────────────────────
+async function loadCatalog() {
+  // Añadir timestamp para evitar caché del browser/CDN
+  const url = CATALOG_URL + '?t=' + Date.now();
+  const resp = await fetch(url, { cache: 'no-store' });
+  if (!resp.ok) throw new Error('HTTP ' + resp.status);
+  return await resp.json();
+}
+
 // ── RENDER DROPS ──────────────────────────────────────────
+let DROPS = [];
+
 function renderDrops(){
   const circles = document.getElementById('drop-circles');
   const panels  = document.getElementById('drop-panels');
   circles.innerHTML = '';
   panels.innerHTML  = '';
 
-  DROPS.filter(d => d.activo).forEach(drop => {
-    const tl = timeLeft(drop.deadline);
+  const activeDrops = DROPS.filter(d => d.activo);
+
+  if (activeDrops.length === 0) {
+    circles.innerHTML = '<div style="padding:14px 20px;font-size:8px;letter-spacing:2px;color:var(--lgray)">Sin drops activos</div>';
+    return;
+  }
+
+  activeDrops.forEach(drop => {
+    const dropNum = drop.num || drop.numero || String(drop.id).replace('drop','');
+    const numStr  = String(dropNum).padStart(3,'0');
+    const tl      = timeLeft(drop.deadline);
     const expired = !tl;
 
     // Circle
@@ -596,7 +595,7 @@ function renderDrops(){
     circ.dataset.id = drop.id;
     circ.onclick = () => showPanel(drop.id);
     circ.innerHTML = `
-      <div class="circle-ring lg drop-grad"><div class="circle-inner"><span class="circle-icon lg-icon">${drop.numero}</span></div></div>
+      <div class="circle-ring lg drop-grad"><div class="circle-inner"><span class="circle-icon lg-icon">${numStr}</span></div></div>
       <div class="circle-desktop-info">
         <div class="cdi-main">${drop.marca}</div>
         <div class="cdi-sub">${expired?'CERRADO':'ABIERTO'}</div>
@@ -604,11 +603,10 @@ function renderDrops(){
       <span class="circle-mobile-label">${drop.marca.split(' ')[0]}</span>`;
     circles.appendChild(circ);
 
-    // Panel
+    // Sub-drops
     const hasSubdrops = drop.subdrops && drop.subdrops.length > 0;
-    const panel = document.createElement('div');
-    panel.className = 'panel';
-    panel.id = `panel-${drop.id}`;
+    const dropUrl = drop.url || `drops/${drop.id}.html`;
+    const waLink  = `https://wa.me/${WA_NUMBER}?text=Hola!%20Quiero%20info%20del%20Drop%20%23${numStr}%20${encodeURIComponent(drop.marca)}`;
 
     const subdropsHTML = hasSubdrops
       ? `<div class="subdrops-section">
@@ -624,19 +622,25 @@ function renderDrops(){
            </div>
          </div>`
       : `<div class="drop-ctas">
-           <a class="btn-primary" href="${drop.url}">VER CATÁLOGO COMPLETO →</a>
-           <a class="btn-wa" href="https://wa.me/${drop.wa}?text=Hola!%20Quiero%20info%20del%20Drop%20%23${drop.numero}%20${encodeURIComponent(drop.marca)}" target="_blank">CONSULTAR POR WHATSAPP</a>
+           <a class="btn-primary" href="${dropUrl}">VER CATÁLOGO COMPLETO →</a>
+           <a class="btn-wa" href="${waLink}" target="_blank">CONSULTAR POR WHATSAPP</a>
          </div>`;
 
+    const precioDesde = drop.precio_desde || 0;
+    const productos   = drop.productos || '—';
+
+    const panel = document.createElement('div');
+    panel.className = 'panel';
+    panel.id = `panel-${drop.id}`;
     panel.innerHTML = `
       <div class="drop-hero">
-        <div class="drop-num">DROP #${drop.numero}</div>
+        <div class="drop-num">DROP #${numStr}</div>
         <div class="drop-brand">${drop.marca}</div>
-        <div class="drop-desc">${drop.descripcion}</div>
+        <div class="drop-desc">${drop.descripcion || ''}</div>
         <div class="cd" id="cd-${drop.id}">${cdHTML(tl)}</div>
         <div class="drop-meta">
-          <div class="dm-item"><div class="dm-label">PRENDAS</div><div class="dm-val">${drop.productos}</div></div>
-          <div class="dm-item"><div class="dm-label">DESDE</div><div class="dm-val">${fmt(drop.precio_desde)}</div></div>
+          <div class="dm-item"><div class="dm-label">PRENDAS</div><div class="dm-val">${productos}</div></div>
+          <div class="dm-item"><div class="dm-label">DESDE</div><div class="dm-val">${precioDesde ? fmt(precioDesde) : '—'}</div></div>
           <div class="dm-item"><div class="dm-label">RESERVA</div><div class="dm-val">50%</div></div>
           <div class="dm-item"><div class="dm-label">ENTREGA</div><div class="dm-val">10–15d</div></div>
         </div>
@@ -662,8 +666,7 @@ function tick(){
   DROPS.filter(d => d.activo).forEach(drop => {
     const cd = document.getElementById(`cd-${drop.id}`);
     if(!cd) return;
-    const tl = timeLeft(drop.deadline);
-    cd.innerHTML = cdHTML(tl);
+    cd.innerHTML = cdHTML(timeLeft(drop.deadline));
   });
 }
 
@@ -715,7 +718,7 @@ function confirmar(){
   const items = cart.map(i => `• ${i.nombre} | Talle: ${i.talle}${i.color?' | Color: '+i.color:''} — ${fmt(i.precio)}`).join('%0A');
   const sum = cart.reduce((s,i) => s+i.precio,0);
   const msg = `Hola! Quiero confirmar mi pedido en Carry Club.%0A%0ANombre: ${nombre}%0ATel: ${tel}%0AEmail: ${email}%0A%0AProductos:%0A${items}%0A%0ATotal: ${fmt(sum)}%0ASeña (50%25): ${fmt(sum*0.5)}`;
-  window.open(`https://wa.me/5491131052437?text=${msg}`,'_blank');
+  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
 }
 
 // ── TOGGLES ───────────────────────────────────────────────
@@ -730,15 +733,33 @@ function toggleCart(){
 }
 
 // ── INIT ──────────────────────────────────────────────────
-renderDrops();
-updateCartUI();
-setInterval(tick, 1000);
+async function init() {
+  updateCartUI();
 
-// Desktop: auto-select primer drop
-if(window.innerWidth >= 900){
-  const first = DROPS.find(d => d.activo);
-  if(first) setTimeout(() => showPanel(first.id), 50);
+  try {
+    DROPS = await loadCatalog();
+    // Ordenar por num descendente (más reciente primero)
+    DROPS.sort((a,b) => (b.num||0) - (a.num||0));
+  } catch(e) {
+    console.warn('No se pudo cargar catalog.json:', e);
+    DROPS = [];
+  }
+
+  // Ocultar loading, mostrar welcome
+  document.getElementById('loading-state').style.display = 'none';
+  document.getElementById('welcome-msg').style.display = 'flex';
+
+  renderDrops();
+  setInterval(tick, 1000);
+
+  // Desktop: auto-select primer drop activo
+  if(window.innerWidth >= 900){
+    const first = DROPS.find(d => d.activo);
+    if(first) setTimeout(() => showPanel(first.id), 50);
+  }
 }
+
+init();
 
 // Exponer addToCart para los drops individuales
 window.CC = {
