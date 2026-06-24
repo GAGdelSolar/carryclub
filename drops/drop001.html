@@ -150,7 +150,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
     </div>
     <div class="hero-right">
       <div class="hero-deadline-label">CIERRE</div>
-      <div class="hero-deadline">18/07 · 16:00</div>
+      <div class="hero-deadline">25/06 · 18:00</div>
       <div class="hero-stock">Stock sujeto a disponibilidad</div>
     </div>
   </div>
@@ -163,13 +163,53 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 </div>
 
 <div class="filters">
-    <button class="filter-btn on" onclick="filtrar('TODOS',this)">TODOS (5)</button>
-    <button class="filter-btn" onclick="filtrar('Remera / T-Shirt / Sweater',this)">Remera / T-Shirt / Sweater</button><button class="filter-btn" onclick="filtrar('Campera / Jacket',this)">Campera / Jacket</button><button class="filter-btn" onclick="filtrar('Manual (400g)',this)">Manual (400g)</button></div>
+    <button class="filter-btn on" onclick="filtrar('TODOS',this)">TODOS (3)</button>
+    <button class="filter-btn" onclick="filtrar('Campera / Jacket',this)">Campera / Jacket</button><button class="filter-btn" onclick="filtrar('Remera / T-Shirt / Sweater',this)">Remera / T-Shirt / Sweater</button></div>
 
 <div class="products-section">
-  <div class="products-label">5 PRODUCTOS SELECCIONADOS</div>
+  <div class="products-label">3 PRODUCTOS SELECCIONADOS</div>
   <div class="products-grid">
-    <div class="prod-card" id="card-p01" data-cat="Remera / T-Shirt / Sweater">
+    <div class="prod-card" id="card-p01" data-cat="Campera / Jacket">
+      <div class="prod-img-wrap">
+        <img src="https://shoptommy.scene7.com/is/image/ShopTommy/XW06091_DW5_main" alt="Hooded Puffer Coat"
+          onerror="this.style.opacity='0.1'">
+        <div class="prod-cat-badge">Campera / Jacket</div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-name">Hooded Puffer Coat</div>
+        <div class="price-block">
+          <div class="price-main">$256.230</div>
+          <div class="price-options">
+            <div class="price-opt">
+              <span class="price-opt-label">TRANSFERENCIA</span>
+              <span class="price-opt-val">50% seña · 50% al retirar</span>
+              <span class="price-opt-num">Seña: <strong>$128.115</strong></span>
+            </div>
+            <div class="price-divider">·</div>
+            <div class="price-opt">
+              <span class="price-opt-label">3 CUOTAS</span>
+              <span class="price-opt-val">Con recargo 25%</span>
+              <span class="price-opt-num"><strong>$106.763</strong> x 3</span>
+            </div>
+          </div>
+        </div>
+        <div class="selectors">
+          <div class="color-note">Color: <strong>Navy Blue</strong></div>
+          <div class="selector-block">
+            <div class="sel-label">TALLE <span class="sel-val" id="tv-p01"></span></div>
+            <div class="talles-wrap" id="talles-p01"><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p01')">L</button><button class="talle-btn" data-talle="M" onclick="selTalle(this,'p01')">M</button><button class="talle-btn" data-talle="XL" onclick="selTalle(this,'p01')">XL</button></div>
+          </div>
+        </div>
+        <div class="prod-actions">
+          <a class="btn-ver-usa" href="https://usa.tommy.com/en/sale/womens-sale/clothing/hooded-puffer-coat/XW06091-DW5.html" target="_blank">🔗 Ver colores y stock en tommy USA</a>
+          <button class="btn-agregar" id="btn-p01"
+            onclick="agregar('p01','Hooded Puffer Coat',256230,'Navy Blue')">
+            AGREGAR AL CARRITO
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card" id="card-p02" data-cat="Remera / T-Shirt / Sweater">
       <div class="prod-img-wrap">
         <img src="https://shoptommy.scene7.com/is/image/ShopTommy/78JA592_038_main" alt="Slim Fit Stretch Pique Polo"
           onerror="this.style.opacity='0.1'">
@@ -196,20 +236,20 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
         <div class="selectors">
           <div class="color-note">Color: <strong>Light Grey Heather</strong></div>
           <div class="selector-block">
-            <div class="sel-label">TALLE <span class="sel-val" id="tv-p01"></span></div>
-            <div class="talles-wrap" id="talles-p01"><button class="talle-btn" data-talle="M" onclick="selTalle(this,'p01')">M</button><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p01')">L</button></div>
+            <div class="sel-label">TALLE <span class="sel-val" id="tv-p02"></span></div>
+            <div class="talles-wrap" id="talles-p02"><button class="talle-btn" data-talle="M" onclick="selTalle(this,'p02')">M</button><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p02')">L</button></div>
           </div>
         </div>
         <div class="prod-actions">
           <a class="btn-ver-usa" href="https://usa.tommy.com/en/men/clothing/tops/slim-fit-stretch-pique-polo/78JA592-038.html" target="_blank">🔗 Ver colores y stock en tommy USA</a>
-          <button class="btn-agregar" id="btn-p01"
-            onclick="agregar('p01','Slim Fit Stretch Pique Polo',99698,'Light Grey Heather')">
+          <button class="btn-agregar" id="btn-p02"
+            onclick="agregar('p02','Slim Fit Stretch Pique Polo',99698,'Light Grey Heather')">
             AGREGAR AL CARRITO
           </button>
         </div>
       </div>
     </div>
-    <div class="prod-card" id="card-p02" data-cat="Campera / Jacket">
+    <div class="prod-card" id="card-p03" data-cat="Campera / Jacket">
       <div class="prod-img-wrap">
         <img src="https://shoptommy.scene7.com/is/image/ShopTommy/XW06028_YCF_main" alt="Lightweight Hooded Padded Quilted Jacket"
           onerror="this.style.opacity='0.1'">
@@ -218,157 +258,37 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
       <div class="prod-body">
         <div class="prod-name">Lightweight Hooded Padded Quilted Jacket</div>
         <div class="price-block">
-          <div class="price-main">$140.670</div>
+          <div class="price-main">$184.005</div>
           <div class="price-options">
             <div class="price-opt">
               <span class="price-opt-label">TRANSFERENCIA</span>
               <span class="price-opt-val">50% seña · 50% al retirar</span>
-              <span class="price-opt-num">Seña: <strong>$70.335</strong></span>
+              <span class="price-opt-num">Seña: <strong>$92.003</strong></span>
             </div>
             <div class="price-divider">·</div>
             <div class="price-opt">
               <span class="price-opt-label">3 CUOTAS</span>
               <span class="price-opt-val">Con recargo 25%</span>
-              <span class="price-opt-num"><strong>$58.613</strong> x 3</span>
+              <span class="price-opt-num"><strong>$76.669</strong> x 3</span>
             </div>
           </div>
         </div>
         <div class="selectors">
           <div class="color-note">Color: <strong>Optic White</strong></div>
           <div class="selector-block">
-            <div class="sel-label">TALLE <span class="sel-val" id="tv-p02"></span></div>
-            <div class="talles-wrap" id="talles-p02"><button class="talle-btn" data-talle="XS" onclick="selTalle(this,'p02')">XS</button><button class="talle-btn" data-talle="S" onclick="selTalle(this,'p02')">S</button><button class="talle-btn" data-talle="M" onclick="selTalle(this,'p02')">M</button><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p02')">L</button><button class="talle-btn" data-talle="XL" onclick="selTalle(this,'p02')">XL</button></div>
+            <div class="sel-label">TALLE <span class="sel-val" id="tv-p03"></span></div>
+            <div class="talles-wrap" id="talles-p03"><button class="talle-btn" data-talle="XL" onclick="selTalle(this,'p03')">XL</button><button class="talle-btn" data-talle="XXL" onclick="selTalle(this,'p03')">XXL</button><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p03')">L</button></div>
           </div>
         </div>
         <div class="prod-actions">
           <a class="btn-ver-usa" href="https://usa.tommy.com/en/sale/womens-sale/clothing/lightweight-hooded-padded-quilted-jacket/XW06028-YCF.html" target="_blank">🔗 Ver colores y stock en tommy USA</a>
-          <button class="btn-agregar" id="btn-p02"
-            onclick="agregar('p02','Lightweight Hooded Padded Quilted Jacket',140670,'Optic White')">
-            AGREGAR AL CARRITO
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="prod-card" id="card-p03" data-cat="Manual (400g)">
-      <div class="prod-img-wrap">
-        <img src="https://www.bathandbodyworks.com/on/demandware.static/-/Sites-master-catalog/default/dw15b00f50/crop/028027106_crop.jpg" alt="Banana Cream LatteVela de 3 mechas"
-          onerror="this.style.opacity='0.1'">
-        <div class="prod-cat-badge">Manual (400g)</div>
-      </div>
-      <div class="prod-body">
-        <div class="prod-name">Banana Cream LatteVela de 3 mechas</div>
-        <div class="price-block">
-          <div class="price-main">$46.260</div>
-          <div class="price-options">
-            <div class="price-opt">
-              <span class="price-opt-label">TRANSFERENCIA</span>
-              <span class="price-opt-val">50% seña · 50% al retirar</span>
-              <span class="price-opt-num">Seña: <strong>$23.130</strong></span>
-            </div>
-            <div class="price-divider">·</div>
-            <div class="price-opt">
-              <span class="price-opt-label">3 CUOTAS</span>
-              <span class="price-opt-val">Con recargo 25%</span>
-              <span class="price-opt-num"><strong>$19.275</strong> x 3</span>
-            </div>
-          </div>
-        </div>
-        <div class="selectors">
-          <div class="color-note">Color: <strong>Ver en Tommy USA</strong></div>
-          <div class="selector-block">
-            <div class="sel-label">TALLE <span class="sel-val" id="tv-p03"></span></div>
-            <div class="talles-wrap" id="talles-p03"></div>
-          </div>
-        </div>
-        <div class="prod-actions">
-          <a class="btn-ver-usa" href="https://www.bathandbodyworks.com/es-us/p/banana-cream-latte-3-wick-candle-028027106" target="_blank">🔗 Ver colores y stock en bathandbodyworks USA</a>
           <button class="btn-agregar" id="btn-p03"
-            onclick="agregar('p03','Banana Cream LatteVela de 3 mechas',46260,'')">
+            onclick="agregar('p03','Lightweight Hooded Padded Quilted Jacket',184005,'Optic White')">
             AGREGAR AL CARRITO
           </button>
         </div>
       </div>
-    </div>
-    <div class="prod-card" id="card-p04" data-cat="Manual (400g)">
-      <div class="prod-img-wrap">
-        <img src="https://www.sephora.com/productimages/sku/s2797405-main-zoom.jpg" alt="MAKE UP FOR EVER Artist Color Pencil Extreme Smudge-Proof Lip Liner"
-          onerror="this.style.opacity='0.1'">
-        <div class="prod-cat-badge">Manual (400g)</div>
-      </div>
-      <div class="prod-body">
-        <div class="prod-name">MAKE UP FOR EVER Artist Color Pencil Extreme Smudge-Proof Lip Liner</div>
-        <div class="price-block">
-          <div class="price-main">$72.743</div>
-          <div class="price-options">
-            <div class="price-opt">
-              <span class="price-opt-label">TRANSFERENCIA</span>
-              <span class="price-opt-val">50% seña · 50% al retirar</span>
-              <span class="price-opt-num">Seña: <strong>$36.372</strong></span>
-            </div>
-            <div class="price-divider">·</div>
-            <div class="price-opt">
-              <span class="price-opt-label">3 CUOTAS</span>
-              <span class="price-opt-val">Con recargo 25%</span>
-              <span class="price-opt-num"><strong>$30.310</strong> x 3</span>
-            </div>
-          </div>
-        </div>
-        <div class="selectors">
-          <div class="color-note">Color: <strong>Ver en Tommy USA</strong></div>
-          <div class="selector-block">
-            <div class="sel-label">TALLE <span class="sel-val" id="tv-p04"></span></div>
-            <div class="talles-wrap" id="talles-p04"></div>
-          </div>
-        </div>
-        <div class="prod-actions">
-          <a class="btn-ver-usa" href="https://www.sephora.com/product/make-up-for-ever-artist-color-pencil-extreme-waterproof-lip-liner-P512173" target="_blank">🔗 Ver colores y stock en sephora USA</a>
-          <button class="btn-agregar" id="btn-p04"
-            onclick="agregar('p04','MAKE UP FOR EVER Artist Color Pencil Extreme Smudge-Proof Lip Liner',72743,'')">
-            AGREGAR AL CARRITO
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="prod-card" id="card-p05" data-cat="Manual (400g)">
-      <div class="prod-img-wrap">
-        <img src="https://imepho.com.ar/web/image/product.product/28746/image_1024/%5B30643%5D%20Cer%C3%A1mico%20Alberdi%20Arcadia%20Gris%2046x46%20%281ra%20Calidad%29?unique=6569345" alt="Cerámico Alberdi Arcadia Gris 46x46 (1ra Calidad)"
-          onerror="this.style.opacity='0.1'">
-        <div class="prod-cat-badge">Manual (400g)</div>
-      </div>
-      <div class="prod-body">
-        <div class="prod-name">Cerámico Alberdi Arcadia Gris 46x46 (1ra Calidad)</div>
-        <div class="price-block">
-          <div class="price-main">$63.113</div>
-          <div class="price-options">
-            <div class="price-opt">
-              <span class="price-opt-label">TRANSFERENCIA</span>
-              <span class="price-opt-val">50% seña · 50% al retirar</span>
-              <span class="price-opt-num">Seña: <strong>$31.557</strong></span>
-            </div>
-            <div class="price-divider">·</div>
-            <div class="price-opt">
-              <span class="price-opt-label">3 CUOTAS</span>
-              <span class="price-opt-val">Con recargo 25%</span>
-              <span class="price-opt-num"><strong>$26.297</strong> x 3</span>
-            </div>
-          </div>
-        </div>
-        <div class="selectors">
-          <div class="color-note">Color: <strong>Ver en Tommy USA</strong></div>
-          <div class="selector-block">
-            <div class="sel-label">TALLE <span class="sel-val" id="tv-p05"></span></div>
-            <div class="talles-wrap" id="talles-p05"></div>
-          </div>
-        </div>
-        <div class="prod-actions">
-          <a class="btn-ver-usa" href="https://imepho.com.ar/shop/ceramico-alberdi-arcadia-gris-46x46-1ra-calidad-28748" target="_blank">🔗 Ver colores y stock en imepho USA</a>
-          <button class="btn-agregar" id="btn-p05"
-            onclick="agregar('p05','Cerámico Alberdi Arcadia Gris 46x46 (1ra Calidad)',63113,'')">
-            AGREGAR AL CARRITO
-          </button>
-        </div>
-      </div>
-    </div><div class="prod-card prod-filler" style="min-height:200px;background:var(--black)"></div><div class="prod-card prod-filler" style="min-height:200px;background:var(--black)"></div><div class="prod-card prod-filler" style="min-height:200px;background:var(--black)"></div></div>
+    </div><div class="prod-card prod-filler" style="min-height:200px;background:var(--black)"></div></div>
 </div>
 
 <div class="cart-overlay" id="cart-ov" onclick="toggleCart()"></div>
@@ -414,7 +334,7 @@ const selections = {};
 let pagoActual = 't';
 const fmt = n => '$' + Math.round(n).toLocaleString('es-AR');
 const pad = n => String(Math.floor(n)).padStart(2,'0');
-const DEADLINE = '2026-07-18T19:00:00.000-03:00';
+const DEADLINE = '2026-06-25T21:00:00.000-03:00';
 const WA = '5491130211626';
 const DROP_NUM = '1';
 const MARCA = 'TOMMY HILFIGER';
