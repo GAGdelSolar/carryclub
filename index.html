@@ -138,6 +138,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   .sb-circles-wrap{flex-direction:column;overflow-x:visible;padding:0 0 8px;gap:0}
 }
 
+/* ── CIRCLE ITEMS — info panels (sin drops) ── */
 .circle-item{
   display:flex;flex-direction:column;align-items:center;
   flex-shrink:0;padding:0 10px;cursor:pointer;
@@ -155,8 +156,6 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
     opacity:1;background:rgba(255,255,255,0.025);
     border-left-color:var(--cyan);
   }
-  .circle-item.drop-item{opacity:.65}
-  .circle-item.drop-item.active{opacity:1}
 }
 
 .circle-ring{
@@ -192,6 +191,38 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   .circle-mobile-label{display:none}
 }
 
+/* ── DROP LINK ITEMS (navegan a drops/dropXXX.html) ── */
+.drop-link{
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;padding:0 10px;cursor:pointer;
+  opacity:.65;transition:opacity .2s;text-decoration:none;
+}
+.drop-link:hover{opacity:1}
+
+@media(min-width:900px){
+  .drop-link{
+    flex-direction:row;gap:12px;padding:10px 14px;
+    opacity:.6;border-left:1.5px solid transparent;
+    text-decoration:none;
+  }
+  .drop-link:hover{
+    opacity:1;background:rgba(255,255,255,0.015);
+    border-left-color:var(--rose);
+  }
+}
+
+.drop-link .circle-mobile-label{color:var(--mgray)}
+
+/* Badge de tiempo restante sobre el círculo */
+.drop-time-badge{
+  position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);
+  font-size:6px;letter-spacing:1px;color:var(--cyan);
+  background:var(--black);padding:1px 5px;
+  border:0.5px solid var(--lgray);white-space:nowrap;
+}
+
+.circle-wrap{position:relative;display:inline-flex;flex-shrink:0}
+
 .sb-drops-sep{
   margin:4px 16px 0;border:none;border-top:0.5px solid var(--border);
 }
@@ -218,58 +249,6 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .welcome-sym{font-family:'Cormorant',serif;font-size:80px;font-weight:300;font-style:italic;opacity:.06;margin-bottom:16px}
 .welcome-txt{font-size:9px;letter-spacing:4px;color:var(--lgray)}
 
-/* Drop panel */
-.drop-hero{padding:32px 24px 20px;border-bottom:0.5px solid var(--border)}
-.drop-num{font-size:7px;letter-spacing:4px;color:var(--lgray);margin-bottom:10px}
-.drop-brand{font-family:'Cormorant',serif;font-size:clamp(30px,6vw,48px);font-weight:300;letter-spacing:3px;line-height:1;margin-bottom:5px}
-.drop-desc{font-size:8px;letter-spacing:3px;color:var(--cyan);margin-bottom:22px}
-
-/* Countdown */
-.cd{display:flex;gap:0;max-width:320px}
-.cd-unit{flex:0;text-align:center;min-width:56px;position:relative}
-.cd-unit:not(:last-child)::after{content:':';position:absolute;right:-4px;top:4px;font-family:'Cormorant',serif;font-size:22px;color:var(--lgray)}
-.cd-num{font-family:'Cormorant',serif;font-size:clamp(34px,7vw,52px);font-weight:300;color:var(--white);display:block;line-height:1}
-.cd-lbl{font-size:6px;letter-spacing:2px;color:var(--lgray);display:block;margin-top:3px}
-.cd-unit.urgent .cd-num{color:var(--rose)}
-.cd-closed{font-family:'Cormorant',serif;font-size:20px;font-style:italic;color:var(--lgray)}
-
-/* Meta strip */
-.drop-meta{display:flex;border-top:0.5px solid var(--border);border-bottom:0.5px solid var(--border);margin-top:20px}
-.dm-item{flex:1;padding:14px 16px;border-right:0.5px solid var(--border);text-align:center}
-.dm-item:last-child{border-right:none}
-.dm-label{font-size:6px;letter-spacing:2px;color:var(--lgray);margin-bottom:4px}
-.dm-val{font-size:14px;color:var(--white)}
-
-/* Subdrops */
-.subdrops-section{padding:24px}
-.subdrops-label{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:16px}
-.subdrops-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
-@media(min-width:700px){.subdrops-grid{grid-template-columns:repeat(4,1fr)}}
-.subdrop-card{
-  background:var(--black);padding:20px 16px;
-  cursor:pointer;transition:background .2s;text-decoration:none;
-  display:block;
-}
-.subdrop-card:hover{background:#0d0d0d}
-.subdrop-num{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:8px}
-.subdrop-label{font-family:'Cormorant',serif;font-size:22px;font-weight:300;letter-spacing:2px;color:var(--white);margin-bottom:4px}
-.subdrop-count{font-size:8px;color:var(--lgray)}
-.subdrop-arrow{font-size:9px;letter-spacing:2px;color:var(--cyan);margin-top:12px;display:block}
-
-/* CTAs */
-.drop-ctas{padding:20px 24px;display:flex;flex-direction:column;gap:8px;border-bottom:0.5px solid var(--border)}
-.btn-primary{display:block;text-align:center;padding:13px;border:0.5px solid var(--cyan);color:var(--cyan);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
-.btn-primary:hover{background:rgba(136,200,216,0.05)}
-.btn-wa{display:block;text-align:center;padding:13px;border:0.5px solid var(--rose);color:var(--rose);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
-.btn-wa:hover{background:rgba(200,104,144,0.05)}
-
-/* Trust */
-.drop-trust{padding:20px 24px}
-.trust-title{font-size:7px;letter-spacing:3px;color:var(--lgray);margin-bottom:12px}
-.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.trust-item{display:flex;align-items:center;gap:8px;font-size:10px;color:var(--gray)}
-.trust-check{color:var(--cyan);font-size:9px;flex-shrink:0}
-
 /* Institucional */
 .inst{padding:32px 24px 60px;max-width:600px;margin:0 auto}
 .inst-title{font-family:'Cormorant',serif;font-size:clamp(26px,5vw,38px);font-weight:300;letter-spacing:3px;margin-bottom:6px}
@@ -284,6 +263,11 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .inst-step-txt{font-size:12px;color:var(--gray);line-height:1.7;padding-top:4px}
 .inst-step-txt strong{color:var(--white);font-weight:400}
 
+.btn-primary{display:block;text-align:center;padding:13px;border:0.5px solid var(--cyan);color:var(--cyan);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
+.btn-primary:hover{background:rgba(136,200,216,0.05)}
+.btn-wa{display:block;text-align:center;padding:13px;border:0.5px solid var(--rose);color:var(--rose);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
+.btn-wa:hover{background:rgba(200,104,144,0.05)}
+
 /* WA FAB */
 .wa-fab{
   position:fixed;bottom:22px;right:18px;z-index:900;
@@ -294,6 +278,15 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 }
 .wa-fab:hover{transform:scale(1.08)}
 .wa-fab svg{width:21px;height:21px;fill:white}
+
+/* ── NO DROPS STATE ── */
+.no-drops{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:40vh;padding:40px;text-align:center;gap:16px;
+}
+.no-drops-sym{font-family:'Cormorant',serif;font-size:48px;opacity:.08}
+.no-drops-txt{font-size:8px;letter-spacing:3px;color:var(--lgray)}
+.no-drops-sub{font-size:11px;color:var(--gray);line-height:1.7}
 </style>
 </head>
 <body>
@@ -399,9 +392,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
       <div class="sb-section-label">DROPS ACTIVOS</div>
       <div class="sb-circles-wrap" id="drop-circles">
         <!-- Loading placeholder -->
-        <div class="circle-item" style="opacity:.2;pointer-events:none">
-          <div class="circle-ring lg" style="animation:none"><div class="circle-inner"><span class="circle-icon lg-icon" style="opacity:.3">…</span></div></div>
-        </div>
+        <div style="padding:14px 20px;font-size:8px;letter-spacing:2px;color:var(--lgray);opacity:.4">Cargando…</div>
       </div>
     </div>
 
@@ -491,11 +482,8 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
       </div>
     </div>
 
-    <!-- Drop panels — JS dinámico -->
-    <div id="drop-panels"></div>
-
-  </div>
-</div>
+  </div><!-- /main -->
+</div><!-- /app -->
 
 <!-- WA FAB -->
 <a class="wa-fab" href="https://wa.me/5491130211626?text=Hola!%20Quiero%20info%20sobre%20Carry%20Club" target="_blank">
@@ -506,174 +494,165 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // CONFIGURACIÓN
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-const WA_NUMBER = '5491130211626';
-const IG_HANDLE = 'carryclub.ar';
-// URL del catalog.json — GitHub raw para bypass cache con timestamp
+const WA_NUMBER  = '5491130211626';
 const CATALOG_URL = 'https://raw.githubusercontent.com/GAGdelSolar/carryclub/main/drops/catalog.json';
 
 // ── UTILS ─────────────────────────────────────────────────
-const pad = n => String(Math.floor(n)).padStart(2,'0');
 const fmt = n => '$' + Math.round(n).toLocaleString('es-AR');
 
-function timeLeft(deadline){
-  const diff = new Date(deadline) - new Date();
-  if(diff <= 0) return null;
-  return {
-    days:  Math.floor(diff/86400000),
-    hours: Math.floor((diff%86400000)/3600000),
-    mins:  Math.floor((diff%3600000)/60000),
-    secs:  Math.floor((diff%60000)/1000),
-    total: diff,
-  };
+function dropIsActive(drop) {
+  // Mostrar solo si activo === true Y deadline no vencido
+  if (!drop.activo) return false;
+  return new Date(drop.deadline) > new Date();
 }
 
-function cdHTML(tl){
-  if(!tl) return '<span class="cd-closed">Drop cerrado</span>';
-  const urgent = tl.total < 3600000*6;
-  const u = urgent ? ' urgent' : '';
-  const units = [
-    [pad(tl.days),'DÍAS'],[pad(tl.hours),'HS'],
-    [pad(tl.mins),'MIN'],[pad(tl.secs),'SEG'],
-  ];
-  return units.map(([v,l]) => `<div class="cd-unit${u}"><span class="cd-num">${v}</span><span class="cd-lbl">${l}</span></div>`).join('');
-}
-
-// ── NAVEGACIÓN ────────────────────────────────────────────
+// ── NAVEGACIÓN (paneles info) ─────────────────────────────
 let active = null;
 
-function showPanel(id){
+function showPanel(id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('visible'));
   document.querySelectorAll('.circle-item').forEach(c => c.classList.remove('active'));
 
-  const panel = document.getElementById(`panel-${id}`);
-  if(panel) panel.classList.add('visible');
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('visible');
 
-  const circle = document.querySelector(`.circle-item[data-id="${id}"]`);
-  if(circle) circle.classList.add('active');
+  const circle = document.querySelector('.circle-item[data-id="' + id + '"]');
+  if (circle) circle.classList.add('active');
 
   active = id;
 
-  if(window.innerWidth < 900){
-    document.getElementById('main').scrollIntoView({behavior:'smooth'});
+  if (window.innerWidth < 900) {
+    document.getElementById('main').scrollIntoView({ behavior: 'smooth' });
   }
 }
 
-// ── CARGAR CATALOG.JSON DINÁMICAMENTE ────────────────────
+// ── CARGAR CATALOG.JSON ────────────────────────────────────
 async function loadCatalog() {
-  // Añadir timestamp para evitar caché del browser/CDN
   const url = CATALOG_URL + '?t=' + Date.now();
   const resp = await fetch(url, { cache: 'no-store' });
   if (!resp.ok) throw new Error('HTTP ' + resp.status);
   return await resp.json();
 }
 
-// ── RENDER DROPS ──────────────────────────────────────────
+// ── RENDER DROP CIRCLES (solo links al drop HTML) ─────────
 let DROPS = [];
 
-function renderDrops(){
+function renderDropCircles() {
   const circles = document.getElementById('drop-circles');
-  const panels  = document.getElementById('drop-panels');
   circles.innerHTML = '';
-  panels.innerHTML  = '';
 
-  const activeDrops = DROPS.filter(d => d.activo);
+  const activeDrops = DROPS.filter(dropIsActive);
 
   if (activeDrops.length === 0) {
-    circles.innerHTML = '<div style="padding:14px 20px;font-size:8px;letter-spacing:2px;color:var(--lgray)">Sin drops activos</div>';
+    circles.innerHTML = `
+      <div class="no-drops" style="padding:14px 20px;">
+        <div style="font-size:8px;letter-spacing:2px;color:var(--lgray);line-height:1.8;">
+          Sin drops activos<br>
+          <span style="font-size:7px;color:var(--lgray);opacity:.6">Seguinos en IG para novedades</span>
+        </div>
+      </div>`;
     return;
   }
 
   activeDrops.forEach(drop => {
-    const dropNum = drop.num || drop.numero || String(drop.id).replace('drop','');
-    const numStr  = String(dropNum).padStart(3,'0');
-    const tl      = timeLeft(drop.deadline);
-    const expired = !tl;
+    const numStr = String(drop.num).padStart(3, '0');
+    const dropUrl = drop.url || ('drops/drop' + numStr + '.html');
 
-    // Circle
-    const circ = document.createElement('div');
-    circ.className = `circle-item drop-item${expired?' expired':''}`;
-    circ.dataset.id = drop.id;
-    circ.onclick = () => showPanel(drop.id);
-    circ.innerHTML = `
-      <div class="circle-ring lg drop-grad"><div class="circle-inner"><span class="circle-icon lg-icon">${numStr}</span></div></div>
+    // Calcular tiempo restante para el badge
+    const diff = new Date(drop.deadline) - new Date();
+    let timeBadge = '';
+    if (diff > 0) {
+      const days  = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff % 86400000) / 3600000);
+      if (days > 0)       timeBadge = days + 'd';
+      else if (hours > 0) timeBadge = hours + 'h';
+      else                timeBadge = '<1h';
+    }
+
+    const link = document.createElement('a');
+    link.className = 'drop-link';
+    link.href = dropUrl;
+    // En desktop abre en la misma pestaña (es parte del mismo sitio).
+    // En mobile también — navegación natural.
+    link.innerHTML = `
+      <div class="circle-wrap">
+        <div class="circle-ring lg drop-grad">
+          <div class="circle-inner">
+            <span class="circle-icon lg-icon">${numStr}</span>
+          </div>
+        </div>
+        ${timeBadge ? '<span class="drop-time-badge">' + timeBadge + '</span>' : ''}
+      </div>
       <div class="circle-desktop-info">
         <div class="cdi-main">${drop.marca}</div>
-        <div class="cdi-sub">${expired?'CERRADO':'ABIERTO'}</div>
+        <div class="cdi-sub">${drop.descripcion || (timeBadge ? 'CIERRA EN ' + timeBadge : 'ACTIVO')}</div>
       </div>
       <span class="circle-mobile-label">${drop.marca.split(' ')[0]}</span>`;
-    circles.appendChild(circ);
 
-    // Sub-drops
-    const hasSubdrops = drop.subdrops && drop.subdrops.length > 0;
-    const dropUrl = drop.url || `drops/${drop.id}.html`;
-    const waLink  = `https://wa.me/${WA_NUMBER}?text=Hola!%20Quiero%20info%20del%20Drop%20%23${numStr}%20${encodeURIComponent(drop.marca)}`;
-
-    const subdropsHTML = hasSubdrops
-      ? `<div class="subdrops-section">
-           <div class="subdrops-label">CATEGORÍAS</div>
-           <div class="subdrops-grid">
-             ${drop.subdrops.map((s,i) => `
-               <a class="subdrop-card" href="${s.url}">
-                 <div class="subdrop-num">0${i+1}</div>
-                 <div class="subdrop-label">${s.label}</div>
-                 <div class="subdrop-count">${s.productos || '—'} productos</div>
-                 <span class="subdrop-arrow">VER →</span>
-               </a>`).join('')}
-           </div>
-         </div>`
-      : `<div class="drop-ctas">
-           <a class="btn-primary" href="${dropUrl}">VER CATÁLOGO COMPLETO →</a>
-           <a class="btn-wa" href="${waLink}" target="_blank">CONSULTAR POR WHATSAPP</a>
-         </div>`;
-
-    const precioDesde = drop.precio_desde || 0;
-    const productos   = drop.productos || '—';
-
-    const panel = document.createElement('div');
-    panel.className = 'panel';
-    panel.id = `panel-${drop.id}`;
-    panel.innerHTML = `
-      <div class="drop-hero">
-        <div class="drop-num">DROP #${numStr}</div>
-        <div class="drop-brand">${drop.marca}</div>
-        <div class="drop-desc">${drop.descripcion || ''}</div>
-        <div class="cd" id="cd-${drop.id}">${cdHTML(tl)}</div>
-        <div class="drop-meta">
-          <div class="dm-item"><div class="dm-label">PRENDAS</div><div class="dm-val">${productos}</div></div>
-          <div class="dm-item"><div class="dm-label">DESDE</div><div class="dm-val">${precioDesde ? fmt(precioDesde) : '—'}</div></div>
-          <div class="dm-item"><div class="dm-label">RESERVA</div><div class="dm-val">50%</div></div>
-          <div class="dm-item"><div class="dm-label">ENTREGA</div><div class="dm-val">10–15d</div></div>
-        </div>
-      </div>
-      ${subdropsHTML}
-      <div class="drop-trust">
-        <div class="trust-title">POR QUÉ CARRY CLUB</div>
-        <div class="trust-grid">
-          <div class="trust-item"><span class="trust-check">✔</span>Compra directa en USA</div>
-          <div class="trust-item"><span class="trust-check">✔</span>Producto 100% original</div>
-          <div class="trust-item"><span class="trust-check">✔</span>Pago en pesos</div>
-          <div class="trust-item"><span class="trust-check">✔</span>Retiro en CABA</div>
-          <div class="trust-item"><span class="trust-check">✔</span>Envíos a todo el país</div>
-          <div class="trust-item"><span class="trust-check">✔</span>Gestión incluida</div>
-        </div>
-      </div>`;
-    panels.appendChild(panel);
+    circles.appendChild(link);
   });
 }
 
-// ── COUNTDOWN TICK ────────────────────────────────────────
-function tick(){
-  DROPS.filter(d => d.activo).forEach(drop => {
-    const cd = document.getElementById(`cd-${drop.id}`);
-    if(!cd) return;
-    cd.innerHTML = cdHTML(timeLeft(drop.deadline));
-  });
+// ── MAIN CONTENT: panel de bienvenida con drops destacados ─
+function renderWelcomeContent() {
+  const welcomeMsg = document.getElementById('welcome-msg');
+  const activeDrops = DROPS.filter(dropIsActive);
+
+  if (activeDrops.length === 0) {
+    welcomeMsg.innerHTML = `
+      <div class="welcome-sym">C</div>
+      <div class="welcome-txt">PRÓXIMAMENTE NUEVOS DROPS</div>
+      <div style="margin-top:16px;font-size:10px;color:var(--lgray);line-height:2;">
+        Seguinos en <a href="https://instagram.com/carryclub.ar" style="color:var(--cyan);text-decoration:none;">@carryclub.ar</a><br>para enterarte primero.
+      </div>`;
+    welcomeMsg.style.display = 'flex';
+    return;
+  }
+
+  // Si hay drops, mostrar mini-grilla de acceso rápido en el panel de bienvenida
+  const dropsHTML = activeDrops.map(drop => {
+    const numStr = String(drop.num).padStart(3,'0');
+    const dropUrl = drop.url || ('drops/drop' + numStr + '.html');
+    const diff    = new Date(drop.deadline) - new Date();
+    const days    = Math.floor(diff / 86400000);
+    const hours   = Math.floor((diff % 86400000) / 3600000);
+    const timeStr = days > 0 ? days + ' DÍA' + (days !== 1 ? 'S' : '') : hours + 'H';
+    const precioStr = drop.precio_desde ? fmt(drop.precio_desde) : '—';
+
+    return `
+      <a href="${dropUrl}" style="
+        display:block;background:#0d0d0d;border:0.5px solid var(--border);
+        padding:20px;text-decoration:none;transition:border-color .2s;
+        border-left:2px solid var(--rose);
+      " onmouseover="this.style.borderColor='var(--cyan)'" onmouseout="this.style.borderLeftColor='var(--rose)';this.style.borderColor='var(--border)';this.style.borderLeftColor='var(--rose)'">
+        <div style="font-size:6px;letter-spacing:3px;color:var(--lgray);margin-bottom:8px">DROP #${numStr}</div>
+        <div style="font-family:'Cormorant',serif;font-size:22px;font-weight:300;letter-spacing:2px;color:var(--white);margin-bottom:4px">${drop.marca}</div>
+        <div style="font-size:7px;letter-spacing:2px;color:var(--cyan);margin-bottom:14px">${drop.descripcion||''}</div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <div style="font-size:9px;color:var(--gray)">Desde <strong style="color:var(--white);font-weight:400">${precioStr}</strong></div>
+          <div style="font-size:7px;letter-spacing:1px;color:var(--rose)">CIERRA EN ${timeStr} →</div>
+        </div>
+      </a>`;
+  }).join('');
+
+  welcomeMsg.innerHTML = `
+    <div style="width:100%;padding:32px 24px;max-width:700px;margin:0 auto">
+      <div style="font-size:7px;letter-spacing:4px;color:var(--lgray);margin-bottom:20px">DROPS ABIERTOS</div>
+      <div style="display:flex;flex-direction:column;gap:1px">${dropsHTML}</div>
+      <div style="margin-top:28px;font-size:8px;letter-spacing:2px;color:var(--lgray);text-align:center;line-height:2">
+        ¿Buscás algo específico? <a href="https://wa.me/${WA_NUMBER}?text=Hola!%20Quiero%20hacer%20un%20encargo" style="color:var(--cyan);text-decoration:none;">ENCARGOS →</a>
+      </div>
+    </div>`;
+  welcomeMsg.style.display   = 'flex';
+  welcomeMsg.style.alignItems = 'flex-start';
+  welcomeMsg.style.justifyContent = 'center';
+  welcomeMsg.style.minHeight = 'auto';
 }
 
 // ── CARRITO ───────────────────────────────────────────────
 let cart = [];
 
-function updateCartUI(){
+function updateCartUI() {
   const badge = document.getElementById('cart-badge');
   const body  = document.getElementById('cart-body');
   const foot  = document.getElementById('cart-foot');
@@ -682,51 +661,51 @@ function updateCartUI(){
   badge.textContent = cart.length;
   badge.classList.toggle('on', cart.length > 0);
 
-  if(!cart.length){
+  if (!cart.length) {
     body.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">○</div><div class="cart-empty-text">SIN PRODUCTOS</div></div>';
     foot.style.display = 'none';
     return;
   }
   foot.style.display = 'block';
-  body.innerHTML = cart.map((item,i) => `
+  body.innerHTML = cart.map((item, i) => `
     <div class="cart-item">
       <div class="ci-info">
         <div class="ci-drop">DROP #${item.drop} · ${item.marca}</div>
         <div class="ci-name">${item.nombre}</div>
-        <div class="ci-detail">${item.talle}${item.color?' · '+item.color:''}</div>
+        <div class="ci-detail">${item.talle}${item.color ? ' · ' + item.color : ''}</div>
         <div class="ci-price">${fmt(item.precio)}</div>
       </div>
       <button class="ci-remove" onclick="removeItem(${i})">×</button>
     </div>`).join('');
 
-  const sum = cart.reduce((s,i) => s+i.precio, 0);
+  const sum = cart.reduce((s, i) => s + i.precio, 0);
   total.textContent = fmt(sum * 0.5);
 }
 
-function removeItem(i){ cart.splice(i,1); updateCartUI(); }
+function removeItem(i) { cart.splice(i, 1); updateCartUI(); }
 
-function mostrarForm(){
+function mostrarForm() {
   document.getElementById('btn-checkout').style.display = 'none';
   document.getElementById('checkout-form').classList.add('visible');
 }
 
-function confirmar(){
+function confirmar() {
   const nombre = document.getElementById('f-nombre').value.trim();
   const tel    = document.getElementById('f-tel').value.trim();
   const email  = document.getElementById('f-email').value.trim();
-  if(!nombre||!tel||!email){ alert('Completá todos los campos.'); return; }
-  const items = cart.map(i => `• ${i.nombre} | Talle: ${i.talle}${i.color?' | Color: '+i.color:''} — ${fmt(i.precio)}`).join('%0A');
-  const sum = cart.reduce((s,i) => s+i.precio,0);
-  const msg = `Hola! Quiero confirmar mi pedido en Carry Club.%0A%0ANombre: ${nombre}%0ATel: ${tel}%0AEmail: ${email}%0A%0AProductos:%0A${items}%0A%0ATotal: ${fmt(sum)}%0ASeña (50%25): ${fmt(sum*0.5)}`;
-  window.open(`https://wa.me/${WA_NUMBER}?text=${msg}`,'_blank');
+  if (!nombre || !tel || !email) { alert('Completá todos los campos.'); return; }
+  const items = cart.map(i => '• ' + i.nombre + ' | Talle: ' + i.talle + (i.color ? ' | Color: ' + i.color : '') + ' — ' + fmt(i.precio)).join('%0A');
+  const sum   = cart.reduce((s, i) => s + i.precio, 0);
+  const msg   = 'Hola! Quiero confirmar mi pedido en Carry Club.%0A%0ANombre: ' + nombre + '%0ATel: ' + tel + '%0AEmail: ' + email + '%0A%0AProductos:%0A' + items + '%0A%0ATotal: ' + fmt(sum) + '%0ASeña (50%25): ' + fmt(sum * 0.5);
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + msg, '_blank');
 }
 
 // ── TOGGLES ───────────────────────────────────────────────
-function toggleMenu(){
+function toggleMenu() {
   document.getElementById('menu-dr').classList.toggle('open');
   document.getElementById('menu-ov').classList.toggle('open');
 }
-function toggleCart(){
+function toggleCart() {
   document.getElementById('cart-dr').classList.toggle('open');
   document.getElementById('cart-ov').classList.toggle('open');
   updateCartUI();
@@ -737,33 +716,26 @@ async function init() {
   updateCartUI();
 
   try {
-    DROPS = await loadCatalog();
-    // Ordenar por num descendente (más reciente primero)
-    DROPS.sort((a,b) => (b.num||0) - (a.num||0));
+    const all = await loadCatalog();
+    // Ordenar por num desc (más reciente primero)
+    DROPS = all.sort((a, b) => (b.num || 0) - (a.num || 0));
   } catch(e) {
     console.warn('No se pudo cargar catalog.json:', e);
     DROPS = [];
   }
 
-  // Ocultar loading, mostrar welcome
+  // Ocultar loading
   document.getElementById('loading-state').style.display = 'none';
-  document.getElementById('welcome-msg').style.display = 'flex';
 
-  renderDrops();
-  setInterval(tick, 1000);
-
-  // Desktop: auto-select primer drop activo
-  if(window.innerWidth >= 900){
-    const first = DROPS.find(d => d.activo);
-    if(first) setTimeout(() => showPanel(first.id), 50);
-  }
+  renderDropCircles();
+  renderWelcomeContent();
 }
 
 init();
 
-// Exponer addToCart para los drops individuales
+// Exponer addToCart para drops individuales
 window.CC = {
-  addToCart(item){ cart.push(item); updateCartUI(); toggleCart(); }
+  addToCart(item) { cart.push(item); updateCartUI(); toggleCart(); }
 };
 </script>
 </body>
