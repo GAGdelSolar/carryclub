@@ -128,17 +128,21 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   border:2.5px solid var(--black);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
 }
-/* Nombre de la marca dentro del círculo */
+/* Nombre de la marca dentro del círculo — wrap en 2 líneas si es largo */
 .drop-story-marca{
   font-family:'Raleway',sans-serif;
-  font-size:7px;font-weight:400;letter-spacing:1px;
+  font-size:6.5px;font-weight:600;letter-spacing:.3px;
   color:var(--white);
-  line-height:1;
+  line-height:1.25;
   text-align:center;
-  max-width:50px;
+  max-width:48px;
+  word-break:break-word;
+  white-space:normal;
+  hyphens:none;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
   overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
 }
 
 /* Badge tiempo encima del círculo, esquina superior derecha */
@@ -634,16 +638,24 @@ function renderDropsBar(drops) {
     const numStr  = String(drop.num).padStart(3, '0');
     const dropUrl = drop.url || ('drops/drop' + numStr + '.html');
     const tLabel  = timeLabel(drop.deadline);
-    // Nombre corto: primera palabra si es largo, o toda la marca si es corta
-    const words = drop.marca.split(' ');
-    const marcaCircle = words[0].length <= 5 && words[1]
-      ? words[0] + ' ' + words[1]   // "TOMMY H." → "TOMMY H"
-      : words[0];                    // "COLUMBIA" → "COLUMBIA"
+
+    // Partir nombre en hasta 2 líneas dentro del círculo
+    // "TOMMY HILFIGER" → "TOMMY<br>HILFIGER"
+    // "COLUMBIA" → "COLUMBIA"
+    // "RALPH LAUREN POLO" → "RALPH<br>LAUREN"
+    const words = drop.marca.trim().split(/\s+/);
+    let marcaHTML;
+    if (words.length === 1) {
+      marcaHTML = words[0];
+    } else {
+      // línea 1 = primera palabra, línea 2 = segunda (resto se clampea en CSS)
+      marcaHTML = words[0] + '<br>' + words.slice(1).join(' ');
+    }
 
     return `<a class="drop-story" href="${dropUrl}">
       <div class="drop-story-ring">
         <div class="drop-story-inner">
-          <span class="drop-story-marca">${marcaCircle}</span>
+          <span class="drop-story-marca">${marcaHTML}</span>
         </div>
         ${tLabel ? '<span class="drop-story-time">' + tLabel + '</span>' : ''}
       </div>
