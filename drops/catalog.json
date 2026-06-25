@@ -15,6 +15,21 @@
     "creado": "2026-06-25T03:57:48.585Z"
   },
   {
+    "id": "drop111",
+    "num": 111,
+    "marca": "TOMMY HILFIGER",
+    "descripcion": "WOMEN'S SALE · USA",
+    "deadline": "2026-06-26T21:00:00.000-03:00",
+    "activo": true,
+    "wa": "5491130211626",
+    "url": "drops/drop111.html",
+    "imagen_url": "https://shoptommy.scene7.com/is/image/ShopTommy/78JA560_083_main",
+    "productos": 3,
+    "precio_desde": 61178,
+    "subdrops": [],
+    "creado": "2026-06-25T04:15:59.614Z"
+  },
+  {
     "id": "drop057",
     "num": 57,
     "marca": "TOMMY HILFIGER",
@@ -33,7 +48,7 @@
     "id": "drop007",
     "num": 7,
     "marca": "columbita",
-    "descripcion": "WOMEN'S SALE ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· USA",
+    "descripcion": "WOMEN'S SALE ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· USA",
     "deadline": "2026-08-22T21:00:00.000-03:00",
     "activo": true,
     "wa": "5491130211626",
