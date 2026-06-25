@@ -16,7 +16,11 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 
 /* ── NAVBAR ── */
 .navbar{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(8,8,8,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:1000}
-.nav-logo{font-family:'Cormorant',serif;font-size:20px;font-weight:300;letter-spacing:6px;color:var(--white);text-decoration:none;display:flex;align-items:baseline;gap:6px}
+.nav-logo{font-family:'Cormorant',serif;font-size:22px;font-weight:300;letter-spacing:7px;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:10px;cursor:pointer;transition:opacity .2s}
+.nav-logo:hover{opacity:.8}
+/* SVG logo pequeño en el navbar */
+.nav-logo-svg{width:26px;height:26px;flex-shrink:0;opacity:.9}
+.nav-logo-text{display:flex;align-items:baseline;gap:6px}
 .nav-club{font-size:7px;font-weight:200;letter-spacing:5px;background:linear-gradient(90deg,var(--cyan),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .nav-right{display:flex;align-items:center;gap:2px}
 .nav-btn{background:none;border:none;color:var(--gray);cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;transition:color .2s;position:relative}
@@ -100,35 +104,41 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:6px;
+  gap:5px;
   text-decoration:none;
   cursor:pointer;
   flex-shrink:0;
-  width:62px;
+  width:72px;
 }
 
 .drop-story-ring{
-  width:60px;height:60px;
+  width:62px;height:62px;
   border-radius:50%;
   padding:2.5px;
   background:linear-gradient(135deg,var(--rose),var(--cyan));
   transition:transform .2s,opacity .2s;
   position:relative;
 }
-.drop-story:hover .drop-story-ring{transform:scale(1.05);opacity:.9}
+.drop-story:hover .drop-story-ring{transform:scale(1.06);opacity:.9}
 
 .drop-story-inner{
   width:100%;height:100%;
   border-radius:50%;
   background:var(--black);
   border:2.5px solid var(--black);
-  display:flex;align-items:center;justify-content:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
 }
-.drop-story-num{
-  font-family:'Cormorant',serif;
-  font-size:19px;font-weight:300;
+/* Nombre de la marca dentro del círculo */
+.drop-story-marca{
+  font-family:'Raleway',sans-serif;
+  font-size:7px;font-weight:400;letter-spacing:1px;
   color:var(--white);
   line-height:1;
+  text-align:center;
+  max-width:50px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
 }
 
 /* Badge tiempo encima del círculo, esquina superior derecha */
@@ -147,18 +157,16 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   border:1.5px solid var(--black);
 }
 
+/* Número de drop debajo del círculo */
 .drop-story-label{
-  font-size:7px;
-  letter-spacing:1px;
-  color:var(--mgray);
+  font-size:6px;
+  letter-spacing:2px;
+  color:var(--lgray);
   text-align:center;
-  max-width:62px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
   font-family:'Raleway',sans-serif;
+  font-weight:300;
 }
-.drop-story:hover .drop-story-label{color:var(--white)}
+.drop-story:hover .drop-story-label{color:var(--cyan)}
 
 /* Estado cargando / sin drops */
 .drops-bar-loading{
@@ -176,19 +184,14 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   .main{flex:1;overflow-y:auto}
 }
 
-/* ── SIDEBAR — solo 3 institucionales ── */
+/* ── SIDEBAR — solo 3 institucionales, sin logo repetido ── */
 .sidebar{border-bottom:0.5px solid var(--border)}
-
-.sb-brand{padding:24px 20px 18px;border-bottom:0.5px solid var(--border)}
-.sb-logo{font-family:'Cormorant',serif;font-size:26px;font-weight:300;letter-spacing:10px;color:var(--white);line-height:1}
-.sb-club{font-size:7px;font-weight:200;letter-spacing:8px;background:linear-gradient(90deg,var(--cyan),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin:4px 0 3px}
-.sb-tagline{font-size:7px;letter-spacing:4px;color:var(--lgray);display:block}
 
 /* Institucionales: horizontal en mobile, vertical en desktop */
 .inst-list{
   display:flex;
   overflow-x:auto;
-  padding:12px 14px;
+  padding:16px 14px;
   gap:0;
   scrollbar-width:none;
 }
@@ -272,29 +275,69 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .loading-txt{font-size:7px;letter-spacing:4px;color:var(--lgray);margin-top:12px}
 
 /* ── Panel de bienvenida — grilla de drops ── */
-.welcome-drops{padding:28px 20px 60px;max-width:680px}
+.welcome-drops{padding:28px 20px 60px;max-width:700px}
 .wd-label{font-size:6px;letter-spacing:4px;color:var(--lgray);margin-bottom:18px}
 .wd-grid{display:flex;flex-direction:column;gap:1px}
 
 .wd-card{
-  display:block;text-decoration:none;
+  display:grid;
+  grid-template-columns:1fr;
+  text-decoration:none;
   background:#0d0d0d;
   border:0.5px solid var(--border);
   border-left:2px solid var(--rose);
-  padding:18px 20px;
+  overflow:hidden;
   transition:border-color .2s,background .2s;
+  position:relative;
+}
+/* En pantallas más anchas: imagen a la derecha */
+@media(min-width:560px){
+  .wd-card{grid-template-columns:1fr 140px}
+}
+@media(min-width:720px){
+  .wd-card{grid-template-columns:1fr 180px}
 }
 .wd-card:hover{background:#111;border-color:var(--cyan);border-left-color:var(--cyan)}
-.wd-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+
+.wd-card-body{padding:18px 20px;display:flex;flex-direction:column;justify-content:space-between;min-height:110px}
+.wd-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
 .wd-num{font-size:6px;letter-spacing:3px;color:var(--lgray)}
 .wd-status{font-size:6px;letter-spacing:2px;color:var(--rose);border:0.5px solid var(--rose);padding:2px 7px}
-.wd-marca{font-family:'Cormorant',serif;font-size:24px;font-weight:300;letter-spacing:2px;color:var(--white);margin-bottom:3px}
-.wd-desc{font-size:7px;letter-spacing:2px;color:var(--cyan);margin-bottom:14px}
+.wd-marca{font-family:'Cormorant',serif;font-size:26px;font-weight:300;letter-spacing:2px;color:var(--white);margin-bottom:2px}
+.wd-desc{font-size:7px;letter-spacing:2px;color:var(--cyan);margin-bottom:12px}
 .wd-footer{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
 .wd-precio{font-size:10px;color:var(--gray)}
 .wd-precio strong{font-size:13px;color:var(--white);font-weight:400}
 .wd-cta{font-size:7px;letter-spacing:2px;color:var(--rose)}
 .wd-card:hover .wd-cta{color:var(--cyan)}
+
+/* Imagen del producto — columna derecha */
+.wd-card-img{
+  display:none;
+  position:relative;
+  overflow:hidden;
+  background:#111;
+}
+@media(min-width:560px){.wd-card-img{display:block}}
+.wd-card-img img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:top center;
+  transition:transform .4s ease,opacity .3s;
+  opacity:.75;
+  filter:saturate(.8);
+}
+.wd-card:hover .wd-card-img img{transform:scale(1.04);opacity:.9;filter:saturate(1)}
+/* Fade lateral para que la imagen se integre suavemente con el texto */
+.wd-card-img::before{
+  content:'';
+  position:absolute;left:0;top:0;bottom:0;width:40px;
+  background:linear-gradient(to right,#0d0d0d,transparent);
+  z-index:1;
+}
+/* Si no hay imagen, no dejar el espacio vacío */
+.wd-card-img:empty,.wd-card-img.no-img{display:none!important}
 
 /* Sin drops */
 .welcome-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40vh;padding:40px;text-align:center;gap:14px}
@@ -329,7 +372,25 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a class="nav-logo" href="#">CARRY <span class="nav-club">CLUB</span></a>
+  <a class="nav-logo" href="/" onclick="goHome(event)">
+    <!-- Logo SVG carry club (avión en órbita) -->
+    <svg class="nav-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="38" fill="none" stroke="url(#ng)" stroke-width="1.2" opacity="0.7"/>
+      <defs>
+        <linearGradient id="ng" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#88C8D8"/>
+          <stop offset="100%" style="stop-color:#C86890"/>
+        </linearGradient>
+      </defs>
+      <!-- avión simplificado -->
+      <g transform="translate(62,30) rotate(-30)">
+        <polygon points="0,-5 12,0 0,5" fill="#EDE9E3" opacity="0.9"/>
+        <polygon points="0,-2 -6,-8 -4,-2" fill="#88C8D8" opacity="0.7"/>
+        <polygon points="0,2 -6,8 -4,2" fill="#C86890" opacity="0.7"/>
+      </g>
+    </svg>
+    <div class="nav-logo-text">CARRY <span class="nav-club">CLUB</span></div>
+  </a>
   <div class="nav-right">
     <button class="nav-btn" onclick="toggleCart()">
       <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
@@ -403,27 +464,38 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
      ════════════════════════════════════════════════ -->
 <div class="app">
 
-  <!-- SIDEBAR — solo 3 items institucionales -->
+  <!-- SIDEBAR — solo 3 items institucionales, sin logo repetido -->
   <div class="sidebar">
-    <div class="sb-brand">
-      <div class="sb-logo">CARRY</div>
-      <span class="sb-club">C &nbsp; L &nbsp; U &nbsp; B</span>
-      <span class="sb-tagline">M U C H O &nbsp; A N T E S .</span>
-    </div>
 
     <div class="inst-list" id="inst-list">
       <div class="inst-item" data-id="como-funciona" onclick="showPanel('como-funciona')">
-        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">?</span></div></div>
-        <div class="inst-desktop-info"><div class="idi-main">Cómo funciona</div><div class="idi-sub">SIEMPRE DISPONIBLE</div></div>
-        <span class="inst-mobile-label">Cómo funciona</span>
+        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">✦</span></div></div>
+        <div class="inst-desktop-info"><div class="idi-main">Cómo comprar</div><div class="idi-sub">SIMPLE Y TRANSPARENTE</div></div>
+        <span class="inst-mobile-label">Cómo comprar</span>
       </div>
       <div class="inst-item" data-id="encargos" onclick="showPanel('encargos')">
-        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">✦</span></div></div>
+        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">→</span></div></div>
         <div class="inst-desktop-info"><div class="idi-main">Encargos</div><div class="idi-sub">TRAEMOS LO QUE PEDÍS</div></div>
         <span class="inst-mobile-label">Encargos</span>
       </div>
       <div class="inst-item" data-id="quienes-somos" onclick="showPanel('quienes-somos')">
-        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">C</span></div></div>
+        <!-- Logo SVG Carry Club en el círculo -->
+        <div class="inst-ring"><div class="inst-ring-inner">
+          <svg width="28" height="28" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="38" fill="none" stroke="url(#sg)" stroke-width="1.5" opacity="0.8"/>
+            <defs>
+              <linearGradient id="sg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#88C8D8"/>
+                <stop offset="100%" style="stop-color:#C86890"/>
+              </linearGradient>
+            </defs>
+            <g transform="translate(62,30) rotate(-30)">
+              <polygon points="0,-5 12,0 0,5" fill="#EDE9E3" opacity="0.95"/>
+              <polygon points="0,-2 -6,-8 -4,-2" fill="#88C8D8" opacity="0.8"/>
+              <polygon points="0,2 -6,8 -4,2" fill="#C86890" opacity="0.8"/>
+            </g>
+          </svg>
+        </div></div>
         <div class="inst-desktop-info"><div class="idi-main">Quiénes somos</div><div class="idi-sub">CARRY CLUB</div></div>
         <span class="inst-mobile-label">Nosotros</span>
       </div>
@@ -559,19 +631,23 @@ function renderDropsBar(drops) {
   }
 
   inner.innerHTML = drops.map(drop => {
-    const numStr   = String(drop.num).padStart(3, '0');
-    const dropUrl  = drop.url || ('drops/drop' + numStr + '.html');
-    const tLabel   = timeLabel(drop.deadline);
-    const marcaShort = drop.marca.split(' ')[0]; // "TOMMY" de "TOMMY HILFIGER"
+    const numStr  = String(drop.num).padStart(3, '0');
+    const dropUrl = drop.url || ('drops/drop' + numStr + '.html');
+    const tLabel  = timeLabel(drop.deadline);
+    // Nombre corto: primera palabra si es largo, o toda la marca si es corta
+    const words = drop.marca.split(' ');
+    const marcaCircle = words[0].length <= 5 && words[1]
+      ? words[0] + ' ' + words[1]   // "TOMMY H." → "TOMMY H"
+      : words[0];                    // "COLUMBIA" → "COLUMBIA"
 
     return `<a class="drop-story" href="${dropUrl}">
       <div class="drop-story-ring">
         <div class="drop-story-inner">
-          <span class="drop-story-num">${numStr}</span>
+          <span class="drop-story-marca">${marcaCircle}</span>
         </div>
         ${tLabel ? '<span class="drop-story-time">' + tLabel + '</span>' : ''}
       </div>
-      <span class="drop-story-label">${marcaShort}</span>
+      <span class="drop-story-label">#${numStr}</span>
     </a>`;
   }).join('');
 }
@@ -602,17 +678,32 @@ function renderWelcome(drops) {
     const tLabel  = timeLabel(drop.deadline);
     const precio  = drop.precio_desde ? fmt(drop.precio_desde) : null;
 
+    // Intentar obtener imagen del primer producto si está en catalog
+    // Los drops publicados por la extensión pueden tener imagen_url en el catalog
+    const imgUrl  = drop.imagen_url || drop.img || null;
+    const imgHTML = imgUrl
+      ? `<div class="wd-card-img">
+           <img src="${imgUrl}" alt="${drop.marca}" loading="lazy"
+                onerror="this.parentElement.classList.add('no-img')">
+         </div>`
+      : `<div class="wd-card-img no-img"></div>`;
+
     return `<a class="wd-card" href="${dropUrl}">
-      <div class="wd-card-top">
-        <span class="wd-num">DROP #${numStr}</span>
-        ${tLabel ? '<span class="wd-status">CIERRA EN ' + tLabel + '</span>' : ''}
+      <div class="wd-card-body">
+        <div>
+          <div class="wd-card-top">
+            <span class="wd-num">DROP #${numStr}</span>
+            ${tLabel ? '<span class="wd-status">CIERRA EN ' + tLabel + '</span>' : ''}
+          </div>
+          <div class="wd-marca">${drop.marca}</div>
+          <div class="wd-desc">${drop.descripcion || ''}</div>
+        </div>
+        <div class="wd-footer">
+          <div class="wd-precio">${precio ? 'Desde <strong>' + precio + '</strong>' : ''}</div>
+          <span class="wd-cta">VER CATÁLOGO →</span>
+        </div>
       </div>
-      <div class="wd-marca">${drop.marca}</div>
-      <div class="wd-desc">${drop.descripcion || ''}</div>
-      <div class="wd-footer">
-        <div class="wd-precio">${precio ? 'Desde <strong>' + precio + '</strong>' : ''}</div>
-        <span class="wd-cta">VER CATÁLOGO →</span>
-      </div>
+      ${imgHTML}
     </a>`;
   }).join('');
 
@@ -686,6 +777,17 @@ function toggleCart() {
   document.getElementById('cart-dr').classList.toggle('open');
   document.getElementById('cart-ov').classList.toggle('open');
   updateCartUI();
+}
+
+// ── HOME ──────────────────────────────────────────────────
+function goHome(e) {
+  // Si ya estamos en el panel welcome, solo prevenir navegación
+  // Si estamos en un panel institucional, volver al welcome
+  e.preventDefault();
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.inst-item').forEach(c => c.classList.remove('active'));
+  document.getElementById('panel-welcome').classList.add('visible');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ── INIT ──────────────────────────────────────────────────
