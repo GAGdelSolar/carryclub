@@ -57,20 +57,6 @@
     "creado": "2026-06-15T11:56:37.341Z"
   },
   {
-    "id": "drop002",
-    "num": 2,
-    "marca": "TOMMY HILFIGER",
-    "descripcion": "FINAL SALE ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· USA",
-    "deadline": "2025-12-31T23:59:00-03:00",
-    "activo": true,
-    "wa": "5491130211626",
-    "url": "drops/drop002.html",
-    "productos": 9,
-    "precio_desde": 75900,
-    "subdrops": [],
-    "creado": "2025-01-01T00:00:00.000Z"
-  },
-  {
     "id": "drop001",
     "num": 1,
     "marca": "TOMMY HILFIGER",
