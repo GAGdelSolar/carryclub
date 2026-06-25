@@ -15,10 +15,25 @@
     "creado": "2026-06-25T03:57:48.585Z"
   },
   {
+    "id": "drop057",
+    "num": 57,
+    "marca": "TOMMY HILFIGER",
+    "descripcion": "unisex",
+    "deadline": "2026-06-26T21:00:00.000-03:00",
+    "activo": true,
+    "wa": "5491130211626",
+    "url": "drops/drop057.html",
+    "imagen_url": "https://shoptommy.scene7.com/is/image/ShopTommy/XW06028_YCF_main",
+    "productos": 3,
+    "precio_desde": 61178,
+    "subdrops": [],
+    "creado": "2026-06-25T04:13:48.779Z"
+  },
+  {
     "id": "drop007",
     "num": 7,
     "marca": "columbita",
-    "descripcion": "WOMEN'S SALE ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· USA",
+    "descripcion": "WOMEN'S SALE ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· USA",
     "deadline": "2026-08-22T21:00:00.000-03:00",
     "activo": true,
     "wa": "5491130211626",
