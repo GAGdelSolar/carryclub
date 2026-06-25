@@ -294,7 +294,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   transition:border-color .2s,background .2s;
   position:relative;
 }
-/* En pantallas más anchas: imagen a la derecha */
+/* Desktop: imagen a la derecha */
 @media(min-width:560px){
   .wd-card{grid-template-columns:1fr 140px}
 }
@@ -315,14 +315,19 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .wd-cta{font-size:7px;letter-spacing:2px;color:var(--rose)}
 .wd-card:hover .wd-cta{color:var(--cyan)}
 
-/* Imagen del producto — columna derecha */
+/* Imagen del producto */
 .wd-card-img{
-  display:none;
   position:relative;
   overflow:hidden;
   background:#111;
+  /* Mobile: imagen en fila abajo, altura fija */
+  height:140px;
+  display:block;
 }
-@media(min-width:560px){.wd-card-img{display:block}}
+@media(min-width:560px){
+  /* Desktop: columna derecha, altura auto */
+  .wd-card-img{height:auto;min-height:110px}
+}
 .wd-card-img img{
   position:absolute;inset:0;
   width:100%;height:100%;
@@ -333,15 +338,23 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   filter:saturate(.8);
 }
 .wd-card:hover .wd-card-img img{transform:scale(1.04);opacity:.9;filter:saturate(1)}
-/* Fade lateral para que la imagen se integre suavemente con el texto */
+/* Fade para integrar con el texto — en mobile es fade top, en desktop fade izquierda */
 .wd-card-img::before{
   content:'';
-  position:absolute;left:0;top:0;bottom:0;width:40px;
-  background:linear-gradient(to right,#0d0d0d,transparent);
-  z-index:1;
+  position:absolute;z-index:1;
+  /* mobile: fade desde arriba */
+  top:0;left:0;right:0;height:40px;
+  background:linear-gradient(to bottom,#0d0d0d,transparent);
 }
-/* Si no hay imagen, no dejar el espacio vacío */
-.wd-card-img:empty,.wd-card-img.no-img{display:none!important}
+@media(min-width:560px){
+  .wd-card-img::before{
+    /* desktop: fade desde la izquierda */
+    top:0;left:0;bottom:0;right:auto;
+    width:40px;height:auto;
+    background:linear-gradient(to right,#0d0d0d,transparent);
+  }
+}
+.wd-card-img.no-img{display:none!important}
 
 /* Sin drops */
 .welcome-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40vh;padding:40px;text-align:center;gap:14px}
