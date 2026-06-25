@@ -27,19 +27,5 @@
     "precio_desde": 246600,
     "subdrops": [],
     "creado": "2026-06-15T12:52:37.801Z"
-  },
-  {
-    "id": "drop006",
-    "num": 6,
-    "marca": "columbia",
-    "descripcion": "WOMEN'S SALE ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ· USA",
-    "deadline": "2026-06-18T21:00:00.000-03:00",
-    "activo": true,
-    "wa": "5491130211626",
-    "url": "drops/drop006.html",
-    "productos": 3,
-    "precio_desde": 234563,
-    "subdrops": [],
-    "creado": "2026-06-15T12:24:36.611Z"
   }
 ]
