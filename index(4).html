@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carry Club — Mucho antes.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;1,300&family=Raleway:wght@100;200;300;400&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --black:#080808;--white:#EDE9E3;--gray:#666;--lgray:#2a2a2a;--mgray:#3a3a3a;
+  --cyan:#88C8D8;--rose:#C86890;--border:#161616;--nav-h:52px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif;font-weight:300;overflow-x:hidden;padding-top:var(--nav-h)}
+
+/* ── NAVBAR ── */
+.navbar{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(8,8,8,0.97);backdrop-filter:blur(12px);border-bottom:0.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:1000}
+.nav-logo{font-family:'Cormorant',serif;font-size:20px;font-weight:300;letter-spacing:6px;color:var(--white);text-decoration:none;display:flex;align-items:baseline;gap:6px}
+.nav-club{font-size:7px;font-weight:200;letter-spacing:5px;background:linear-gradient(90deg,var(--cyan),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-right{display:flex;align-items:center;gap:2px}
+.nav-btn{background:none;border:none;color:var(--gray);cursor:pointer;padding:8px;display:flex;align-items:center;justify-content:center;transition:color .2s;position:relative}
+.nav-btn:hover{color:var(--white)}
+.nav-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cart-badge{position:absolute;top:3px;right:3px;background:var(--rose);color:#fff;font-size:7px;width:13px;height:13px;border-radius:50%;display:none;align-items:center;justify-content:center}
+.cart-badge.on{display:flex}
+
+/* ── MENU DRAWER ── */
+.overlay{position:fixed;inset:0;background:rgba(8,8,8,0.65);z-index:1100;opacity:0;pointer-events:none;transition:opacity .25s}
+.overlay.open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:280px;max-width:88vw;background:#0d0d0d;border-left:0.5px solid var(--border);z-index:1200;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid var(--border)}
+.drawer-title{font-size:7px;letter-spacing:4px;color:var(--lgray)}
+.drawer-close{background:none;border:none;color:var(--gray);cursor:pointer;font-size:22px;line-height:1;padding:2px}
+.menu-nav{flex:1;overflow-y:auto}
+.menu-item{display:block;width:100%;text-align:left;padding:14px 24px;font-size:10px;letter-spacing:3px;color:var(--gray);background:none;border:none;border-bottom:0.5px solid var(--border);font-family:'Raleway',sans-serif;font-weight:300;cursor:pointer;transition:color .2s;text-decoration:none}
+.menu-item:hover{color:var(--white)}
+.menu-footer{padding:20px 24px;border-top:0.5px solid var(--border);font-size:7px;letter-spacing:1px;color:var(--lgray)}
+
+/* ── CART DRAWER ── */
+.cart-drawer{position:fixed;top:0;right:0;bottom:0;width:340px;max-width:92vw;background:#0d0d0d;border-left:0.5px solid var(--border);z-index:1200;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column}
+.cart-drawer.open{transform:translateX(0)}
+.cart-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:0.5px solid var(--border)}
+.cart-head-title{font-size:8px;letter-spacing:4px;color:var(--white)}
+.cart-body{flex:1;overflow-y:auto;padding:16px 20px}
+.cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:180px;color:var(--lgray);text-align:center}
+.cart-empty-icon{font-family:'Cormorant',serif;font-size:40px;opacity:.15;margin-bottom:10px}
+.cart-empty-text{font-size:8px;letter-spacing:3px}
+.cart-item{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 0;border-bottom:0.5px solid var(--border);gap:10px}
+.ci-info{flex:1}
+.ci-drop{font-size:7px;letter-spacing:2px;color:var(--lgray);margin-bottom:3px}
+.ci-name{font-family:'Cormorant',serif;font-size:15px;color:var(--white);line-height:1.2;margin-bottom:3px}
+.ci-detail{font-size:9px;color:var(--cyan);margin-bottom:3px}
+.ci-price{font-size:12px;color:var(--white)}
+.ci-remove{background:none;border:none;color:var(--lgray);cursor:pointer;font-size:18px;padding:2px;transition:color .2s;flex-shrink:0}
+.ci-remove:hover{color:var(--rose)}
+.cart-foot{padding:16px 20px;border-top:0.5px solid var(--border)}
+.cart-total-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.ct-label{font-size:7px;letter-spacing:2px;color:var(--gray)}
+.ct-val{font-size:22px;font-weight:400;color:var(--white)}
+.ct-note{font-size:8px;color:var(--lgray);line-height:1.6;margin-bottom:14px}
+.ct-note em{color:var(--rose);font-style:normal}
+.btn-checkout{display:block;width:100%;padding:13px;border:0.5px solid var(--cyan);color:var(--cyan);background:transparent;font-size:8px;letter-spacing:4px;font-family:'Raleway',sans-serif;font-weight:300;cursor:pointer;transition:background .2s;margin-bottom:10px}
+.btn-checkout:hover{background:rgba(136,200,216,0.05)}
+.checkout-form{display:none;flex-direction:column;gap:10px}
+.checkout-form.visible{display:flex}
+.policy-box{background:#0a0a0a;border-left:2px solid var(--rose);padding:10px 12px;font-size:8px;color:var(--gray);line-height:1.6}
+.policy-box strong{color:var(--white);font-weight:400}
+.f-field{display:flex;flex-direction:column;gap:4px}
+.f-label{font-size:7px;letter-spacing:2px;color:var(--lgray)}
+.f-input{background:transparent;border:0.5px solid var(--lgray);color:var(--white);padding:10px 12px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:300;outline:none;transition:border-color .2s}
+.f-input:focus{border-color:var(--cyan)}
+.btn-send{width:100%;padding:13px;background:var(--cyan);border:none;color:var(--black);font-size:8px;letter-spacing:4px;font-family:'Raleway',sans-serif;font-weight:400;cursor:pointer}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DROPS STORIES BAR — fila tipo IG, full width
+   debajo del navbar, encima de todo el contenido
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.drops-bar{
+  width:100%;
+  background:#0a0a0a;
+  border-bottom:0.5px solid var(--border);
+  padding:12px 16px 14px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.drops-bar::-webkit-scrollbar{display:none}
+
+.drops-bar-inner{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  min-width:max-content;
+}
+
+/* Cada story de drop */
+.drop-story{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  text-decoration:none;
+  cursor:pointer;
+  flex-shrink:0;
+  width:62px;
+}
+
+.drop-story-ring{
+  width:60px;height:60px;
+  border-radius:50%;
+  padding:2.5px;
+  background:linear-gradient(135deg,var(--rose),var(--cyan));
+  transition:transform .2s,opacity .2s;
+  position:relative;
+}
+.drop-story:hover .drop-story-ring{transform:scale(1.05);opacity:.9}
+
+.drop-story-inner{
+  width:100%;height:100%;
+  border-radius:50%;
+  background:var(--black);
+  border:2.5px solid var(--black);
+  display:flex;align-items:center;justify-content:center;
+}
+.drop-story-num{
+  font-family:'Cormorant',serif;
+  font-size:19px;font-weight:300;
+  color:var(--white);
+  line-height:1;
+}
+
+/* Badge tiempo encima del círculo, esquina superior derecha */
+.drop-story-time{
+  position:absolute;
+  top:-2px;right:-2px;
+  background:var(--rose);
+  color:#fff;
+  font-size:6px;
+  letter-spacing:.5px;
+  padding:2px 5px;
+  border-radius:8px;
+  font-family:'Raleway',sans-serif;
+  font-weight:700;
+  white-space:nowrap;
+  border:1.5px solid var(--black);
+}
+
+.drop-story-label{
+  font-size:7px;
+  letter-spacing:1px;
+  color:var(--mgray);
+  text-align:center;
+  max-width:62px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  font-family:'Raleway',sans-serif;
+}
+.drop-story:hover .drop-story-label{color:var(--white)}
+
+/* Estado cargando / sin drops */
+.drops-bar-loading{
+  font-size:7px;letter-spacing:2px;color:var(--lgray);
+  padding:18px 4px;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   LAYOUT PRINCIPAL
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.app{display:block}
+@media(min-width:900px){
+  .app{display:flex;height:calc(100vh - var(--nav-h) - 88px);overflow:hidden}
+  .sidebar{width:260px;flex-shrink:0;height:100%;overflow-y:auto;border-right:0.5px solid var(--border);display:flex;flex-direction:column}
+  .main{flex:1;overflow-y:auto}
+}
+
+/* ── SIDEBAR — solo 3 institucionales ── */
+.sidebar{border-bottom:0.5px solid var(--border)}
+
+.sb-brand{padding:24px 20px 18px;border-bottom:0.5px solid var(--border)}
+.sb-logo{font-family:'Cormorant',serif;font-size:26px;font-weight:300;letter-spacing:10px;color:var(--white);line-height:1}
+.sb-club{font-size:7px;font-weight:200;letter-spacing:8px;background:linear-gradient(90deg,var(--cyan),var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;margin:4px 0 3px}
+.sb-tagline{font-size:7px;letter-spacing:4px;color:var(--lgray);display:block}
+
+/* Institucionales: horizontal en mobile, vertical en desktop */
+.inst-list{
+  display:flex;
+  overflow-x:auto;
+  padding:12px 14px;
+  gap:0;
+  scrollbar-width:none;
+}
+.inst-list::-webkit-scrollbar{display:none}
+
+@media(min-width:900px){
+  .inst-list{
+    flex-direction:column;
+    overflow-x:visible;
+    padding:8px 0;
+  }
+}
+
+.inst-item{
+  display:flex;flex-direction:column;align-items:center;
+  flex-shrink:0;padding:0 10px;
+  cursor:pointer;opacity:.5;transition:opacity .2s;
+}
+.inst-item:hover{opacity:.85}
+.inst-item.active{opacity:1}
+
+@media(min-width:900px){
+  .inst-item{
+    flex-direction:row;gap:12px;
+    padding:11px 16px;
+    border-left:1.5px solid transparent;
+  }
+  .inst-item.active{
+    opacity:1;
+    background:rgba(255,255,255,0.025);
+    border-left-color:var(--cyan);
+  }
+}
+
+.inst-ring{
+  width:50px;height:50px;border-radius:50%;padding:2px;
+  background:linear-gradient(135deg,var(--cyan),var(--rose));
+  flex-shrink:0;
+}
+.inst-ring-inner{
+  width:100%;height:100%;border-radius:50%;
+  background:var(--black);border:2px solid var(--black);
+  display:flex;align-items:center;justify-content:center;
+}
+.inst-icon{font-family:'Cormorant',serif;font-size:17px;font-weight:300;color:var(--white)}
+
+.inst-mobile-label{
+  font-size:6px;letter-spacing:1px;color:var(--mgray);
+  margin-top:5px;text-align:center;max-width:56px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.inst-item.active .inst-mobile-label{color:var(--cyan)}
+
+.inst-desktop-info{display:none}
+@media(min-width:900px){
+  .inst-desktop-info{display:block;flex:1;overflow:hidden;min-width:0}
+  .idi-main{font-family:'Cormorant',serif;font-size:14px;font-weight:300;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+  .idi-sub{font-size:6px;letter-spacing:2px;color:var(--lgray)}
+  .inst-item.active .idi-sub{color:var(--cyan)}
+  .inst-mobile-label{display:none}
+}
+
+.sb-footer{
+  margin-top:auto;padding:14px 20px;
+  border-top:0.5px solid var(--border);
+  font-size:7px;letter-spacing:1px;color:var(--lgray);
+  display:none;
+}
+@media(min-width:900px){.sb-footer{display:block}}
+
+/* ── MAIN ── */
+.main{background:var(--black);min-height:60vh}
+
+.panel{display:none;animation:fadeUp .2s ease}
+.panel.visible{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+.loading-state{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:50vh;padding:40px;text-align:center}
+.loading-sym{font-family:'Cormorant',serif;font-size:60px;font-weight:300;font-style:italic;opacity:.06;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:.04}50%{opacity:.1}}
+.loading-txt{font-size:7px;letter-spacing:4px;color:var(--lgray);margin-top:12px}
+
+/* ── Panel de bienvenida — grilla de drops ── */
+.welcome-drops{padding:28px 20px 60px;max-width:680px}
+.wd-label{font-size:6px;letter-spacing:4px;color:var(--lgray);margin-bottom:18px}
+.wd-grid{display:flex;flex-direction:column;gap:1px}
+
+.wd-card{
+  display:block;text-decoration:none;
+  background:#0d0d0d;
+  border:0.5px solid var(--border);
+  border-left:2px solid var(--rose);
+  padding:18px 20px;
+  transition:border-color .2s,background .2s;
+}
+.wd-card:hover{background:#111;border-color:var(--cyan);border-left-color:var(--cyan)}
+.wd-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.wd-num{font-size:6px;letter-spacing:3px;color:var(--lgray)}
+.wd-status{font-size:6px;letter-spacing:2px;color:var(--rose);border:0.5px solid var(--rose);padding:2px 7px}
+.wd-marca{font-family:'Cormorant',serif;font-size:24px;font-weight:300;letter-spacing:2px;color:var(--white);margin-bottom:3px}
+.wd-desc{font-size:7px;letter-spacing:2px;color:var(--cyan);margin-bottom:14px}
+.wd-footer{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+.wd-precio{font-size:10px;color:var(--gray)}
+.wd-precio strong{font-size:13px;color:var(--white);font-weight:400}
+.wd-cta{font-size:7px;letter-spacing:2px;color:var(--rose)}
+.wd-card:hover .wd-cta{color:var(--cyan)}
+
+/* Sin drops */
+.welcome-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:40vh;padding:40px;text-align:center;gap:14px}
+.welcome-empty-sym{font-family:'Cormorant',serif;font-size:64px;opacity:.06}
+.welcome-empty-txt{font-size:8px;letter-spacing:3px;color:var(--lgray)}
+
+/* ── Institucional ── */
+.inst-content{padding:32px 24px 60px;max-width:600px;margin:0 auto}
+.inst-title{font-family:'Cormorant',serif;font-size:clamp(26px,5vw,38px);font-weight:300;letter-spacing:3px;margin-bottom:6px}
+.inst-sub{font-size:8px;letter-spacing:3px;color:var(--cyan);margin-bottom:32px}
+.inst-block{margin-bottom:28px}
+.inst-block-label{font-size:7px;letter-spacing:3px;color:var(--lgray);padding-bottom:8px;border-bottom:0.5px solid var(--border);margin-bottom:12px}
+.inst-text{font-size:13px;color:var(--gray);line-height:1.9;letter-spacing:.3px}
+.inst-text strong{color:var(--white);font-weight:400}
+.inst-steps{display:flex;flex-direction:column;gap:14px;margin-top:10px}
+.inst-step{display:flex;align-items:flex-start;gap:14px}
+.inst-step-num{font-family:'Cormorant',serif;font-size:30px;color:var(--lgray);flex-shrink:0;width:32px;line-height:1}
+.inst-step-txt{font-size:12px;color:var(--gray);line-height:1.7;padding-top:4px}
+.inst-step-txt strong{color:var(--white);font-weight:400}
+.btn-primary{display:block;text-align:center;padding:13px;border:0.5px solid var(--cyan);color:var(--cyan);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
+.btn-primary:hover{background:rgba(136,200,216,0.05)}
+.btn-wa{display:block;text-align:center;padding:13px;border:0.5px solid var(--rose);color:var(--rose);font-size:8px;letter-spacing:4px;text-decoration:none;font-family:'Raleway',sans-serif;font-weight:300;transition:background .2s}
+.btn-wa:hover{background:rgba(200,104,144,0.05)}
+
+/* ── WA FAB ── */
+.wa-fab{position:fixed;bottom:22px;right:18px;z-index:900;width:46px;height:46px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(200,104,144,.3);text-decoration:none;transition:transform .2s}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:21px;height:21px;fill:white}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a class="nav-logo" href="#">CARRY <span class="nav-club">CLUB</span></a>
+  <div class="nav-right">
+    <button class="nav-btn" onclick="toggleCart()">
+      <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-badge" id="cart-badge">0</span>
+    </button>
+    <a class="nav-btn" href="https://wa.me/5491130211626" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    </a>
+    <button class="nav-btn" onclick="toggleMenu()">
+      <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MENU DRAWER -->
+<div class="overlay" id="menu-ov" onclick="toggleMenu()"></div>
+<div class="drawer" id="menu-dr">
+  <div class="drawer-head">
+    <span class="drawer-title">MENÚ</span>
+    <button class="drawer-close" onclick="toggleMenu()">×</button>
+  </div>
+  <div class="menu-nav">
+    <button class="menu-item" onclick="showPanel('como-funciona');toggleMenu()">CÓMO FUNCIONA</button>
+    <button class="menu-item" onclick="showPanel('encargos');toggleMenu()">ENCARGOS</button>
+    <button class="menu-item" onclick="showPanel('quienes-somos');toggleMenu()">QUIÉNES SOMOS</button>
+    <a class="menu-item" href="https://wa.me/5491130211626" target="_blank">CONTACTO VÍA WHATSAPP</a>
+    <a class="menu-item" href="https://instagram.com/carryclub.ar" target="_blank">@carryclub.ar EN INSTAGRAM</a>
+  </div>
+  <div class="menu-footer">@carryclub.ar · USA → ARGENTINA<br>Importado · Curado · Tuyo · Mucho antes.</div>
+</div>
+
+<!-- CARRITO -->
+<div class="overlay" id="cart-ov" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cart-dr">
+  <div class="cart-head">
+    <span class="cart-head-title">MI PEDIDO</span>
+    <button class="nav-btn" onclick="toggleCart()">
+      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="cart-body" id="cart-body"></div>
+  <div class="cart-foot" id="cart-foot" style="display:none">
+    <div class="cart-total-row">
+      <span class="ct-label">SEÑA (50%)</span>
+      <span class="ct-val" id="cart-total">$0</span>
+    </div>
+    <div class="ct-note">Saldo contra entrega. <em>Si el producto no está disponible al comprar en USA, la seña se devuelve en 48hs.</em></div>
+    <button class="btn-checkout" id="btn-checkout" onclick="mostrarForm()">CONFIRMAR Y SEÑAR</button>
+    <div class="checkout-form" id="checkout-form">
+      <div class="policy-box"><strong>Política de devolución:</strong> Si al comprar en USA el producto no está disponible, la seña se devuelve al 100% en 48hs. Sin preguntas.</div>
+      <div class="f-field"><label class="f-label">NOMBRE</label><input class="f-input" id="f-nombre" placeholder="Tu nombre completo"></div>
+      <div class="f-field"><label class="f-label">WHATSAPP</label><input class="f-input" id="f-tel" placeholder="+54 9 11..."></div>
+      <div class="f-field"><label class="f-label">EMAIL</label><input class="f-input" id="f-email" type="email" placeholder="tu@email.com"></div>
+      <button class="btn-send" onclick="confirmar()">ENVIAR PEDIDO</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     BARRA DE DROPS (tipo stories IG) — full width
+     debajo del navbar, encima de todo
+     ════════════════════════════════════════════════ -->
+<div class="drops-bar" id="drops-bar">
+  <div class="drops-bar-inner" id="drops-bar-inner">
+    <span class="drops-bar-loading">Cargando drops…</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     APP = sidebar institucional + main content
+     ════════════════════════════════════════════════ -->
+<div class="app">
+
+  <!-- SIDEBAR — solo 3 items institucionales -->
+  <div class="sidebar">
+    <div class="sb-brand">
+      <div class="sb-logo">CARRY</div>
+      <span class="sb-club">C &nbsp; L &nbsp; U &nbsp; B</span>
+      <span class="sb-tagline">M U C H O &nbsp; A N T E S .</span>
+    </div>
+
+    <div class="inst-list" id="inst-list">
+      <div class="inst-item" data-id="como-funciona" onclick="showPanel('como-funciona')">
+        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">?</span></div></div>
+        <div class="inst-desktop-info"><div class="idi-main">Cómo funciona</div><div class="idi-sub">SIEMPRE DISPONIBLE</div></div>
+        <span class="inst-mobile-label">Cómo funciona</span>
+      </div>
+      <div class="inst-item" data-id="encargos" onclick="showPanel('encargos')">
+        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">✦</span></div></div>
+        <div class="inst-desktop-info"><div class="idi-main">Encargos</div><div class="idi-sub">TRAEMOS LO QUE PEDÍS</div></div>
+        <span class="inst-mobile-label">Encargos</span>
+      </div>
+      <div class="inst-item" data-id="quienes-somos" onclick="showPanel('quienes-somos')">
+        <div class="inst-ring"><div class="inst-ring-inner"><span class="inst-icon">C</span></div></div>
+        <div class="inst-desktop-info"><div class="idi-main">Quiénes somos</div><div class="idi-sub">CARRY CLUB</div></div>
+        <span class="inst-mobile-label">Nosotros</span>
+      </div>
+    </div>
+
+    <div class="sb-footer">@carryclub.ar · USA → ARGENTINA<br>Importado · Curado · Tuyo</div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main" id="main">
+
+    <!-- Panel bienvenida / drops -->
+    <div class="panel visible" id="panel-welcome">
+      <div id="welcome-loading" class="loading-state">
+        <div class="loading-sym">C</div>
+        <div class="loading-txt">CARGANDO DROPS…</div>
+      </div>
+      <div id="welcome-content" style="display:none"></div>
+    </div>
+
+    <!-- Cómo funciona -->
+    <div class="panel" id="panel-como-funciona">
+      <div class="inst-content">
+        <div class="inst-title">CÓMO FUNCIONA</div>
+        <div class="inst-sub">SIMPLE · TRANSPARENTE · SIN COMPLICACIONES</div>
+        <div class="inst-steps">
+          <div class="inst-step"><div class="inst-step-num">01</div><div class="inst-step-txt">Abrimos un <strong>drop por tiempo limitado</strong> con productos seleccionados de una marca internacional.</div></div>
+          <div class="inst-step"><div class="inst-step-num">02</div><div class="inst-step-txt">Elegís el producto, el talle y el color. <strong>Señás el 50%</strong> para reservarlo.</div></div>
+          <div class="inst-step"><div class="inst-step-num">03</div><div class="inst-step-txt"><strong>Compramos directamente</strong> en la tienda oficial en Estados Unidos.</div></div>
+          <div class="inst-step"><div class="inst-step-num">04</div><div class="inst-step-txt">Nos ocupamos de <strong>toda la logística</strong>: envío, aduana y gestión.</div></div>
+          <div class="inst-step"><div class="inst-step-num">05</div><div class="inst-step-txt"><strong>Retirás en CABA</strong> o te enviamos a cualquier punto del país.</div></div>
+        </div>
+        <div class="inst-block" style="margin-top:32px">
+          <div class="inst-block-label">POLÍTICA DE DEVOLUCIÓN</div>
+          <div class="inst-text">Si al momento de comprar en USA el producto no estuviera disponible en el talle o color reservado, <strong>la seña se devuelve al 100% dentro de las 48hs</strong>. Sin preguntas.</div>
+        </div>
+        <div class="inst-block">
+          <div class="inst-block-label">ENTREGA</div>
+          <div class="inst-text"><strong>10 a 15 días</strong> desde el cierre del drop. Fecha estimada sujeta a confirmación.</div>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5491130211626?text=Hola!%20Tengo%20una%20consulta%20sobre%20c%C3%B3mo%20funciona%20Carry%20Club" target="_blank" style="margin-top:8px">CONSULTAR POR WHATSAPP</a>
+      </div>
+    </div>
+
+    <!-- Encargos -->
+    <div class="panel" id="panel-encargos">
+      <div class="inst-content">
+        <div class="inst-title">ENCARGOS</div>
+        <div class="inst-sub">TRAEMOS LO QUE PEDÍS</div>
+        <div class="inst-block">
+          <div class="inst-block-label">QUE ES</div>
+          <div class="inst-text">Si hay un producto que querés de Estados Unidos y no está en nuestros drops, lo traemos por encargo. Nos pasás el link, te cotizamos el precio final con todos los costos incluidos, y si te cierra lo compramos y te lo traemos.</div>
+        </div>
+        <div class="inst-block">
+          <div class="inst-block-label">CÓMO FUNCIONA</div>
+          <div class="inst-steps">
+            <div class="inst-step"><div class="inst-step-num">01</div><div class="inst-step-txt">Nos pasás el <strong>link del producto</strong> que querés.</div></div>
+            <div class="inst-step"><div class="inst-step-num">02</div><div class="inst-step-txt">Te cotizamos el <strong>precio final en pesos</strong> con todo incluido.</div></div>
+            <div class="inst-step"><div class="inst-step-num">03</div><div class="inst-step-txt">Confirmás y <strong>señás el 50%</strong>.</div></div>
+            <div class="inst-step"><div class="inst-step-num">04</div><div class="inst-step-txt">Lo traemos y te lo entregamos. <strong>Saldo contra entrega.</strong></div></div>
+          </div>
+        </div>
+        <a class="btn-wa" href="https://wa.me/5491130211626?text=Hola!%20Quiero%20hacer%20un%20encargo%20de%20un%20producto%20de%20USA" target="_blank">HACER UN ENCARGO</a>
+      </div>
+    </div>
+
+    <!-- Quiénes somos -->
+    <div class="panel" id="panel-quienes-somos">
+      <div class="inst-content">
+        <div class="inst-title">CARRY CLUB</div>
+        <div class="inst-sub">MUCHO ANTES.</div>
+        <div class="inst-block">
+          <div class="inst-text" style="font-size:14px;line-height:2">
+            Acceso a oportunidades de compra internacionales.<br><br>
+            Seleccionamos productos de marcas globales y abrimos ventanas de compra limitadas para que puedas acceder a precios competitivos sin ocuparte de la compra, la logística o la gestión.<br><br>
+            <strong>No somos una tienda.</strong><br>
+            <strong>No somos una importadora tradicional.</strong><br><br>
+            Somos una forma más simple de acceder a oportunidades que normalmente no llegan hasta acá.<br><br>
+            <em style="font-family:'Cormorant',serif;font-size:20px;color:var(--cyan)">Mucho antes.</em>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+          <a class="btn-primary" href="https://wa.me/5491130211626" target="_blank">CONTACTANOS POR WHATSAPP</a>
+          <a class="btn-wa" href="https://instagram.com/carryclub.ar" target="_blank">@CARRYCLUB.AR EN INSTAGRAM</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /app -->
+
+<!-- WA FAB -->
+<a class="wa-fab" href="https://wa.me/5491130211626?text=Hola!%20Quiero%20info%20sobre%20Carry%20Club" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const WA_NUMBER   = '5491130211626';
+const CATALOG_URL = 'https://raw.githubusercontent.com/GAGdelSolar/carryclub/main/drops/catalog.json';
+const fmt = n => '$' + Math.round(n).toLocaleString('es-AR');
+
+function dropIsActive(d) {
+  return d.activo && new Date(d.deadline) > new Date();
+}
+
+function timeLabel(deadline) {
+  const diff = new Date(deadline) - new Date();
+  if (diff <= 0) return null;
+  const days  = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  if (days > 1)  return days + 'd';
+  if (days === 1) return '1d ' + hours + 'h';
+  if (hours > 0) return hours + 'h';
+  return '<1h';
+}
+
+// ── CARGAR CATALOG ─────────────────────────────────────────
+let DROPS = [];
+
+async function loadCatalog() {
+  const r = await fetch(CATALOG_URL + '?t=' + Date.now(), { cache: 'no-store' });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  return r.json();
+}
+
+// ── RENDER STORIES BAR ────────────────────────────────────
+function renderDropsBar(drops) {
+  const inner = document.getElementById('drops-bar-inner');
+
+  if (!drops.length) {
+    inner.innerHTML = '<span class="drops-bar-loading" style="color:var(--lgray)">Próximamente nuevos drops · Seguinos en <a href="https://instagram.com/carryclub.ar" style="color:var(--cyan);text-decoration:none">@carryclub.ar</a></span>';
+    return;
+  }
+
+  inner.innerHTML = drops.map(drop => {
+    const numStr   = String(drop.num).padStart(3, '0');
+    const dropUrl  = drop.url || ('drops/drop' + numStr + '.html');
+    const tLabel   = timeLabel(drop.deadline);
+    const marcaShort = drop.marca.split(' ')[0]; // "TOMMY" de "TOMMY HILFIGER"
+
+    return `<a class="drop-story" href="${dropUrl}">
+      <div class="drop-story-ring">
+        <div class="drop-story-inner">
+          <span class="drop-story-num">${numStr}</span>
+        </div>
+        ${tLabel ? '<span class="drop-story-time">' + tLabel + '</span>' : ''}
+      </div>
+      <span class="drop-story-label">${marcaShort}</span>
+    </a>`;
+  }).join('');
+}
+
+// ── RENDER PANEL BIENVENIDA ───────────────────────────────
+function renderWelcome(drops) {
+  const loading = document.getElementById('welcome-loading');
+  const content = document.getElementById('welcome-content');
+
+  loading.style.display = 'none';
+  content.style.display = 'block';
+
+  if (!drops.length) {
+    content.innerHTML = `
+      <div class="welcome-empty">
+        <div class="welcome-empty-sym">C</div>
+        <div class="welcome-empty-txt">PRÓXIMAMENTE NUEVOS DROPS</div>
+        <div style="font-size:10px;color:var(--gray);line-height:2;margin-top:8px">
+          Seguinos en <a href="https://instagram.com/carryclub.ar" style="color:var(--cyan);text-decoration:none">@carryclub.ar</a> para enterarte primero
+        </div>
+      </div>`;
+    return;
+  }
+
+  const cardsHTML = drops.map(drop => {
+    const numStr  = String(drop.num).padStart(3, '0');
+    const dropUrl = drop.url || ('drops/drop' + numStr + '.html');
+    const tLabel  = timeLabel(drop.deadline);
+    const precio  = drop.precio_desde ? fmt(drop.precio_desde) : null;
+
+    return `<a class="wd-card" href="${dropUrl}">
+      <div class="wd-card-top">
+        <span class="wd-num">DROP #${numStr}</span>
+        ${tLabel ? '<span class="wd-status">CIERRA EN ' + tLabel + '</span>' : ''}
+      </div>
+      <div class="wd-marca">${drop.marca}</div>
+      <div class="wd-desc">${drop.descripcion || ''}</div>
+      <div class="wd-footer">
+        <div class="wd-precio">${precio ? 'Desde <strong>' + precio + '</strong>' : ''}</div>
+        <span class="wd-cta">VER CATÁLOGO →</span>
+      </div>
+    </a>`;
+  }).join('');
+
+  content.innerHTML = `
+    <div class="welcome-drops">
+      <div class="wd-label">DROPS ABIERTOS</div>
+      <div class="wd-grid">${cardsHTML}</div>
+      <div style="margin-top:24px;font-size:8px;letter-spacing:2px;color:var(--lgray);line-height:2">
+        ¿Buscás algo específico?
+        <a href="https://wa.me/${WA_NUMBER}?text=Hola!%20Quiero%20hacer%20un%20encargo" style="color:var(--cyan);text-decoration:none"> ENCARGOS →</a>
+      </div>
+    </div>`;
+}
+
+// ── NAVEGACIÓN paneles info ────────────────────────────────
+function showPanel(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('visible'));
+  document.querySelectorAll('.inst-item').forEach(c => c.classList.remove('active'));
+  const panel  = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('visible');
+  const item   = document.querySelector('.inst-item[data-id="' + id + '"]');
+  if (item) item.classList.add('active');
+  if (window.innerWidth < 900) document.getElementById('main').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ── CARRITO ───────────────────────────────────────────────
+let cart = [];
+function updateCartUI() {
+  const badge = document.getElementById('cart-badge');
+  const body  = document.getElementById('cart-body');
+  const foot  = document.getElementById('cart-foot');
+  const total = document.getElementById('cart-total');
+  badge.textContent = cart.length;
+  badge.classList.toggle('on', cart.length > 0);
+  if (!cart.length) {
+    body.innerHTML = '<div class="cart-empty"><div class="cart-empty-icon">○</div><div class="cart-empty-text">SIN PRODUCTOS</div></div>';
+    foot.style.display = 'none'; return;
+  }
+  foot.style.display = 'block';
+  body.innerHTML = cart.map((item, i) => `
+    <div class="cart-item">
+      <div class="ci-info">
+        <div class="ci-drop">DROP #${item.drop} · ${item.marca}</div>
+        <div class="ci-name">${item.nombre}</div>
+        <div class="ci-detail">${item.talle}${item.color ? ' · ' + item.color : ''}</div>
+        <div class="ci-price">${fmt(item.precio)}</div>
+      </div>
+      <button class="ci-remove" onclick="removeItem(${i})">×</button>
+    </div>`).join('');
+  total.textContent = fmt(cart.reduce((s, i) => s + i.precio, 0) * 0.5);
+}
+function removeItem(i) { cart.splice(i, 1); updateCartUI(); }
+function mostrarForm() {
+  document.getElementById('btn-checkout').style.display = 'none';
+  document.getElementById('checkout-form').classList.add('visible');
+}
+function confirmar() {
+  const nombre = document.getElementById('f-nombre').value.trim();
+  const tel    = document.getElementById('f-tel').value.trim();
+  const email  = document.getElementById('f-email').value.trim();
+  if (!nombre || !tel || !email) { alert('Completá todos los campos.'); return; }
+  const sum   = cart.reduce((s, i) => s + i.precio, 0);
+  const items = cart.map(i => '• ' + i.nombre + ' | Talle: ' + i.talle + (i.color ? ' | Color: ' + i.color : '') + ' — ' + fmt(i.precio)).join('%0A');
+  window.open('https://wa.me/' + WA_NUMBER + '?text=Hola!%20Quiero%20confirmar%20mi%20pedido%20en%20Carry%20Club.%0A%0ANombre:%20' + nombre + '%0ATel:%20' + tel + '%0AEmail:%20' + email + '%0A%0AProductos:%0A' + items + '%0A%0ASeña%20(50%25):%20' + fmt(sum * 0.5), '_blank');
+}
+function toggleMenu() {
+  document.getElementById('menu-dr').classList.toggle('open');
+  document.getElementById('menu-ov').classList.toggle('open');
+}
+function toggleCart() {
+  document.getElementById('cart-dr').classList.toggle('open');
+  document.getElementById('cart-ov').classList.toggle('open');
+  updateCartUI();
+}
+
+// ── INIT ──────────────────────────────────────────────────
+async function init() {
+  updateCartUI();
+  try {
+    const all = await loadCatalog();
+    DROPS = all.filter(dropIsActive).sort((a, b) => (b.num || 0) - (a.num || 0));
+  } catch(e) {
+    console.warn('catalog.json no disponible:', e);
+    DROPS = [];
+  }
+  renderDropsBar(DROPS);
+  renderWelcome(DROPS);
+}
+init();
+
+window.CC = { addToCart(item) { cart.push(item); updateCartUI(); toggleCart(); } };
+</script>
+</body>
+</html>
