@@ -1,26 +1,27 @@
 # ── Carry Club · netlify.toml ────────────────────────────────────────────────
 
-# Fuerza headers correctos para todos los HTML
+[build]
+  functions = "netlify/functions"
+
+# HTML con charset correcto
 [[headers]]
   for = "/*.html"
   [headers.values]
     Content-Type = "text/html; charset=utf-8"
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
 
 [[headers]]
   for = "/drops/*.html"
   [headers.values]
     Content-Type = "text/html; charset=utf-8"
 
-# catalog.json: sin caché agresiva para que los cambios se vean rápido
+# catalog.json sin caché para que los cambios se vean rápido
 [[headers]]
   for = "/drops/catalog.json"
   [headers.values]
     Cache-Control = "no-cache, no-store, must-revalidate"
-    Content-Type = "application/json; charset=utf-8"
+    Content-Type  = "application/json; charset=utf-8"
 
-# JS y CSS: caché larga
+# JS: caché larga
 [[headers]]
   for = "/*.js"
   [headers.values]
