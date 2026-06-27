@@ -3,7 +3,7 @@
     "id": "drop016",
     "num": 16,
     "marca": "TOMMY HILFIGER",
-    "descripcion": "WOMEN'S SALE · USA",
+    "descripcion": "WOMEN'S SALE Â· USA",
     "deadline": "2026-06-27T21:00:00.000-03:00",
     "activo": true,
     "wa": "5491130211626",
@@ -13,5 +13,20 @@
     "precio_desde": 63585,
     "subdrops": [],
     "creado": "2026-06-27T13:34:33.275Z"
+  },
+  {
+    "id": "drop001",
+    "num": 1,
+    "marca": "TOMMY HILFIGER",
+    "descripcion": "WOMEN'S SALE · USA",
+    "deadline": "2026-06-27T23:00:00.000-03:00",
+    "activo": true,
+    "wa": "5491130211626",
+    "url": "drops/drop001.html",
+    "imagen_url": null,
+    "productos": 3,
+    "precio_desde": 61178,
+    "subdrops": [],
+    "creado": "2026-06-27T22:57:43.936Z"
   }
 ]
