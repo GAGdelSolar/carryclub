@@ -118,7 +118,32 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 .f-label{font-size:7px;letter-spacing:2px;color:var(--lgray)}
 .f-input{background:transparent;border:0.5px solid var(--lgray);color:var(--white);padding:10px 12px;font-family:'Raleway',sans-serif;font-size:12px;font-weight:300;outline:none;transition:border-color .2s}
 .f-input:focus{border-color:var(--cyan)}
-.btn-send{width:100%;padding:13px;background:var(--cyan);border:none;color:var(--black);font-size:8px;letter-spacing:4px;font-family:'Raleway',sans-serif;font-weight:400;cursor:pointer}
+.btn-send{width:100%;padding:13px;background:var(--cyan);border:none;color:var(--black);font-size:8px;letter-spacing:4px;font-family:'Raleway',sans-serif;font-weight:700;cursor:pointer;transition:opacity .2s}
+.btn-send:disabled{opacity:.35;cursor:default}
+.btn-mp{background:var(--rose);color:#fff}
+/* Pago btn mejorado */
+.pago-btn{flex:1;padding:10px 6px;border:0.5px solid var(--lgray);background:transparent;color:var(--gray);font-size:7px;letter-spacing:1px;font-family:'Raleway',sans-serif;cursor:pointer;transition:all .2s;text-align:center;line-height:1.8}
+.pago-btn.on{border-color:var(--cyan);color:var(--cyan);background:rgba(136,200,216,0.04)}
+.pago-icon{display:block;font-size:16px;margin-bottom:3px}
+.pago-sub{font-size:6px;letter-spacing:.5px;opacity:.8}
+/* CBU box */
+.cbu-box{background:#0a0a0a;border:0.5px solid var(--lgray);padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.cbu-label{font-size:6px;letter-spacing:3px;color:var(--lgray);margin-bottom:2px}
+.cbu-row{display:flex;align-items:center;gap:8px}
+.cbu-k{font-size:7px;letter-spacing:1px;color:var(--lgray);width:44px;flex-shrink:0}
+.cbu-v{font-size:11px;color:var(--white);font-family:monospace;letter-spacing:.5px;flex:1}
+.cbu-copy{background:none;border:0.5px solid var(--lgray);color:var(--lgray);font-size:7px;padding:2px 7px;cursor:pointer;font-family:'Raleway',sans-serif;transition:all .2s}
+.cbu-copy:hover{border-color:var(--cyan);color:var(--cyan)}
+.cbu-monto{font-size:13px;color:var(--cyan);margin-top:4px;font-weight:400;letter-spacing:.5px}
+/* Checkbox */
+.check-label{display:flex;align-items:flex-start;gap:10px;cursor:pointer;padding:10px 0}
+.check-box{width:16px;height:16px;border:0.5px solid var(--lgray);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+input[type=checkbox]{display:none}
+input[type=checkbox]:checked + .check-box{background:var(--cyan);border-color:var(--cyan)}
+input[type=checkbox]:checked + .check-box::after{content:'✓';font-size:9px;color:#000;font-weight:700}
+.check-txt{font-size:10px;color:var(--gray);line-height:1.5}
+/* MP info */
+.mp-info{font-size:9px;color:var(--lgray);line-height:1.7;padding:8px 0}
 .wa-fab{position:fixed;bottom:22px;right:18px;z-index:900;width:46px;height:46px;border-radius:50%;background:var(--rose);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(200,104,144,.3);text-decoration:none;transition:transform .2s}
 .wa-fab:hover{transform:scale(1.08)}
 .wa-fab svg{width:21px;height:21px;fill:white}
@@ -146,11 +171,11 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
     <div>
       <div class="hero-num">DROP #16</div>
       <div class="hero-brand">TOMMY HILFIGER</div>
-      <div class="hero-sub">pichicata</div>
+      <div class="hero-sub">WOMEN'S SALE · USA</div>
     </div>
     <div class="hero-right">
       <div class="hero-deadline-label">CIERRE</div>
-      <div class="hero-deadline">25/06 · 18:00</div>
+      <div class="hero-deadline">27/06 · 18:00</div>
       <div class="hero-stock">Stock sujeto a disponibilidad</div>
     </div>
   </div>
@@ -164,46 +189,46 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
 
 <div class="filters">
     <button class="filter-btn on" onclick="filtrar('TODOS',this)">TODOS (3)</button>
-    <button class="filter-btn" onclick="filtrar('Campera / Jacket',this)">Campera / Jacket</button><button class="filter-btn" onclick="filtrar('Remera / T-Shirt / Sweater',this)">Remera / T-Shirt / Sweater</button></div>
+    <button class="filter-btn" onclick="filtrar('Remera / T-Shirt / Sweater',this)">Remera / T-Shirt / Sweater</button><button class="filter-btn" onclick="filtrar('Campera / Jacket',this)">Campera / Jacket</button></div>
 
 <div class="products-section">
   <div class="products-label">3 PRODUCTOS SELECCIONADOS</div>
   <div class="products-grid">
-    <div class="prod-card" id="card-p01" data-cat="Campera / Jacket">
+    <div class="prod-card" id="card-p01" data-cat="Remera / T-Shirt / Sweater">
       <div class="prod-img-wrap">
-        <img src="https://shoptommy.scene7.com/is/image/ShopTommy/XW06091_DW5_main" alt="Hooded Puffer Coat"
+        <img src="https://shoptommy.scene7.com/is/image/ShopTommy/78JA560_083_main" alt="Everyday T-Shirt"
           onerror="this.style.opacity='0.1'">
-        <div class="prod-cat-badge">Campera / Jacket</div>
+        <div class="prod-cat-badge">Remera / T-Shirt / Sweater</div>
       </div>
       <div class="prod-body">
-        <div class="prod-name">Hooded Puffer Coat</div>
+        <div class="prod-name">Everyday T-Shirt</div>
         <div class="price-block">
-          <div class="price-main">$256.230</div>
+          <div class="price-main">$63.585</div>
           <div class="price-options">
             <div class="price-opt">
               <span class="price-opt-label">TRANSFERENCIA</span>
               <span class="price-opt-val">50% seña · 50% al retirar</span>
-              <span class="price-opt-num">Seña: <strong>$128.115</strong></span>
+              <span class="price-opt-num">Seña: <strong>$31.793</strong></span>
             </div>
             <div class="price-divider">·</div>
             <div class="price-opt">
               <span class="price-opt-label">3 CUOTAS</span>
               <span class="price-opt-val">Con recargo 25%</span>
-              <span class="price-opt-num"><strong>$106.763</strong> x 3</span>
+              <span class="price-opt-num"><strong>$26.494</strong> x 3</span>
             </div>
           </div>
         </div>
         <div class="selectors">
-          <div class="color-note">Color: <strong>Navy Blue</strong></div>
+          <div class="color-note">Color: <strong>Black</strong></div>
           <div class="selector-block">
             <div class="sel-label">TALLE <span class="sel-val" id="tv-p01"></span></div>
-            <div class="talles-wrap" id="talles-p01"><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p01')">L</button><button class="talle-btn" data-talle="M" onclick="selTalle(this,'p01')">M</button><button class="talle-btn" data-talle="XL" onclick="selTalle(this,'p01')">XL</button></div>
+            <div class="talles-wrap" id="talles-p01"><button class="talle-btn" data-talle="M" onclick="selTalle(this,'p01')">M</button><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p01')">L</button></div>
           </div>
         </div>
         <div class="prod-actions">
-          <a class="btn-ver-usa" href="https://usa.tommy.com/en/sale/womens-sale/clothing/hooded-puffer-coat/XW06091-DW5.html" target="_blank">🔗 Ver colores y stock en tommy USA</a>
+          <a class="btn-ver-usa" href="https://usa.tommy.com/en/men/clothing/tops/everyday-t-shirt/78JA560-083.html" target="_blank">🔗 Ver colores y stock en tommy USA</a>
           <button class="btn-agregar" id="btn-p01"
-            onclick="agregar('p01','Hooded Puffer Coat',256230,'Navy Blue')">
+            onclick="agregar('p01','Everyday T-Shirt',63585,'Black')">
             AGREGAR AL CARRITO
           </button>
         </div>
@@ -211,39 +236,39 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
     </div>
     <div class="prod-card" id="card-p02" data-cat="Remera / T-Shirt / Sweater">
       <div class="prod-img-wrap">
-        <img src="https://shoptommy.scene7.com/is/image/ShopTommy/78JA592_038_main" alt="Slim Fit Stretch Pique Polo"
+        <img src="https://shoptommy.scene7.com/is/image/ShopTommy/78J8322_BDS_main" alt="Classic Crewneck Sweater"
           onerror="this.style.opacity='0.1'">
         <div class="prod-cat-badge">Remera / T-Shirt / Sweater</div>
       </div>
       <div class="prod-body">
-        <div class="prod-name">Slim Fit Stretch Pique Polo</div>
+        <div class="prod-name">Classic Crewneck Sweater</div>
         <div class="price-block">
-          <div class="price-main">$99.698</div>
+          <div class="price-main">$116.550</div>
           <div class="price-options">
             <div class="price-opt">
               <span class="price-opt-label">TRANSFERENCIA</span>
               <span class="price-opt-val">50% seña · 50% al retirar</span>
-              <span class="price-opt-num">Seña: <strong>$49.849</strong></span>
+              <span class="price-opt-num">Seña: <strong>$58.275</strong></span>
             </div>
             <div class="price-divider">·</div>
             <div class="price-opt">
               <span class="price-opt-label">3 CUOTAS</span>
               <span class="price-opt-val">Con recargo 25%</span>
-              <span class="price-opt-num"><strong>$41.541</strong> x 3</span>
+              <span class="price-opt-num"><strong>$48.563</strong> x 3</span>
             </div>
           </div>
         </div>
         <div class="selectors">
-          <div class="color-note">Color: <strong>Light Grey Heather</strong></div>
+          <div class="color-note">Color: <strong>Black</strong></div>
           <div class="selector-block">
             <div class="sel-label">TALLE <span class="sel-val" id="tv-p02"></span></div>
-            <div class="talles-wrap" id="talles-p02"><button class="talle-btn" data-talle="M" onclick="selTalle(this,'p02')">M</button><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p02')">L</button></div>
+            <div class="talles-wrap" id="talles-p02"><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p02')">L</button><button class="talle-btn" data-talle="XL" onclick="selTalle(this,'p02')">XL</button></div>
           </div>
         </div>
         <div class="prod-actions">
-          <a class="btn-ver-usa" href="https://usa.tommy.com/en/men/clothing/tops/slim-fit-stretch-pique-polo/78JA592-038.html" target="_blank">🔗 Ver colores y stock en tommy USA</a>
+          <a class="btn-ver-usa" href="https://usa.tommy.com/en/men/clothing/tops/classic-crewneck-sweater/78J8322-BDS.html" target="_blank">🔗 Ver colores y stock en tommy USA</a>
           <button class="btn-agregar" id="btn-p02"
-            onclick="agregar('p02','Slim Fit Stretch Pique Polo',99698,'Light Grey Heather')">
+            onclick="agregar('p02','Classic Crewneck Sweater',116550,'Black')">
             AGREGAR AL CARRITO
           </button>
         </div>
@@ -277,7 +302,7 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
           <div class="color-note">Color: <strong>Optic White</strong></div>
           <div class="selector-block">
             <div class="sel-label">TALLE <span class="sel-val" id="tv-p03"></span></div>
-            <div class="talles-wrap" id="talles-p03"><button class="talle-btn" data-talle="XL" onclick="selTalle(this,'p03')">XL</button><button class="talle-btn" data-talle="XXL" onclick="selTalle(this,'p03')">XXL</button><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p03')">L</button></div>
+            <div class="talles-wrap" id="talles-p03"><button class="talle-btn" data-talle="L" onclick="selTalle(this,'p03')">L</button><button class="talle-btn" data-talle="XL" onclick="selTalle(this,'p03')">XL</button></div>
           </div>
         </div>
         <div class="prod-actions">
@@ -301,27 +326,68 @@ body{background:var(--black);color:var(--white);font-family:'Raleway',sans-serif
   </div>
   <div class="cart-body" id="cart-body"></div>
   <div class="cart-foot" id="cart-foot" style="display:none">
+
+    <!-- Resumen total -->
     <div class="cart-total-row">
       <span class="ct-label">TOTAL</span>
       <span class="ct-val" id="cart-total">$0</span>
     </div>
     <div class="ct-seña" id="ct-seña"></div>
+
     <div class="ct-note"><em>Política:</em> Si el producto no está disponible al comprar en USA, la seña se devuelve al 100% en 48hs.</div>
+
+    <!-- Selector forma de pago -->
     <div class="pago-selector">
       <div class="pago-label">FORMA DE PAGO</div>
       <div class="pago-opts">
-        <button class="pago-btn on" id="pago-t" onclick="setPago('t')">TRANSFERENCIA<br>50% seña · 50% al retirar</button>
-        <button class="pago-btn" id="pago-c" onclick="setPago('c')">3 CUOTAS<br>Total + 25% recargo</button>
+        <button class="pago-btn on" id="pago-t" onclick="setPago('t')">
+          <span class="pago-icon">🏦</span>
+          TRANSFERENCIA<br>
+          <span class="pago-sub">50% seña · 50% al retirar</span>
+        </button>
+        <button class="pago-btn" id="pago-c" onclick="setPago('c')">
+          <span class="pago-icon">💳</span>
+          3 CUOTAS<br>
+          <span class="pago-sub" id="cuota-label">—</span>
+        </button>
       </div>
     </div>
-    <button class="btn-checkout" id="btn-checkout" onclick="mostrarForm()">CONFIRMAR PEDIDO</button>
-    <div class="checkout-form" id="checkout-form">
-      <div class="policy-box"><strong>Política de devolución:</strong> Si al comprar en USA el producto no está disponible, la seña se devuelve al 100% en 48hs. Sin preguntas.</div>
-      <div class="f-field"><label class="f-label">NOMBRE</label><input class="f-input" id="f-nombre" placeholder="Tu nombre completo"></div>
-      <div class="f-field"><label class="f-label">WHATSAPP</label><input class="f-input" id="f-tel" placeholder="+54 9 11..."></div>
-      <div class="f-field"><label class="f-label">EMAIL</label><input class="f-input" id="f-email" type="email" placeholder="tu@email.com"></div>
-      <button class="btn-send" onclick="confirmar()">ENVIAR PEDIDO</button>
+
+    <!-- FORM TRANSFERENCIA -->
+    <div class="checkout-form" id="form-transferencia">
+      <div class="cbu-box">
+        <div class="cbu-label">DATOS DE TRANSFERENCIA</div>
+        <div class="cbu-row"><span class="cbu-k">CVU</span><span class="cbu-v" id="cbu-num">0000003100011047925773</span><button class="cbu-copy" onclick="copiarCBU()">copiar</button></div>
+        <div class="cbu-row"><span class="cbu-k">Alias</span><span class="cbu-v">carryclub.mp</span></div>
+        <div class="cbu-row"><span class="cbu-k">Titular</span><span class="cbu-v">María Eugenia García del Solar</span></div>
+        <div class="cbu-monto" id="cbu-monto"></div>
+      </div>
+      <div class="policy-box">
+        <strong>Cómo funciona:</strong> Hacé la transferencia de la seña (50%), guardá el comprobante y completá tus datos. Nosotros confirmamos la recepción por WhatsApp.
+      </div>
+      <div class="f-field"><label class="f-label">NOMBRE</label><input class="f-input" id="t-nombre" placeholder="Tu nombre completo"></div>
+      <div class="f-field"><label class="f-label">WHATSAPP</label><input class="f-input" id="t-tel" placeholder="+54 9 11..."></div>
+      <div class="f-field"><label class="f-label">EMAIL</label><input class="f-input" id="t-email" type="email" placeholder="tu@email.com"></div>
+      <label class="check-label">
+        <input type="checkbox" id="check-transf">
+        <span class="check-box"></span>
+        <span class="check-txt">Ya realicé la transferencia de la seña</span>
+      </label>
+      <button class="btn-send" id="btn-confirmar-t" onclick="confirmarTransf()" disabled>CONFIRMAR PEDIDO →</button>
     </div>
+
+    <!-- FORM CUOTAS (MP — próximamente) -->
+    <div class="checkout-form" id="form-cuotas">
+      <div class="f-field"><label class="f-label">NOMBRE</label><input class="f-input" id="c-nombre" placeholder="Tu nombre completo"></div>
+      <div class="f-field"><label class="f-label">WHATSAPP</label><input class="f-input" id="c-tel" placeholder="+54 9 11..."></div>
+      <div class="f-field"><label class="f-label">EMAIL</label><input class="f-input" id="c-email" type="email" placeholder="tu@email.com"></div>
+      <div class="mp-info" id="mp-info"></div>
+      <button class="btn-send btn-mp" id="btn-pagar-mp" onclick="pagarMP()">CONFIRMAR Y PAGAR →</button>
+    </div>
+
+    <!-- Botón inicial (antes de mostrar forms) -->
+    <button class="btn-checkout" id="btn-checkout" onclick="mostrarForm()">CONFIRMAR PEDIDO</button>
+
   </div>
 </div>
 
@@ -334,7 +400,7 @@ const selections = {};
 let pagoActual = 't';
 const fmt = n => '$' + Math.round(n).toLocaleString('es-AR');
 const pad = n => String(Math.floor(n)).padStart(2,'0');
-const DEADLINE = '2026-06-25T21:00:00.000-03:00';
+const DEADLINE = '2026-06-27T21:00:00.000-03:00';
 const WA = '5491130211626';
 const DROP_NUM = '16';
 const MARCA = 'TOMMY HILFIGER';
@@ -361,6 +427,42 @@ function checkReady(pid){
 }
 
 let cart=[];
+let pagoActual='t';
+
+// ── CBU config ───────────────────────────────────────────
+const CBU_NUM    = '0000003100011047925773'; // CVU MercadoPago
+const CBU_ALIAS  = 'carryclub.mp';
+const CBU_TITULAR = 'María Eugenia García del Solar';
+
+function copiarCBU(){
+  navigator.clipboard.writeText(CBU_NUM).then(function(){
+    var btn=document.querySelector('.cbu-copy');
+    btn.textContent='✓ copiado';
+    setTimeout(function(){ btn.textContent='copiar'; },2000);
+  });
+}
+
+function selTalle(el,pid){
+  document.querySelectorAll('#talles-'+pid+' .talle-btn').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  if(!selections[pid]) selections[pid]={};
+  selections[pid].talle=el.dataset.talle;
+  document.getElementById('tv-'+pid).textContent=el.dataset.talle;
+  checkReady(pid);
+}
+function setColor(input,pid){
+  if(!selections[pid]) selections[pid]={};
+  selections[pid].color=input.value;
+  checkReady(pid);
+}
+function checkReady(pid){
+  const s=selections[pid]||{};
+  const ci=document.getElementById('ci-'+pid);
+  const hasColor=!ci||(s.color&&s.color.trim().length>0);
+  const btn=document.getElementById('btn-'+pid);
+  if(s.talle&&hasColor){btn.classList.add('ready');btn.textContent='AGREGAR AL CARRITO ✓';}
+}
+
 function agregar(pid,nombre,precio,colorDefault){
   const s=selections[pid]||{};
   if(!s.talle){alert('Por favor seleccioná un talle.');return;}
@@ -371,12 +473,18 @@ function agregar(pid,nombre,precio,colorDefault){
   updateCartUI();toggleCart();
 }
 function removeItem(i){cart.splice(i,1);updateCartUI();}
+
 function setPago(tipo){
   pagoActual=tipo;
   document.getElementById('pago-t').classList.toggle('on',tipo==='t');
   document.getElementById('pago-c').classList.toggle('on',tipo==='c');
+  // Ocultar ambos forms y btn-checkout si ya estaban abiertos
+  document.getElementById('btn-checkout').style.display='block';
+  document.getElementById('form-transferencia').classList.remove('visible');
+  document.getElementById('form-cuotas').classList.remove('visible');
   updateCartUI();
 }
+
 function updateCartUI(){
   const badge=document.getElementById('cart-badge');
   const body=document.getElementById('cart-body');
@@ -392,29 +500,152 @@ function updateCartUI(){
   foot.style.display='block';
   const sum=cart.reduce((s,i)=>s+i.precio,0);
   totalEl.textContent=fmt(sum);
-  señaEl.textContent=pagoActual==='t'?'Seña: '+fmt(sum*0.5)+' · Saldo al retirar: '+fmt(sum*0.5):'Total con recargo: '+fmt(sum*1.25)+' · Cuota: '+fmt(sum*1.25/3);
-  body.innerHTML=cart.map((item,i)=>'<div class="cart-item"><div class="ci-info"><div class="ci-drop">DROP #'+item.drop+' · '+item.marca+'</div><div class="ci-name">'+item.nombre+'</div><div class="ci-detail">'+item.talle+(item.color?' · '+item.color:'')+'</div><div class="ci-price">'+fmt(item.precio)+'</div></div><button class="ci-remove" onclick="removeItem('+i+')">×</button></div>').join('');
+
+  if(pagoActual==='t'){
+    señaEl.innerHTML='Seña: <strong style="color:var(--white)">'+fmt(sum*0.5)+'</strong> · Saldo al retirar: '+fmt(sum*0.5);
+    // Actualizar monto en el box CBU si ya está visible
+    var cm=document.getElementById('cbu-monto');
+    if(cm) cm.textContent='Transferir: '+fmt(sum*0.5)+' (50% seña)';
+  } else {
+    const total3=sum*1.25;
+    const cuota=total3/3;
+    señaEl.innerHTML='3 cuotas de <strong style="color:var(--white)">'+fmt(cuota)+'</strong>';
+    // Actualizar label en el botón de cuotas
+    var cl=document.getElementById('cuota-label');
+    if(cl) cl.textContent=fmt(cuota)+' × 3';
+    // Info MP
+    var mp=document.getElementById('mp-info');
+    if(mp) mp.innerHTML='Total a pagar: <strong style="color:var(--white)">'+fmt(total3)+'</strong><br>3 cuotas de <strong style="color:var(--cyan)">'+fmt(cuota)+'</strong> · Se procesa por MercadoPago';
+  }
+
+  body.innerHTML=cart.map(function(item,i){
+    var h='<div class="cart-item"><div class="ci-info">';
+    h+='<div class="ci-drop">DROP #'+DROP_NUM+' · '+MARCA+'</div>';
+    h+='<div class="ci-name">'+item.nombre+'</div>';
+    h+='<div class="ci-detail">'+item.talle+(item.color?' · '+item.color:'')+'</div>';
+    h+='<div class="ci-price">'+fmt(item.precio)+'</div>';
+    h+='</div><button class="ci-remove" onclick="removeItem('+i+')">x</button></div>';
+    return h;
+  }).join('');
 }
+
 function toggleCart(){
   document.getElementById('cart-dr').classList.toggle('open');
   document.getElementById('cart-ov').classList.toggle('open');
   updateCartUI();
 }
+
 function mostrarForm(){
   document.getElementById('btn-checkout').style.display='none';
-  document.getElementById('checkout-form').classList.add('visible');
+  const sum=cart.reduce((s,i)=>s+i.precio,0);
+
+  if(pagoActual==='t'){
+    // Actualizar monto CBU
+    document.getElementById('cbu-monto').textContent='Transferir: '+fmt(sum*0.5)+' (50% seña)';
+    document.getElementById('cbu-num').textContent=CBU_NUM;
+    document.getElementById('form-transferencia').classList.add('visible');
+    // Bind checkbox
+    document.getElementById('check-transf').addEventListener('change',function(){
+      document.getElementById('btn-confirmar-t').disabled=!this.checked;
+    });
+  } else {
+    const total3=sum*1.25;
+    const cuota=total3/3;
+    document.getElementById('mp-info').innerHTML='Total a pagar: <strong style="color:var(--white)">'+fmt(total3)+'</strong><br>3 cuotas de <strong style="color:var(--cyan)">'+fmt(cuota)+'</strong> · Se procesa por MercadoPago';
+    document.getElementById('form-cuotas').classList.add('visible');
+  }
 }
-function confirmar(){
-  const nombre=document.getElementById('f-nombre').value.trim();
-  const tel=document.getElementById('f-tel').value.trim();
-  const email=document.getElementById('f-email').value.trim();
+
+// ── CONFIRMAR TRANSFERENCIA ───────────────────────────────
+function confirmarTransf(){
+  const nombre=document.getElementById('t-nombre').value.trim();
+  const tel=document.getElementById('t-tel').value.trim();
+  const email=document.getElementById('t-email').value.trim();
   if(!nombre||!tel||!email){alert('Completá todos los campos.');return;}
   const sum=cart.reduce((s,i)=>s+i.precio,0);
   const items=cart.map(i=>'• '+i.nombre+' | Talle: '+i.talle+(i.color?' | Color: '+i.color:'')+' — '+fmt(i.precio)).join('%0A');
-  const pagoInfo=pagoActual==='t'?'Forma de pago: Transferencia%0ASeña (50%25): '+fmt(sum*0.5)+'%0ASaldo contra entrega: '+fmt(sum*0.5):'Forma de pago: 3 cuotas%0ATotal con recargo: '+fmt(sum*1.25)+'%0ACuota: '+fmt(sum*1.25/3)+' x 3';
-  const msg='Hola! Quiero confirmar mi pedido en Carry Club.%0A%0ANombre: '+nombre+'%0ATel: '+tel+'%0AEmail: '+email+'%0A%0AProductos:%0A'+items+'%0A%0ATotal: '+fmt(sum)+'%0A'+pagoInfo;
+  const msg='Hola! Confirmo mi pedido en Carry Club.%0A%0ANombre: '+nombre+'%0ATel: '+tel+'%0AEmail: '+email+'%0A%0AProductos:%0A'+items+'%0A%0ATotal: '+fmt(sum)+'%0ASeña transferida: '+fmt(sum*0.5)+'%0A%0A✅ Ya realicé la transferencia de la seña al CBU '+CBU_NUM;
   window.open('https://wa.me/'+WA+'?text='+msg,'_blank');
 }
+
+// ── PAGAR CON MERCADOPAGO ────────────────────────────────
+function pagarMP(){
+  var nombre = document.getElementById('c-nombre').value.trim();
+  var tel    = document.getElementById('c-tel').value.trim();
+  var email  = document.getElementById('c-email').value.trim();
+  if(!nombre||!tel||!email){ alert('Completá todos los campos.'); return; }
+
+  var btn = document.getElementById('btn-pagar-mp');
+  btn.textContent = 'Conectando con MercadoPago…';
+  btn.disabled = true;
+
+  var items = cart.map(function(i){
+    return { nombre:i.nombre, precio:i.precio, talle:i.talle, color:i.color };
+  });
+
+  fetch('/.netlify/functions/crear-preferencia', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      items: items,
+      nombre: nombre,
+      email: email,
+      tel: tel,
+      dropNum: DROP_NUM,
+      back_url: window.location.origin,
+    }),
+  })
+  .then(function(res){
+    if(!res.ok) return res.json().then(function(e){ throw new Error(e.error||'Error MP'); });
+    return res.json();
+  })
+  .then(function(data){
+    window.location.href = data.init_point;
+  })
+  .catch(function(e){
+    btn.textContent = 'CONFIRMAR Y PAGAR →';
+    btn.disabled = false;
+    alert('Error: '+e.message+'
+
+Usá la opción de transferencia o escribinos por WhatsApp.');
+  });
+}
+
+// ── Manejar redirect de vuelta desde MP ──────────────────
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var pagoStatus = params.get('pago');
+  if(!pagoStatus) return;
+
+  var msgs = {
+    aprobado: { txt:'Pago aprobado. Tu pedido está confirmado. Te contactamos por WhatsApp.', color:'#4caf50' },
+    pendiente:{ txt:'Tu pago está pendiente de acreditación. Te avisamos cuando se confirme.', color:'#e8b84b' },
+    error:    { txt:'El pago no se completó. Podés intentarlo de nuevo o pagar por transferencia.', color:'#f44336' },
+  };
+
+  setTimeout(function(){
+    var msgData = msgs[pagoStatus];
+    if(!msgData) return;
+
+    var bar = document.createElement('div');
+    bar.style.cssText = 'position:fixed;top:52px;left:0;right:0;z-index:2000;padding:14px 20px;font-size:11px;letter-spacing:.5px;background:#0d0d0d;border-bottom:2px solid '+msgData.color+';color:'+msgData.color+';text-align:center;font-family:Raleway,sans-serif;line-height:1.6;';
+    bar.textContent = msgData.txt;
+
+    var closeBtn = document.createElement('button');
+    closeBtn.textContent = '×';
+    closeBtn.style.cssText = 'background:none;border:none;color:inherit;font-size:18px;cursor:pointer;margin-left:12px;vertical-align:middle;';
+    closeBtn.onclick = function(){ document.body.removeChild(bar); };
+    bar.appendChild(closeBtn);
+    document.body.appendChild(bar);
+
+    window.history.replaceState({}, '', window.location.pathname);
+
+    if(pagoStatus === 'aprobado'){
+      cart = [];
+      updateCartUI();
+    }
+  }, 400);
+}());
 function filtrar(cat,btn){
   document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
