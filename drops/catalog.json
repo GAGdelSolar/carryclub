@@ -14,22 +14,7 @@
     "subdrops": [],
     "creado": "2026-07-01T15:54:27.967Z"
   },
-  {
-    "id": "drop779",
-    "num": 779,
-    "marca": "TOMMY HILFIGER",
-    "descripcion": "WOMENS SALE ÃÂ· USA",
-    "deadline": "2026-07-02T21:00:00.000-03:00",
-    "activo": true,
-    "wa": "5491130211626",
-    "url": "drops/drop779.html",
-    "imagen_url": "https://shoptommy.scene7.com/is/image/ShopTommy/XW06028_BDS_main",
-    "productos": 3,
-    "precio_desde": 49140,
-    "subdrops": [],
-    "creado": "2026-07-01T14:47:20.729Z"
-  },
-     {
+   {
     "id": "drop143",
     "num": 143,
     "marca": "TOMMY HILFIGER",
