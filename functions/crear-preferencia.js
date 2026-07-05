@@ -24,14 +24,18 @@ export async function onRequestPost(context) {
     return Response.json({ error: 'Faltan datos requeridos' }, { status: 400 });
   }
 
+  // El precio que llega en item.precio es el precio final publicado en el drop
+  // (mismo valor que se muestra para transferencia y para MP en 1 pago).
+  // No se aplica ningún recargo: lo que se cobra acá tiene que coincidir 1 a 1
+  // con lo que el cliente vio en la web.
   const mpItems = items.map(item => ({
     title:       item.nombre + (item.talle ? ' — Talle ' + item.talle : '') + (item.color ? ' / ' + item.color : ''),
     quantity:    1,
-    unit_price:  Math.round(item.precio * 1.25),
+    unit_price:  Math.round(item.precio),
     currency_id: 'ARS',
   }));
 
-  const totalConRecargo = items.reduce((s, i) => s + Math.round(i.precio * 1.25), 0);
+  const totalFinal = items.reduce((s, i) => s + Math.round(i.precio), 0);
 
   const base = back_url || 'https://carryclub-ar.pages.dev';
   const dropPath = dropNum ? `/drops/drop${String(dropNum).padStart(3,'0')}.html` : '/';
@@ -50,8 +54,8 @@ export async function onRequestPost(context) {
     },
     auto_return: 'approved',
     payment_methods: {
-      installments: 3,
-      default_installments: 3,
+      installments: 1,
+      default_installments: 1,
     },
     statement_descriptor: 'CARRY CLUB',
     external_reference: `DROP${dropNum || '000'}-${Date.now()}`,
@@ -59,7 +63,7 @@ export async function onRequestPost(context) {
       drop_num:          dropNum,
       comprador_nombre:  nombre,
       comprador_tel:     tel,
-      total_ars:         totalConRecargo,
+      total_ars:         totalFinal,
     },
   };
 
